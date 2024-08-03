@@ -2,10 +2,11 @@
     overflow: hidden;
     white-space: nowrap;
     font-family: monospace;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     letter-spacing: .1rem;
     border-bottom: 1px solid transparent;
+    text-wrap: wrap;
     animation:
         typing 3s steps(34, end),
         border-glow 4s ease-in-out 1 3s forwards;
