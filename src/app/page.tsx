@@ -6,11 +6,10 @@ export default function Home() {
     return (
         <>
             <Header />
-            <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
+            <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
                 <Hero />
-                <div className="w-7/12 bg-light-sub-bg dark:bg-dark-sub-bg h-28"></div>
+                <div className="sm:w-8/12 w-full bg-light-sub-bg dark:bg-dark-sub-bg h-28"></div>
             </main>
-
         </>
     );
 }

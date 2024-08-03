@@ -1,12 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import {
-    MoonIcon,
-    SunIcon,
-    LanguageIcon,
-    MagnifyingGlassIcon,
-} from '@heroicons/react/24/outline';
+import { MoonIcon, SunIcon, LanguageIcon, MagnifyingGlassIcon, } from '@heroicons/react/24/outline';
 
 export default function Preferences() {
     const [isDarkMode, setIsDarkMode] = useState(false);

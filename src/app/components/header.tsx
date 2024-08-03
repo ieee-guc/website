@@ -136,13 +136,9 @@ export default function Header() {
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-10" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-light-bg dark:bg-dark-bg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
-                    <div className="flex items-center justify-between">
-                        <a
-                            rel="noopener noreferrer"
-                            href="/"
-                            className="-m-1.5 p-1.5"
-                        >
+                <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-light-bg dark:bg-dark-bg p-4 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
+                    <div className="flex items-center justify-between mx-auto flex max-w-7xl items-center justify-between lg:px-8">
+                        <a href="/" className="-m-1.5 p-1.5" >
                             <span className="sr-only">IEEE GUC</span>
                             <Image
                                 alt="IEEE GUC"
