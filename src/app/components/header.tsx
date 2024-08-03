@@ -46,7 +46,11 @@ export default function Header() {
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
                 {/* Logo */}
                 <div className="flex lg:flex-1">
-                    <a href="/" className="-m-1.5 p-1.5 text-light-text dark:text-dark-text">
+                    <a
+                        rel="noopener noreferrer"
+                        href="/"
+                        className="-m-1.5 p-1.5 text-light-text dark:text-dark-text"
+                    >
                         <span className="sr-only">IEEE GUC</span>
                         <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-auto rounded-xl" />
                     </a>
@@ -63,7 +67,7 @@ export default function Header() {
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
                     <Popover className="relative">
-                        <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
+                        <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text">
                             We Provide
                             <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-slate-400" />
                         </PopoverButton>
@@ -82,7 +86,11 @@ export default function Header() {
                                             <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white ${item.color}`} />
                                         </div>
                                         <div className="flex-auto">
-                                            <a href={item.href} className="block font-semibold text-light-text dark:text-dark-text">
+                                            <a
+                                                rel="noopener noreferrer"
+                                                href={item.href}
+                                                className="block font-semibold text-light-text dark:text-dark-text"
+                                            >
                                                 {item.name}
                                                 <span className="absolute inset-0" />
                                             </a>
@@ -94,18 +102,34 @@ export default function Header() {
                         </PopoverPanel>
                     </Popover>
 
-                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
+                    <a
+                        rel="noopener noreferrer"
+                        href="/about"
+                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
+                    >
                         About Us
                     </a>
-                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
+                    <a
+                        rel="noopener noreferrer"
+                        href="/recruitment"
+                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
+                    >
                         Recruitment’24/25
                     </a>
-                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
+                    <a
+                        rel="noopener noreferrer"
+                        href="/calendar"
+                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
+                    >
                         Our Calendar
                     </a>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" className="text-sm font-semibold leading-6 text-light-text dark:text-dark-text">
+                    <a
+                        rel="noopener noreferrer"
+                        href="/login"
+                        className="text-sm font-semibold leading-6 text-light-text dark:text-dark-text"
+                    >
                         Log in <span aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
@@ -114,7 +138,11 @@ export default function Header() {
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-light-bg dark:bg-dark-bg px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
                     <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <a
+                            rel="noopener noreferrer"
+                            href="/"
+                            className="-m-1.5 p-1.5"
+                        >
                             <span className="sr-only">IEEE GUC</span>
                             <Image
                                 alt="IEEE GUC"
@@ -156,19 +184,22 @@ export default function Header() {
                                     </DisclosurePanel>
                                 </Disclosure>
                                 <a
-                                    href="#"
+                                    rel="noopener noreferrer"
+                                    href="/about"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     About Us
                                 </a>
                                 <a
-                                    href="#"
+                                    rel="noopener noreferrer"
+                                    href="/recruitment"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Recruitment’24/25
                                 </a>
                                 <a
-                                    href="#"
+                                    rel="noopener noreferrer"
+                                    href="/calendar"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Our Calendar
@@ -176,7 +207,8 @@ export default function Header() {
                             </div>
                             <div className="py-6">
                                 <a
-                                    href="#"
+                                    rel="noopener noreferrer"
+                                    href="/login"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Log in
