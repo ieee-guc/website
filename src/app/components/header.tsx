@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
     Dialog,
     DialogPanel,
@@ -25,30 +25,30 @@ import {
     ArchiveBoxIcon,
     UserGroupIcon,
     LightBulbIcon
-} from '@heroicons/react/24/outline'
+} from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import logo from '@/../public/ieee-logo.png';
 import Image from 'next/image'
 
 const products = [
-    { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '#', icon: MicrophoneIcon },
-    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '#', icon: ComputerDesktopIcon },
-    { name: 'Events', description: 'Connect with incredible minds', href: '#', icon: UserGroupIcon },
-    { name: 'Technical Workshops', description: 'Hands-on learning at your fingertip', href: '#', icon: LightBulbIcon },
-    { name: 'Hardware Packages', description: 'Your courses’ packages are on us!', href: '#', icon: ArchiveBoxIcon },
+    { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: MicrophoneIcon, color: "violet-500" },
+    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '/sessions', icon: ComputerDesktopIcon, color: "teal-500" },
+    { name: 'Events', description: 'Connect with incredible minds', href: '/events', icon: UserGroupIcon, color: "green-500" },
+    { name: 'Technical Workshops', description: 'Hands-on learning at your fingertip', href: '/workshops', icon: LightBulbIcon, color: "yellow-400" },
+    { name: 'Hardware Packages', description: 'Your courses’ packages are on us!', href: '/packages', icon: ArchiveBoxIcon, color: "amber-900" },
 ]
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <header className="bg-white">
+        <header className="bg-white dark:bg-slate-950 text-light-text dark:text-dark-text">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
                 {/* Logo */}
                 <div className="flex lg:flex-1">
-                    <a href="/" className="-m-1.5 p-1.5">
+                    <a href="/" className="-m-1.5 p-1.5 text-light-text dark:text-dark-text">
                         <span className="sr-only">IEEE GUC</span>
-                        <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-auto" />
+                        <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-auto rounded-xl" />
                     </a>
                 </div>
                 <div className="flex lg:hidden">
@@ -70,23 +70,23 @@ export default function Header() {
 
                         <PopoverPanel
                             transition
-                            className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                            className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white dark:bg-slate-950 text-light-text dark:text-dark-text shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
                         >
                             <div className="p-4">
                                 {products.map((item) => (
                                     <div
                                         key={item.name}
-                                        className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                                        className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50 dark:hover:bg-gray-700"
                                     >
                                         <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                            <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-light-primary" />
+                                            <item.icon aria-hidden="true" className={`h-6 w-6 text-gray-600 group-hover:text-${item.color}`} />
                                         </div>
                                         <div className="flex-auto">
-                                            <a href={item.href} className="block font-semibold text-gray-900">
+                                            <a href={item.href} className="block font-semibold text-gray-900 dark:text-gray-100">
                                                 {item.name}
                                                 <span className="absolute inset-0" />
                                             </a>
-                                            <p className="mt-1 text-gray-600">{item.description}</p>
+                                            <p className="mt-1 text-gray-600 dark:text-gray-400">{item.description}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -186,6 +186,6 @@ export default function Header() {
                     </div>
                 </DialogPanel>
             </Dialog>
-        </header>
+        </header >
     )
 }
