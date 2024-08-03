@@ -9,4 +9,32 @@
   --bg: #FFF8F3;
 }
 
+.typewriter h1 {
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: monospace;
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: 0.1rem;
+  border-bottom: 1px solid transparent;
+  animation: typing 3s steps(34, end), border-glow 4s ease-in-out 1 3s forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes border-glow {
+  0% {
+    border-bottom: 2px solid transparent;
+  }
+  100% {
+    border-bottom: 2px solid #64748b;
+  }
+}
+
 /*# sourceMappingURL=globals.css.map */
