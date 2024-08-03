@@ -148,6 +148,8 @@ export default function Header() {
                                                 href={item.href}
                                                 className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                             >
+                                                <item.icon aria-hidden="true" className="h-4 w-4 inline mr-2 text-gray-600 group-hover:text-light-primary" />
+
                                                 {item.name}
                                             </DisclosureButton>
                                         ))}
