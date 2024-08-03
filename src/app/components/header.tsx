@@ -31,11 +31,11 @@ import logo from '@/../public/ieee-logo.png';
 import Image from 'next/image'
 
 const products = [
-    { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: MicrophoneIcon, color: "violet-500" },
-    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '/sessions', icon: ComputerDesktopIcon, color: "teal-500" },
-    { name: 'Events', description: 'Connect with incredible minds', href: '/events', icon: UserGroupIcon, color: "green-500" },
-    { name: 'Technical Workshops', description: 'Hands-on learning at your fingertip', href: '/workshops', icon: LightBulbIcon, color: "yellow-400" },
-    { name: 'Hardware Packages', description: 'Your courses’ packages are on us!', href: '/packages', icon: ArchiveBoxIcon, color: "amber-900" },
+    { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: MicrophoneIcon, color: "group-hover:text-violet-600" },
+    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '/sessions', icon: ComputerDesktopIcon, color: "group-hover:text-teal-600" },
+    { name: 'Events', description: 'Connect with incredible minds', href: '/events', icon: UserGroupIcon, color: "group-hover:text-green-600" },
+    { name: 'Technical Workshops', description: 'Hands-on learning at your fingertip', href: '/workshops', icon: LightBulbIcon, color: "group-hover:text-yellow-600" },
+    { name: 'Hardware Packages', description: 'Your courses’ packages are on us!', href: '/packages', icon: ArchiveBoxIcon, color: "group-hover:text-amber-900" },
 ]
 
 export default function Header() {
@@ -63,7 +63,7 @@ export default function Header() {
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
                     <Popover className="relative">
-                        <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 p-2 text-slate-900">
+                        <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
                             We Provide
                             <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-slate-400" />
                         </PopoverButton>
@@ -79,10 +79,10 @@ export default function Header() {
                                         className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-slate-50 dark:hover:bg-slate-700"
                                     >
                                         <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-slate-50 group-hover:bg-white dark:bg-slate-700 dark:group-hover:bg-slate-950">
-                                            <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white group-hover:text-${item.color}`} />
+                                            <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white ${item.color}`} />
                                         </div>
                                         <div className="flex-auto">
-                                            <a href={item.href} className="block font-semibold text-slate-900 dark:text-slate-100">
+                                            <a href={item.href} className="block font-semibold text-light-text dark:text-dark-text">
                                                 {item.name}
                                                 <span className="absolute inset-0" />
                                             </a>
@@ -94,18 +94,18 @@ export default function Header() {
                         </PopoverPanel>
                     </Popover>
 
-                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-slate-900">
+                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
                         About Us
                     </a>
-                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-slate-900">
+                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
                         Recruitment’24/25
                     </a>
-                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-slate-900">
+                    <a href="#" className="text-sm font-semibold leading-6 p-2 text-light-text dark:text-dark-text">
                         Our Calendar
                     </a>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" className="text-sm font-semibold leading-6 text-slate-900">
+                    <a href="#" className="text-sm font-semibold leading-6 text-light-text dark:text-dark-text">
                         Log in <span aria-hidden="true">&rarr;</span>
                     </a>
                 </div>
