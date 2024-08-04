@@ -13,16 +13,21 @@ body {
   transition: all 200ms linear;
 }
 
-.typewriter h1 {
+.typewriter {
+  display: inline-block;
+  width: 100%;
+}
+
+.typewriter p {
   overflow: hidden;
+  display: inline-block;
   white-space: nowrap;
   font-family: monospace;
   font-size: 1rem;
   margin: 0;
   letter-spacing: 0.1rem;
   border-bottom: 1px solid transparent;
-  text-wrap: wrap;
-  animation: typing 3s steps(34, end), border-glow 4s ease-in-out 1 3s forwards;
+  animation: typing 3s steps(60, end), border-glow 4s ease-in-out 1 3s forwards;
 }
 
 @keyframes typing {

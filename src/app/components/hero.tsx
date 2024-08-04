@@ -17,10 +17,7 @@ export default function Hero() {
     return (
         <section className="hero sm:w-8/12 w-full">
             <h1 className="text-5xl text-light-text dark:text-dark-text h-fit"> IEEE GUC Student Branch </h1>
-            <div className="div">
-
-                <div className="typewriter"><h1 className="text-light-text dark:text-dark-text dark:dark p-1">Team Work Makes The Dream Work</h1></div>
-            </div>
+            <div className="typewriter"><p className="text-light-text dark:text-dark-text dark:dark p-1">Team Work Makes The Dream Work</p></div>
         </section>
     )
 }
