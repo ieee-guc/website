@@ -1,38 +1,55 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Moon, Sun, ZoomIn, ZoomOut } from 'react-feather';
 
 export default function Preferences() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const [fontSize, setFontSize] = useState(16);
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        const savedTheme = localStorage.getItem('darkMode');
+        return savedTheme ? JSON.parse(savedTheme) : false;
+    });
 
-    let changeTheme = () => {
-        setIsDarkMode(prev => {
-            document.body.classList.toggle('dark', !prev);
-            return !prev;
+    const [fontSize, setFontSize] = useState(() => {
+        const savedFontSize = localStorage.getItem('fontSize');
+        return savedFontSize ? parseInt(savedFontSize, 10) : 16;
+    });
+
+    useEffect(() => {
+        document.body.classList.toggle('dark', isDarkMode);
+        document.documentElement.style.fontSize = `${fontSize}px`;
+    }, [isDarkMode, fontSize]);
+
+    const changeTheme = () => {
+        setIsDarkMode((prev: any) => {
+            const newMode = !prev;
+            localStorage.setItem('darkMode', JSON.stringify(newMode));
+            document.body.classList.toggle('dark', newMode);
+            return newMode;
         });
-    }
+    };
 
-    let increaseFontSize = () => {
+    const increaseFontSize = () => {
         if (fontSize < 18) {
             setFontSize(prev => {
                 const newFontSize = prev + 1;
+                localStorage.setItem('fontSize', newFontSize + "");
                 document.documentElement.style.fontSize = `${newFontSize}px`;
                 return newFontSize;
             });
         }
     };
 
-    let decreaseFontSize = () => {
+    const decreaseFontSize = () => {
         if (fontSize > 14) {
             setFontSize(prev => {
                 const newFontSize = prev - 1;
+                localStorage.setItem('fontSize', newFontSize + "");
                 document.documentElement.style.fontSize = `${newFontSize}px`;
                 return newFontSize;
             });
         }
     };
+
     return (
         <aside className="bg-light-sub-bg dark:bg-dark-sub-bg text-light-text dark:text-dark-text fixed right-0 top-1/2 w-8 h-fit rounded-l-lg">
             <ul className='flex flex-col justify-between gap-2 p-2'>
