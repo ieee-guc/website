@@ -1,17 +1,7 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import {
-    Dialog,
-    DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    Popover,
-    PopoverButton,
-    PopoverGroup,
-    PopoverPanel,
-} from '@headlessui/react'
+import { useState } from 'react'
+import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, } from '@headlessui/react'
 import { Menu, X, Mic, Code, Archive, Users, ChevronDown, Terminal } from 'react-feather'
 import logo from '@/../public/ieee-logo.png';
 import Image from 'next/image'
@@ -28,7 +18,7 @@ export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     return (
-        <header className="bg-white dark:bg-slate-950 text-light-text dark:text-dark-text">
+        <header className="bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
                 {/* Logo */}
                 <div className="flex lg:flex-1">
@@ -60,7 +50,7 @@ export default function Header() {
 
                         <PopoverPanel
                             transition
-                            className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white dark:bg-slate-950 text-light-text dark:text-dark-text shadow-lg ring-1 ring-slate-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                            className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text shadow-lg ring-1 ring-slate-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
                         >
                             <div className="p-4">
                                 {products.map((item) => (

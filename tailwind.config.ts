@@ -17,6 +17,7 @@ const config: Config = {
                     text: '#021526',
                     bg: '#f8fafc',
                     'sub-bg': '#e2e8f0',
+                    'nav-bg': '#ffffff',
                 },
                 dark: {
                     primary: '#0A4593',
@@ -25,6 +26,7 @@ const config: Config = {
                     text: '#EFF8E2',
                     bg: '#0f172a',
                     'sub-bg': '#1e293b',
+                    'nav-bg': '#020617',
                 },
             },
         },
