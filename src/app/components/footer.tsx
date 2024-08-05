@@ -6,7 +6,7 @@ export default function Footer() {
     return <footer className="footer w-full bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text text-neutral-content">
         <div className="footer-container p-10 flex sm:flex-row flex-col sm:w-8/12 w-full ">
             <aside className="w-full sm:mr-96 mb-6">
-                <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-auto rounded-xl" />
+                <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-16 rounded-xl" />
                 <p>
                     IEEE GUC
                     <br />

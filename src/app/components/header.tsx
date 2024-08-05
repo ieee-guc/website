@@ -28,7 +28,7 @@ export default function Header() {
                         className="-m-1.5 p-1.5 text-light-text dark:text-dark-text"
                     >
                         <span className="sr-only">IEEE GUC</span>
-                        <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-auto rounded-xl" />
+                        <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-16 rounded-xl" />
                     </a>
                 </div>
                 <div className="flex lg:hidden">
@@ -120,7 +120,7 @@ export default function Header() {
                                 alt="IEEE GUC"
                                 title="IEEE GUC"
                                 src={logo}
-                                className="h-16 w-auto rounded-xl"
+                                className="h-16 w-16 rounded-xl"
                             />
                         </a>
                         <button
