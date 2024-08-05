@@ -1,11 +1,10 @@
 'use client'
 
 import React, { useState } from 'react';
-import { Moon, Sun, Globe, ZoomIn, ZoomOut } from 'react-feather';
+import { Moon, Sun, ZoomIn, ZoomOut } from 'react-feather';
 
 export default function Preferences() {
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const [isEnglish, setIsEnglish] = useState(true);
     const [fontSize, setFontSize] = useState(16);
 
     let changeTheme = () => {
@@ -40,11 +39,6 @@ export default function Preferences() {
                 <li>
                     <button id="change-theme" onClick={changeTheme} className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'>
                         {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-                    </button>
-                </li>
-                <li>
-                    <button id="change-language" className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'>
-                        <Globe size={20} />
                     </button>
                 </li>
                 <li>
