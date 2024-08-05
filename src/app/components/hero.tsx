@@ -1,8 +1,6 @@
 'use client'
 
 import React, { useState } from 'react';
-import {
-} from '@heroicons/react/24/outline';
 
 export default function Hero() {
     const [isDarkMode, setIsDarkMode] = useState(false);

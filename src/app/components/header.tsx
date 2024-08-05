@@ -12,30 +12,16 @@ import {
     PopoverGroup,
     PopoverPanel,
 } from '@headlessui/react'
-import {
-    ArrowPathIcon,
-    Bars3Icon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
-    XMarkIcon,
-    MicrophoneIcon,
-    ComputerDesktopIcon,
-    ArchiveBoxIcon,
-    UserGroupIcon,
-    LightBulbIcon
-} from '@heroicons/react/24/solid'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { Menu, X, Mic, Code, Archive, Users, ChevronDown, Terminal } from 'react-feather'
 import logo from '@/../public/ieee-logo.png';
 import Image from 'next/image'
 
 const products = [
-    { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: MicrophoneIcon, color: "group-hover:text-violet-600" },
-    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '/sessions', icon: ComputerDesktopIcon, color: "group-hover:text-teal-600" },
-    { name: 'Events', description: 'Connect with incredible minds', href: '/events', icon: UserGroupIcon, color: "group-hover:text-green-600" },
-    { name: 'Technical Workshops', description: 'Hands-on learning at your fingertip', href: '/workshops', icon: LightBulbIcon, color: "group-hover:text-yellow-600" },
-    { name: 'Hardware Packages', description: 'Your courses’ packages are on us!', href: '/packages', icon: ArchiveBoxIcon, color: "group-hover:text-amber-900" },
+    { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: Mic, color: "group-hover:text-violet-600" },
+    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '/sessions', icon: Code, color: "group-hover:text-red-700" },
+    { name: 'Events', description: 'Connect with incredible minds', href: '/events', icon: Users, color: "group-hover:text-green-600" },
+    { name: 'Technical Workshops', description: 'Hands-on learning at your fingertip', href: '/workshops', icon: Terminal, color: "group-hover:text-yellow-500" },
+    { name: 'Hardware Packages', description: 'Your courses’ packages are on us!', href: '/packages', icon: Archive, color: "group-hover:text-blue-700" },
 ]
 
 export default function Header() {
@@ -62,14 +48,14 @@ export default function Header() {
                         className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700"
                     >
                         <span className="sr-only">Open main menu</span>
-                        <Bars3Icon aria-hidden="true" className="h-6 w-6" />
+                        <Menu />
                     </button>
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
                     <Popover className="relative">
                         <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text">
                             We Provide
-                            <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-slate-400" />
+                            <ChevronDown aria-hidden="true" className="h-5 w-5 flex-none text-slate-400" />
                         </PopoverButton>
 
                         <PopoverPanel
@@ -153,7 +139,7 @@ export default function Header() {
                             className="-m-2.5 rounded-md p-2.5 text-light-text dark:text-dark-text"
                         >
                             <span className="sr-only">Close menu</span>
-                            <XMarkIcon aria-hidden="true" className="h-6 w-6" />
+                            <X aria-hidden="true" className="h-6 w-6" />
                         </button>
                     </div>
                     <div className="mt-6 flow-root">
@@ -162,7 +148,7 @@ export default function Header() {
                                 <Disclosure as="div" className="-mx-3">
                                     <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg">
                                         We Provide
-                                        <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
+                                        <ChevronDown aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
                                     </DisclosureButton>
                                     <DisclosurePanel className="mt-2 space-y-2">
                                         {[...products].map((item) => (

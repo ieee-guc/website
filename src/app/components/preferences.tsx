@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { MoonIcon, SunIcon, LanguageIcon, MagnifyingGlassIcon, } from '@heroicons/react/24/outline';
+import { Moon, Sun, Globe, ZoomIn, ZoomOut } from 'react-feather';
 
 export default function Preferences() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -18,10 +18,11 @@ export default function Preferences() {
             <ul className='flex flex-col justify-between gap-2 p-2'>
                 <li>
                     <button id="change-theme" onClick={changeTheme} className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'>
-                        {isDarkMode ? <SunIcon /> : <MoonIcon />}
+                        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
                     </button></li>
-                <li><button id="change-language" className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'><LanguageIcon></LanguageIcon></button></li>
-                <li><button id="change-size" className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'><MagnifyingGlassIcon></MagnifyingGlassIcon></button></li>
+                <li><button id="change-language" className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'><Globe size={20} /></button></li>
+                <li><button id="change-size" className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'><ZoomIn size={20} /></button></li>
+                <li><button id="change-size" className='w-full h-full hover:text-light-accent dark:hover:text-dark-accent'><ZoomOut size={20} /></button></li>
             </ul >
         </aside >
     )
