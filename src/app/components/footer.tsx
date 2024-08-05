@@ -1,8 +1,5 @@
 import logo from '@/../public/ieee-logo.png';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook } from '@awesome.me/kit-KIT_CODE/icons/classic/solid'
-
 
 export default function Footer() {
     return <footer className="footer bg-neutral text-neutral-content p-10 flex sm:flex-row flex-col sm:w-8/12 w-full">
@@ -18,7 +15,6 @@ export default function Footer() {
             <h6 className="footer-title">Social</h6>
             <div className="grid grid-flow-col gap-4">
                 <a>
-                    <FontAwesomeIcon icon="fa-brands fa-facebook-f" />
                 </a>
                 <a>
                     <svg
