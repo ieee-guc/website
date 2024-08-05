@@ -16,7 +16,7 @@ export default function Preferences() {
     }
 
     let increaseFontSize = () => {
-        if (fontSize < 20) {
+        if (fontSize < 18) {
             setFontSize(prev => {
                 const newFontSize = prev + 1;
                 document.documentElement.style.fontSize = `${newFontSize}px`;
@@ -26,7 +26,7 @@ export default function Preferences() {
     };
 
     let decreaseFontSize = () => {
-        if (fontSize > 12) {
+        if (fontSize > 14) {
             setFontSize(prev => {
                 const newFontSize = prev - 1;
                 document.documentElement.style.fontSize = `${newFontSize}px`;
@@ -48,14 +48,24 @@ export default function Preferences() {
                     </button>
                 </li>
                 <li>
-                    <button id="change-size" onClick={increaseFontSize} className={`${fontSize >= 20 ? "disabled" : ""} w-full h-full hover:text-light-accent dark:hover:text-dark-accent disabled:text-slate-500 disabled:cursor-not-allowed`}>
-                        <ZoomIn size={20} />
-                    </button>
+                    {fontSize > 17
+                        ? (<button onClick={increaseFontSize} className="w-full h-full text-slate-500 cursor-default">
+                            <ZoomIn size={20} />
+                        </button>)
+                        : (<button onClick={increaseFontSize} className="w-full h-full hover:text-light-accent dark:hover:text-dark-accent">
+                            <ZoomIn size={20} />
+                        </button>)
+                    }
                 </li>
                 <li>
-                    <button id="change-size" onClick={decreaseFontSize} className={`${fontSize <= 12 ? "disabled" : ""} w-full h-full hover:text-light-accent dark:hover:text-dark-accent disabled:text-slate-500 disabled:cursor-not-allowed`}>
-                        <ZoomOut size={20} />
-                    </button>
+                    {fontSize < 15
+                        ? (<button onClick={decreaseFontSize} className="w-full h-full text-slate-500 cursor-default">
+                            <ZoomOut size={20} />
+                        </button>)
+                        : (<button onClick={decreaseFontSize} className="w-full h-full hover:text-light-accent dark:hover:text-dark-accent">
+                            <ZoomOut size={20} />
+                        </button>)
+                    }
                 </li>
             </ul >
         </aside >
