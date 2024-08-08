@@ -17,13 +17,13 @@ export default function Footer() {
                 <h6 className="footer-title mb-1">Follow us on Social Media!</h6>
                 <div className="flex gap-4">
                     <a href="https://www.facebook.com/IEEE.GUC.SB/" rel="noopener noreferrer" target="_blank" title="Facebook Page - IEEE GUC">
-                        <Facebook size={30} strokeWidth={1.5} className="bg-blue-900 text-white rounded-md p-1 hover:mt-1" />
+                        <Facebook size={30} strokeWidth={1.5} className="bg-blue-900 text-white rounded-md p-1 hover:mt-1 duration-500" />
                     </a>
                     <a href="https://www.instagram.com/ieeegucsb/?hl=en" rel="noopener noreferrer" target="_blank" title="Instagram Page - IEEE GUC">
-                        <Instagram size={30} strokeWidth={1.5} className='bg-gradient-to-r from-amber-500 to-pink-500 text-white rounded-md p-1 hover:mt-1' />
+                        <Instagram size={30} strokeWidth={1.5} className='bg-gradient-to-r from-amber-500 to-pink-500 text-white rounded-md p-1 hover:mt-1 duration-500	' />
                     </a>
                     <a href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                        <Linkedin size={30} strokeWidth={1.5} className='bg-cyan-700 text-white rounded-md p-1 hover:mt-1' />
+                        <Linkedin size={30} strokeWidth={1.5} className='bg-cyan-700 text-white rounded-md p-1 hover:mt-1 duration-500' />
                     </a>
                 </div>
             </nav>

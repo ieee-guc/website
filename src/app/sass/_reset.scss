@@ -10,6 +10,12 @@
     --bg: #FFF8F3;
 }
 
-body {
-    transition: all 200ms linear;
+body,
+main,
+header,
+section,
+footer,
+nav,
+div {
+    transition: color 50ms linear, background-color 200ms linear;
 }
