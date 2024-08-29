@@ -65,4 +65,29 @@ div {
   animation: bobbing 2s ease-in-out infinite;
 }
 
+.signin-button {
+  transition: all 0.5s;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.feather-chevron-right {
+  position: absolute;
+  opacity: 0;
+  top: 20%;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.signin-button:hover {
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
+.signin-button:hover .feather-chevron-right {
+  opacity: 1;
+  right: 10px;
+}
+
 /*# sourceMappingURL=globals.css.map */
