@@ -5,13 +5,19 @@ import { Moon, Sun, ZoomIn, ZoomOut } from 'react-feather';
 
 export default function Preferences() {
     const [isDarkMode, setIsDarkMode] = useState(() => {
-        const savedTheme = localStorage.getItem('darkMode');
-        return savedTheme ? JSON.parse(savedTheme) : false;
+        if (typeof window !== 'undefined') {
+            const savedTheme = localStorage.getItem('darkMode');
+            return savedTheme ? JSON.parse(savedTheme) : false;
+        }
+        return false;
     });
 
     const [fontSize, setFontSize] = useState(() => {
-        const savedFontSize = localStorage.getItem('fontSize');
-        return savedFontSize ? parseInt(savedFontSize, 10) : 16;
+        if (typeof window !== 'undefined') {
+            const savedFontSize = localStorage.getItem('fontSize');
+            return savedFontSize ? parseInt(savedFontSize, 10) : 16;
+        }
+        return 16;
     });
 
     useEffect(() => {
@@ -22,7 +28,9 @@ export default function Preferences() {
     const changeTheme = () => {
         setIsDarkMode((prev: any) => {
             const newMode = !prev;
-            localStorage.setItem('darkMode', JSON.stringify(newMode));
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('darkMode', JSON.stringify(newMode));
+            }
             document.body.classList.toggle('dark', newMode);
             return newMode;
         });
@@ -32,7 +40,9 @@ export default function Preferences() {
         if (fontSize < 18) {
             setFontSize(prev => {
                 const newFontSize = prev + 1;
-                localStorage.setItem('fontSize', newFontSize + "");
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem('fontSize', newFontSize.toString());
+                }
                 document.documentElement.style.fontSize = `${newFontSize}px`;
                 return newFontSize;
             });
@@ -43,7 +53,9 @@ export default function Preferences() {
         if (fontSize > 14) {
             setFontSize(prev => {
                 const newFontSize = prev - 1;
-                localStorage.setItem('fontSize', newFontSize + "");
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem('fontSize', newFontSize.toString());
+                }
                 document.documentElement.style.fontSize = `${newFontSize}px`;
                 return newFontSize;
             });
@@ -80,5 +92,5 @@ export default function Preferences() {
                 </li>
             </ul >
         </aside >
-    )
+    );
 }
