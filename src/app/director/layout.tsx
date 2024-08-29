@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Preferences from "./components/Preferences";
-import Header from "./components/Header"
-import Footer from "./components/Footer";
-import SideBar from "./components/SideBar";
+import '../globals.css';
+import Preferences from "../components/Preferences";
+import SideBar from "../components/SideBar";
+import Footer from "../components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "IEEE GUC",
-    description: "IEEE GUC landing page",
+    title: "Dashboard",
+    description: "Director Dashboard",
 };
 
 export default function RootLayout({
@@ -21,9 +20,8 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Header />
+                <SideBar />
                 {children}
-                {/* <SideBar /> */}
                 <Preferences />
                 <Footer />
             </body>

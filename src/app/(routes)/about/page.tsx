@@ -1,6 +1,12 @@
 import { Tool, Settings } from "react-feather"
 import ComingSoon from "../../components/ComingSoon"
 
+export const metadata = {
+    title: 'About Us',
+    description: 'About Us',
+};
+
+
 export default function About() {
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
