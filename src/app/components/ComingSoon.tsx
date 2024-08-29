@@ -9,7 +9,7 @@ export default function ComingSoon() {
                     <Truck
                         size={180}
                         strokeWidth={1.5}
-                        className="text-light-primary m-0 truck-animation"
+                        className="text-light-primary dark:text-dark-secondary m-0 truck-animation"
                     />
                 </div>
             </div>

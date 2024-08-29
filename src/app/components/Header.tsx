@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 const products = [
     { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: Mic, color: "group-hover:text-violet-600" },
-    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '/sessions', icon: Code, color: "group-hover:text-red-700" },
+    { name: 'Technical Literacy Sessions', description: 'Explore technologies outside university', href: '/tech-literacy-sessions', icon: Code, color: "group-hover:text-red-700" },
     { name: 'Events', description: 'Connect with incredible minds', href: '/events', icon: Users, color: "group-hover:text-green-600" },
     { name: 'Technical Workshops', description: 'Hands-on learning at your fingertip', href: '/workshops', icon: Terminal, color: "group-hover:text-yellow-500" },
     { name: 'Hardware Packages', description: 'Your courses’ packages are on us!', href: '/packages', icon: Archive, color: "group-hover:text-blue-700" },
