@@ -9,11 +9,11 @@ export default function ComingSoon() {
                     <Truck
                         size={180}
                         strokeWidth={1.5}
-                        className="text-blue-900 m-0 truck-animation"
+                        className="text-light-primary m-0 truck-animation"
                     />
                 </div>
             </div>
-            <h1 className="text-5xl text-center">Coming Soon!</h1>
+            <h1 className="text-5xl text-center text-light-text dark:text-dark-text">Coming Soon!</h1>
 
         </section>
     )
