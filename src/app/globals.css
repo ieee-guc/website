@@ -52,5 +52,17 @@ div {
     border-bottom: 2px solid #64748b;
   }
 }
+@keyframes bobbing {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.25rem);
+  }
+}
+.truck-animation {
+  display: inline-block;
+  animation: bobbing 2s ease-in-out infinite;
+}
 
 /*# sourceMappingURL=globals.css.map */
