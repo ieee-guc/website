@@ -17,7 +17,7 @@ export default function Login() {
                                     Welcome back!
                                 </h1>
                                 <p className="text-sm font-semibold text-center leading-tight tracking-tight text-light-text md:text-lg dark:text-white">
-                                    Sign in to your account
+                                    Log in to your account
                                 </p>
                             </div>
                             <form className="space-y-4 md:space-y-6" action="#">
@@ -44,7 +44,7 @@ export default function Login() {
                                     type="submit"
                                     className="overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
                                 >
-                                    Sign in
+                                    Log in
                                     <ChevronsRight
                                         className="feather-chevron-right text-white"
                                         size={24}

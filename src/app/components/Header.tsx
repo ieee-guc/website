@@ -107,7 +107,7 @@ export default function Header() {
                         className="flex items-center text-sm font-semibold leading-6 text-light-text dark:text-dark-text"
                     >
                         Log in
-                        <LogIn className="ml-2" /> {/* Adjust margin as needed */}
+                        <LogIn className="ml-2" />
                     </a>
                 </div>
             </nav>
@@ -182,9 +182,9 @@ export default function Header() {
                                 <a
                                     rel="noopener noreferrer"
                                     href="/login"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                    className="flex -mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
-                                    Log in <LogIn />
+                                    Log in <LogIn className="ml-2" />
                                 </a>
                             </div>
                         </div>
