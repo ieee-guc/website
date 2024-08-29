@@ -14,7 +14,14 @@ export default function ComingSoon() {
                 </div>
             </div>
             <h1 className="text-5xl text-center text-light-text dark:text-dark-text">Coming Soon!</h1>
-
+            <div className="text-center mt-4">
+                <a rel="noopener noreferrer"
+                    href="/"
+                    className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                >
+                    Go to Homepage
+                </a>
+            </div>
         </section>
     )
 }

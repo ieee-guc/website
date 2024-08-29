@@ -12,7 +12,17 @@ export default function Recruitment() {
                     />
                 </div>
             </div>
-            <h1 className="text-5xl text-center text-light-text dark:text-dark-text">This page does not exist.</h1>
+            <div>
+                <h1 className="text-5xl text-center text-light-text dark:text-dark-text">This page does not exist.</h1>
+                <div className="text-center mt-4">
+                    <a rel="noopener noreferrer"
+                        href="/"
+                        className="text-md p-1.5 underline-offset-4 hover:text-red-700 hover:dark:text-red-400 hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                    >
+                        Go to Homepage
+                    </a>
+                </div>
+            </div>
         </main >
     )
 }
