@@ -6,6 +6,15 @@ export default function Dashboard() {
             <div className="about sm:w-8/12 w-full">
                 <h1 className="text-5xl text-light-text dark:text-dark-text h-fit"> Edit Website </h1>
                 <div className="typewriter"><p className="text-light-text dark:text-dark-text dark:dark p-1">Team Work Makes The Dream Work</p></div>
+                <ul>
+                    <li>Add/Rem/Edit Technical Literacy Sessions</li>
+                    <li>Add/Rem/Edit Soft Skills Podcast/Blog</li>
+                    <li>Add/Rem/Edit About and FAQs</li>
+                    <li>Add/Rem/Edit Committees/Board</li>
+                    <li>Open/Close/Edit Recruitment</li>
+                    <li>Add/Rem/Edit Event/Talk/Package</li>
+                    <li>Edit Calendar</li>
+                </ul>
                 <ComingSoon />
             </div>
         </section >

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { ChevronRight, ChevronLeft, User } from 'react-feather';
+import { ChevronRight, ChevronLeft, User, LogOut } from 'react-feather';
 import { usePathname } from 'next/navigation';
 import Logo from '../../../public/ieee-logo.png'
 import Image from 'next/image';
@@ -40,10 +40,17 @@ export default function SideBar(props: any) {
                             {isOpen && <span className="ml-2 text-sm font-medium ">{section.title}</span>}
                         </a>
                     ))}
+                    <a className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border `} href="/">
+                        <LogOut className="w-6 h-6" />
+                        {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
+                            Log Out
+                        </span>}
+                        {isOpen && <span className="ml-2 text-sm font-medium ">Log Out</span>}
+                    </a>
                 </div>
                 <a className="relative group flex items-center justify-center w-full h-16 mt-auto  hover:bg-light-border dark:hover:bg-dark-border border-t-2 border-light-border dark:border-dark-border" href="/director/account">
                     <User className="w-6 h-6" />
-                    {!isOpen && <span className="absolute left-20 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
+                    {!isOpen && <span className="absolute left-20 bg-light-border dark:bg-dark-border hidden transition-all duration-300 group-hover:block group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                         Account
                     </span>}
                     {isOpen && <span className="ml-2 text-sm font-medium ">Account</span>}

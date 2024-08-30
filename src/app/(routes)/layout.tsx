@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react"
 import "../globals.css";
 import Preferences from "../components/Preferences";
 import Header from "../components/Header"
@@ -22,6 +23,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <Header />
                 {children}
+                <Analytics />
                 <Preferences />
                 <Footer />
             </body>

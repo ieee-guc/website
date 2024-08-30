@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import '../globals.css';
 import Preferences from "../components/Preferences";
 import SideBar from "../components/SideBar";
@@ -33,6 +34,7 @@ export default function RootLayout({
                     <SideBar sections={sections} />
                     <div className="children-parent ml-10">
                         {children}
+                        <Analytics />
                         <Footer />
                     </div>
                 </div>

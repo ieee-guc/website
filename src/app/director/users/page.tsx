@@ -6,6 +6,12 @@ export default function Dashboard() {
             <div className="about sm:w-8/12 w-full">
                 <h1 className="text-5xl text-light-text dark:text-dark-text h-fit"> Director Users View</h1>
                 <div className="typewriter"><p className="text-light-text dark:text-dark-text dark:dark p-1">Team Work Makes The Dream Work</p></div>
+                <ul>
+                    <li>View users with filter guest/member/head</li>
+                    <li>View users with filter committee</li>
+                    <li>View details of a specific user</li>
+                    <li>Add/Remove/Edit users</li>
+                </ul>
                 <ComingSoon />
             </div>
         </section >
