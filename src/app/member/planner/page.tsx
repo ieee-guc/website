@@ -9,7 +9,7 @@ export default function Dashboard() {
                 <ul className="text-light-text dark:text-dark-text list-disc">
                     <li>My Calendar</li>
                     <li>My Todo & Reminders</li>
-                    <li>Plans, Goals, Notes, etc... shared with directors and heads</li>
+                    <li>Plans, Goals, Notes, etc... shared with my director and head/co-head</li>
                 </ul>
                 <ComingSoon />
             </div>

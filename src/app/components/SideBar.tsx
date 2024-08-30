@@ -48,15 +48,15 @@ export default function SideBar(props: any) {
                         {isOpen && <span className="ml-2 text-sm font-medium ">Log Out</span>}
                     </a>
                 </div>
-                <a className="relative group flex items-center justify-center w-full h-16 mt-auto  hover:bg-light-border dark:hover:bg-dark-border border-t-2 border-light-border dark:border-dark-border" href="/director/account">
+                <a className="relative group flex items-center justify-center w-full h-16 mt-auto  hover:bg-light-border dark:hover:bg-dark-border border-t-2 border-light-border dark:border-dark-border" href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}>
                     <User className="w-6 h-6" />
-                    {!isOpen && <span className="absolute left-20 bg-light-border dark:bg-dark-border hidden transition-all duration-300 group-hover:block group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
+                    {!isOpen && <span className="absolute left-20 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                         Account
                     </span>}
                     {isOpen && <span className="ml-2 text-sm font-medium ">Account</span>}
                 </a>
             </div>
 
-        </div>
+        </div >
     )
 }

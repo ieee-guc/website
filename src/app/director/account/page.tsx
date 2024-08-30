@@ -6,7 +6,7 @@ export default function Dashboard() {
             <div className="about sm:w-8/12 w-full">
                 <h1 className="text-5xl text-light-text dark:text-dark-text h-fit"> Account </h1>
                 <div className="typewriter"><p className="text-light-text dark:text-dark-text dark:dark p-1">Team Work Makes The Dream Work</p></div>
-                <ul>
+                <ul className="text-light-text dark:text-dark-text list-disc">
                     <li>Settings</li>
                     <li>Edit Account Details</li>
                 </ul>

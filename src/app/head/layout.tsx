@@ -5,7 +5,7 @@ import '../globals.css';
 import Preferences from "../components/Preferences";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
-import { Home } from "react-feather";
+import { Feather, Home, Target, Users, Mic, Code, Calendar } from "react-feather";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const sections = [
-        { title: "Dashboard", link: "/director/dashboard", icon: <Home className="w-6 h-6" /> },
+        { title: "Dashboard", link: "/head/dashboard", icon: <Home className="w-6 h-6" /> },
+        { title: "Members", link: "/head/members", icon: <Users className="w-6 h-6" /> },
+        { title: "Sprints", link: "/head/sprints", icon: <Target className="w-6 h-6" /> },
+        { title: "Planner", link: "/head/planner", icon: <Feather className="w-6 h-6" /> },
+        { title: "Podcast", link: "/head/podcast", icon: <Mic className="w-6 h-6" /> },
+        { title: "Tech Literacy", link: "/head/tech-literacy", icon: <Code className="w-6 h-6" /> },
+        { title: "Calendar", link: "/head/calendar", icon: <Calendar className="w-6 h-6" /> },
     ]
     return (
         <html lang="en">

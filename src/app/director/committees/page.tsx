@@ -4,9 +4,9 @@ export default function Dashboard() {
     return (
         <section className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <div className="about sm:w-8/12 w-full">
-                <h1 className="text-5xl text-light-text dark:text-dark-text h-fit"> Director Committees View</h1>
+                <h1 className="text-5xl text-light-text dark:text-dark-text h-fit"> Committees</h1>
                 <div className="typewriter"><p className="text-light-text dark:text-dark-text dark:dark p-1">Team Work Makes The Dream Work</p></div>
-                <ul>
+                <ul className="text-light-text dark:text-dark-text list-disc">
                     <li>Track Progress of each committee</li>
                     <li>View/Edit Committee Details</li>
                     <li>View/Edit Committee Sprints</li>
