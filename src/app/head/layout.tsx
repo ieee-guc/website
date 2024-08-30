@@ -26,7 +26,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <div className="sidebar-parent">
-                    <SideBar />
+                    <SideBar sections={sections} />
                     <div className="children-parent ml-10">
                         {children}
                         <Analytics />
