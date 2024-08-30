@@ -32,7 +32,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <div className="sidebar-parent">
                     <SideBar sections={sections} />
-                    <div className="children-parent ml-10">
+                    <div className="children-parent sm:ml-16 ml-0 sm:mb-0 mb-16">
                         {children}
                         <Analytics />
                         <Footer />
