@@ -1,5 +1,9 @@
+import type { Metadata } from "next";
 import ComingSoon from "../../components/ComingSoon"
 
+export const metadata: Metadata = {
+    title: "Members",
+};
 export default function Members() {
     return (
         <section className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">

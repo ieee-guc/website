@@ -1,5 +1,9 @@
+import type { Metadata } from "next";
 import ComingSoon from "../../components/ComingSoon"
 
+export const metadata: Metadata = {
+    title: "Technical Literacy Sessions",
+};
 export default function TechLiteracy() {
     return (
         <section className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">

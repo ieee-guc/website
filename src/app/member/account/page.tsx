@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
 import ComingSoon from "../../components/ComingSoon"
 
-export default function Dashboard() {
+export const metadata: Metadata = {
+    title: "My Account",
+};
+export default function Account() {
     return (
         <section className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <div className="about sm:w-8/12 w-full">

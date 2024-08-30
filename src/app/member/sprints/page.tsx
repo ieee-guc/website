@@ -9,9 +9,9 @@ export default function Dashboard() {
                 <ul className="text-light-text dark:text-dark-text list-disc">
                     <li>View semester plan</li>
                     <li>View sprints</li>
-                    <li>View specific sprint's details</li>
+                    <li>View specific sprint&apos;s details</li>
                     <li>View sessions in specific sprint</li>
-                    <li>View sessions' recordings/slides/resources</li>
+                    <li>View sessions&apos; recordings/slides/resources</li>
                     <li>View project details of specific sprint</li>
                     <li>Submit project of specific sprint</li>
                     <li>View my received feedback on specific sprint</li>
