@@ -1,7 +1,8 @@
 import { XOctagon } from "react-feather"
 
-export default function NotFound() {
+export default function Recruitment() {
     return (
+
         <main className="flex w-full min-h-screen flex-col items-center justify-center gap-8 py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <div className="sm:w-8/12 w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
                 <div className="coming-soon-container relative flex flex-col items-center justify-center ">
