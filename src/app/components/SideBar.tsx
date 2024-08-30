@@ -59,12 +59,12 @@ export default function SideBar(props: any) {
             </div>
 
             {/* Sidebar for smaller screens */}
-            <div className="border-t-4 border-light-text dark:border-dark-text sm:hidden z-50 fixed bottom-0 left-0 right-0 flex items-center justify-start space-x-4 p-2 bg-light-sub-bg dark:bg-dark-sub-bg overflow-x-auto">
+            <div className="border-t-4 border-light-text dark:border-dark-text sm:hidden z-50 fixed bottom-0 left-0 right-0 flex items-center justify-around space-x-12 p-2 bg-light-sub-bg dark:bg-dark-sub-bg overflow-x-auto">
                 {/* Menu items */}
                 {props.sections.map((section: any) => (
-                    <Link key={section.id} className={`relative group flex items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
+                    <Link key={section.id} className={`relative group flex flex-0 items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
                         {section.icon}
-                        <span className="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 px-2 py-1 text-xs rounded-full">
+                        <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 px-2 py-1 text-xs rounded-full">
                             {section.title}
                         </span>
                     </Link>

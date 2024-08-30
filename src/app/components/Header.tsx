@@ -149,13 +149,19 @@ export default function Header() {
                             onMouseLeave={handleProfileMouseLeave}
                             className="absolute right-0 top-full p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
                         >
-                            <button className="block w-full text-left px-4 py-2 text-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900">
+                            <button
+                                onClick={() => {
+                                    router.push('/profile');
+                                    setShowProfileOptions(false);
+                                }}
+                                className="block w-full text-left px-4 py-2 text-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900">
                                 <Info size={24} className="inline mr-2" /> Profile
                             </button>
                             <button
                                 onClick={() => {
                                     logout();
                                     router.push('/');
+                                    setShowProfileOptions(false);
                                 }}
                                 className="block w-full text-left px-4 py-2 text-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900">
                                 <LogOut size={24} className="inline mr-2" /> Logout
@@ -164,10 +170,11 @@ export default function Header() {
                     )}
                 </div>}
             </nav>
+
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-light-bg dark:bg-dark-bg p-4 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
-                    <div className="flex items-center justify-between mx-auto flex max-w-7xl items-center justify-between lg:px-8">
+                    <div className="mx-auto flex max-w-7xl items-center justify-between lg:px-8">
                         <Link href="/" className="-m-1.5 p-1.5" >
                             <span className="sr-only">IEEE GUC</span>
                             <Image
