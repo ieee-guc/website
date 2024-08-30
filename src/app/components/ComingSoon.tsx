@@ -1,6 +1,7 @@
 "use client"
 import { Truck } from "react-feather";
 import { usePathname } from 'next/navigation';
+import Link from "next/link";
 
 export default function ComingSoon() {
     const currentPath = usePathname();
@@ -19,12 +20,12 @@ export default function ComingSoon() {
                 </div>
                 <h1 className="text-5xl text-center text-light-text dark:text-dark-text">Coming Soon!</h1>
                 <div className="text-center mt-4">
-                    <a rel="noopener noreferrer"
+                    <Link rel="noopener noreferrer"
                         href={currentPath.includes('director') ? '/director/dashboard' : currentPath.includes('head') ? '/head/dashboard' : currentPath.includes('member') ? '/member/dashboard' : '/'}
                         className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                     >
                         Go to Homepage
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

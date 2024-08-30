@@ -5,6 +5,7 @@ import { ChevronsRight } from 'react-feather'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../../contexts/authContext';
+import Link from 'next/link'
 
 export default function Login() {
     const { isAuthenticated, login } = useAuth();
@@ -37,10 +38,10 @@ export default function Login() {
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <section className="bg-gray-50 dark:bg-gray-900 w-full">
                 <div className="flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-full">
-                    <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
+                    <Link href="#" className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
                         <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
                         IEEE GUC
-                    </a>
+                    </Link>
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:w-8/12 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                             <div>
@@ -77,7 +78,7 @@ export default function Login() {
                                             <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
                                         </div>
                                     </div>
-                                    <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-dark-text">Forgot password?</a>
+                                    <Link href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-dark-text">Forgot password?</Link>
                                 </div>
                                 <button
                                     type="submit"
@@ -91,7 +92,7 @@ export default function Login() {
                                     />
                                 </button>
                                 <p className="text-xs font-light text-gray-500 dark:text-gray-400">
-                                    Don’t have an account yet? <a href="/signup" className="font-medium hover:underline">Sign up</a>
+                                    Don’t have an account yet? <Link href="/signup" className="font-medium hover:underline">Sign up</Link>
                                 </p>
                             </form>
                         </div>

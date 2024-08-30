@@ -4,6 +4,7 @@ import { ChevronRight, ChevronLeft, User, LogOut } from 'react-feather';
 import { usePathname } from 'next/navigation';
 import Logo from '../../../public/ieee-logo.png'
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SideBar(props: any) {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,57 +31,57 @@ export default function SideBar(props: any) {
                 {/* Sidebar menu items */}
                 <div className="w-full px-2">
                     {props.sections.map((section: any) => (
-                        <a key={section.id} className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
+                        <Link key={section.id} className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
                             {section.icon}
                             {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                                 {section.title}
                             </span>}
                             {isOpen && <span className="ml-2 text-sm font-medium ">{section.title}</span>}
-                        </a>
+                        </Link>
                     ))}
-                    <a className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border `} href="/">
+                    <Link className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border `} href="/">
                         <LogOut className="w-6 h-6" />
                         {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                             Log Out
                         </span>}
                         {isOpen && <span className="ml-2 text-sm font-medium ">Log Out</span>}
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Account section */}
-                <a className="relative group flex items-center justify-center w-full h-16 mt-auto hover:bg-light-border dark:hover:bg-dark-border border-t-2 border-light-border dark:border-dark-border" href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}>
+                <Link className="relative group flex items-center justify-center w-full h-16 mt-auto hover:bg-light-border dark:hover:bg-dark-border border-t-2 border-light-border dark:border-dark-border" href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}>
                     <User className="w-6 h-6" />
                     {!isOpen && <span className="absolute left-20 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                         Account
                     </span>}
                     {isOpen && <span className="ml-2 text-sm font-medium ">Account</span>}
-                </a>
+                </Link>
             </div>
 
             {/* Sidebar for smaller screens */}
             <div className="border-t-4 border-light-text dark:border-dark-text sm:hidden z-50 fixed bottom-0 left-0 right-0 flex items-center justify-start space-x-4 p-2 bg-light-sub-bg dark:bg-dark-sub-bg overflow-x-auto">
                 {/* Menu items */}
                 {props.sections.map((section: any) => (
-                    <a key={section.id} className={`relative group flex items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
+                    <Link key={section.id} className={`relative group flex items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
                         {section.icon}
                         <span className="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 px-2 py-1 text-xs rounded-full">
                             {section.title}
                         </span>
-                    </a>
+                    </Link>
                 ))}
                 {/* Logout and Account items */}
-                <a className="relative group flex items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text  hover:bg-light-border dark:hover:bg-dark-border" href="/">
+                <Link className="relative group flex items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text  hover:bg-light-border dark:hover:bg-dark-border" href="/">
                     <LogOut className="w-6 h-6" />
                     <span className="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 px-2 py-1 text-xs rounded-full">
                         Log Out
                     </span>
-                </a>
-                <a className="relative group flex items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text  hover:bg-light-border dark:hover:bg-dark-border" href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}>
+                </Link>
+                <Link className="relative group flex items-center justify-center w-16 h-16 rounded-full text-light-text dark:text-dark-text  hover:bg-light-border dark:hover:bg-dark-border" href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}>
                     <User className="w-6 h-6" />
                     <span className="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 px-2 py-1 text-xs rounded-full">
                         Account
                     </span>
-                </a>
+                </Link>
             </div>
         </div>
     )
