@@ -4,25 +4,33 @@ import Image from 'next/image'
 import { ChevronsRight } from 'react-feather'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation';
+import { useAuth } from '../../../contexts/authContext';
 
 export default function Login() {
+    const { isAuthenticated, login } = useAuth();
     const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const router = useRouter();
 
     const handleEmailChange = (event: any) => {
         setEmail(event.target.value);
     };
+    const handlePasswordChange = (event: any) => {
+        setPassword(event.target.value);
+    };
 
     const handleSubmitLogIn = (event: any) => {
         event.preventDefault();
+        login();
         if (email === "member") {
             router.push('/member/dashboard');
         } else if (email === "head") {
             router.push('/head/dashboard');
-        } else {
+        } else if (email === "director") {
             router.push('/director/dashboard')
+        } else {
+            router.push('/')
         }
-
     };
 
     return (
@@ -50,16 +58,15 @@ export default function Login() {
                                         type="email"
                                         name="email"
                                         id="email"
-                                        value={email}
-                                        onChange={handleEmailChange}
                                         className="bg-gray-50 border border-gray-300 text-light-text rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="johndoe@email.com"
-
+                                        value={email}
+                                        onChange={handleEmailChange}
                                     />
                                 </div>
                                 <div>
                                     <label htmlFor="password" className="block mb-2 text-sm font-medium text-light-text dark:text-white">Password</label>
-                                    <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-light-text rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                    <input value={password} onChange={handlePasswordChange} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-light-text rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                                 </div>
                                 <div className="flex items-center justify-between flex-col md:flex-row gap-4">
                                     <div className="flex items-start">

@@ -1,10 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Dialog, DialogPanel, Disclosure, DisclosureButton, DisclosurePanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, } from '@headlessui/react'
-import { Menu, X, Mic, Code, Archive, Users, ChevronDown, Terminal, LogIn } from 'react-feather'
+import { Menu, X, Mic, Code, Archive, Users, ChevronDown, Terminal, LogIn, User, Info, LogOut } from 'react-feather'
 import logo from '@/../public/ieee-logo.png';
 import Image from 'next/image'
+import { useAuth } from '../contexts/authContext';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const products = [
     { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: Mic, color: "group-hover:text-violet-600" },
@@ -15,21 +18,35 @@ const products = [
 ]
 
 export default function Header() {
+    const router = useRouter();
+    const { isAuthenticated, logout } = useAuth()
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [showProfileOptions, setShowProfileOptions] = useState(false);
 
+    const handleProfileMouseEnter = () => {
+        setShowProfileOptions(true);
+    };
+
+    const handleProfileMouseLeave = () => {
+        setShowProfileOptions(false);
+    };
+
+    useEffect(() => {
+        console.log("isAuthenticated", isAuthenticated)
+    }, [isAuthenticated]);
     return (
         <header className="bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
                 {/* Logo */}
                 <div className="flex lg:flex-1">
-                    <a
+                    <Link
                         rel="noopener noreferrer"
                         href="/"
                         className="-m-1.5 p-1.5 text-light-text dark:text-dark-text"
                     >
                         <span className="sr-only">IEEE GUC</span>
                         <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="h-16 w-16 rounded-xl" />
-                    </a>
+                    </Link>
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -62,14 +79,14 @@ export default function Header() {
                                             <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white ${item.color}`} />
                                         </div>
                                         <div className="flex-auto">
-                                            <a
+                                            <Link
                                                 rel="noopener noreferrer"
                                                 href={item.href}
                                                 className="block font-semibold text-light-text dark:text-dark-text"
                                             >
                                                 {item.name}
                                                 <span className="absolute inset-0" />
-                                            </a>
+                                            </Link>
                                             <p className="mt-1 text-slate-600 dark:text-slate-400">{item.description}</p>
                                         </div>
                                     </div>
@@ -78,44 +95,80 @@ export default function Header() {
                         </PopoverPanel>
                     </Popover>
 
-                    <a
+                    <Link
                         rel="noopener noreferrer"
                         href="/about"
                         className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
                     >
                         About Us
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         rel="noopener noreferrer"
                         href="/recruitment"
                         className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
                     >
                         Recruitment’24/25
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         rel="noopener noreferrer"
                         href="/calendar"
                         className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
                     >
                         Our Calendar
-                    </a>
+                    </Link>
                 </PopoverGroup>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a
+
+                {!isAuthenticated && <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <Link
                         rel="noopener noreferrer"
                         href="/login"
                         className="flex items-center text-sm font-semibold leading-6 text-light-text dark:text-dark-text"
                     >
                         Log in
                         <LogIn className="ml-2" />
-                    </a>
-                </div>
+                    </Link>
+                </div>}
+                {isAuthenticated && <div className="hidden lg:flex lg:flex-1 lg:justify-end relative group">
+                    <div
+                        className=""
+                        onMouseEnter={handleProfileMouseEnter}
+                        onMouseLeave={handleProfileMouseLeave}
+                    >
+                        <div className="flex items-center text-sm font-semibold leading-6 text-light-text dark:text-dark-text">
+                            <User
+                                size={24}
+                                className="p-4 w-full h-full bg-light-sub-bg dark:bg-dark-sub-bg rounded-full"
+                            />
+                        </div>
+                    </div>
+
+                    {/* The hoverable options div */}
+                    {showProfileOptions && (
+                        <div
+                            onMouseEnter={handleProfileMouseEnter}
+                            onMouseLeave={handleProfileMouseLeave}
+                            className="absolute right-0 top-full p-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg"
+                        >
+                            <button className="block w-full text-left px-4 py-2 text-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900">
+                                <Info size={24} className="inline mr-2" /> Profile
+                            </button>
+                            <button
+                                onClick={() => {
+                                    logout();
+                                    router.push('/');
+                                }}
+                                className="block w-full text-left px-4 py-2 text-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900">
+                                <LogOut size={24} className="inline mr-2" /> Logout
+                            </button>
+                        </div>
+                    )}
+                </div>}
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-light-bg dark:bg-dark-bg p-4 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
                     <div className="flex items-center justify-between mx-auto flex max-w-7xl items-center justify-between lg:px-8">
-                        <a href="/" className="-m-1.5 p-1.5" >
+                        <Link href="/" className="-m-1.5 p-1.5" >
                             <span className="sr-only">IEEE GUC</span>
                             <Image
                                 alt="IEEE GUC"
@@ -123,7 +176,7 @@ export default function Header() {
                                 src={logo}
                                 className="h-16 w-16 rounded-xl"
                             />
-                        </a>
+                        </Link>
                         <button
                             type="button"
                             onClick={() => setMobileMenuOpen(false)}
@@ -156,36 +209,36 @@ export default function Header() {
                                         ))}
                                     </DisclosurePanel>
                                 </Disclosure>
-                                <a
+                                <Link
                                     rel="noopener noreferrer"
                                     href="/about"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     About Us
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                     rel="noopener noreferrer"
                                     href="/recruitment"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Recruitment’24/25
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                     rel="noopener noreferrer"
                                     href="/calendar"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Our Calendar
-                                </a>
+                                </Link>
                             </div>
                             <div className="py-6">
-                                <a
+                                <Link
                                     rel="noopener noreferrer"
                                     href="/login"
                                     className="flex -mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Log in <LogIn className="ml-2" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

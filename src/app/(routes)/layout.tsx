@@ -5,6 +5,7 @@ import "../globals.css";
 import Preferences from "../components/Preferences";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
+import { AuthProvider } from "../contexts/authContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,13 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <Header />
-                {children}
-                <Analytics />
-                <Preferences />
-                <Footer />
+                <AuthProvider>
+                    <Header />
+                    {children}
+                    <Analytics />
+                    <Preferences />
+                    <Footer />
+                </AuthProvider>
             </body>
         </html>
     );
