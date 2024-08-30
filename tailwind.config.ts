@@ -16,7 +16,7 @@ const config: Config = {
                     accent: '#ea580c',
                     text: '#021526',
                     bg: '#f9fafb',
-                    border: '#374151',
+                    border: '#e2e8f0',
                     // 'sub-bg': '#e2e8f0',
                     'sub-bg': '#f3f4f6',
                     'nav-bg': '#ffffff',
