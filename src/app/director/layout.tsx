@@ -20,9 +20,13 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <SideBar />
-                {children}
-                <Footer />
+                <div className="sidebar-parent">
+                    <SideBar />
+                    <div className="children-parent ml-10">
+                        {children}
+                        <Footer />
+                    </div>
+                </div>
                 <Preferences />
             </body>
         </html>

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import { ChevronRight, ChevronLeft, Home } from 'react-feather';
+import { ChevronRight, ChevronLeft, Home, LogOut, Search, Users, Grid } from 'react-feather';
 import Logo from '../../../public/ieee-logo.png'
 import Image from 'next/image';
 
@@ -8,9 +8,9 @@ export default function SideBar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="relative">
+        <div className="relative text-nowrap">
             {!isOpen && <button
-                className={`absolute top-4 left-10 z-10 bg-light-sub-bg dark:bg-dark-sub-bg flex items-center w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-border ${isOpen ? 'bg-light-border' : 'bg-light-sub-bg'} text-white transition duration-200 ease-in-out align-middle justify-end`}
+                className={`fixed top-4 left-10 z-10 bg-light-sub-bg dark:bg-dark-sub-bg flex items-center w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-border ${isOpen ? 'bg-light-border' : 'bg-light-sub-bg'} text-white transition duration-200 ease-in-out align-middle justify-end`}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <ChevronRight className="text-light-text dark:text-dark-text" />
@@ -38,9 +38,7 @@ export default function SideBar() {
                             {isOpen && <span className="ml-2 text-sm font-medium ">Dashboard</span>}
                         </a>
                         <a className="relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border" href="#">
-                            <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
+                            <Search className="w-6 h-6" />
                             {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                                 Search
                             </span>}
@@ -68,21 +66,26 @@ export default function SideBar() {
                     <div className="flex flex-col items-center w-full mt-2 border-t border-light-border dark:border-dark-border">
                         <a className="relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border" href="#">
                             <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                            {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
-                                Products
-                            </span>}
-                            {isOpen && <span className="ml-2 text-sm font-medium ">Products</span>}
-                        </a>
-                        <a className="relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border" href="#">
-                            <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                             </svg>
                             {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                                 Settings
                             </span>}
                             {isOpen && <span className="ml-2 text-sm font-medium ">Settings</span>}
+                        </a>
+                        <a className="relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border" href="#">
+                            <Users className="w-6 h-6" />
+                            {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
+                                Users
+                            </span>}
+                            {isOpen && <span className="ml-2 text-sm font-medium ">Users</span>}
+                        </a>
+                        <a className="relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border" href="#">
+                            <Grid className="w-6 h-6" />
+                            {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
+                                Committees
+                            </span>}
+                            {isOpen && <span className="ml-2 text-sm font-medium ">Committees</span>}
                         </a>
                         <a className="relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border" href="#">
                             <svg className="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -93,6 +96,13 @@ export default function SideBar() {
                             </span>}
                             {isOpen && <span className="ml-2 text-sm font-medium ">Messages</span>}
                             <span className="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full"></span>
+                        </a>
+                        <a className="relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border" href="/">
+                            <LogOut className="w-6 h-6" />
+                            {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full w-fit text-nowrap">
+                                Log Out
+                            </span>}
+                            {isOpen && <span className="ml-2 text-sm font-medium ">Log Out</span>}
                         </a>
                     </div>
                 </div>
