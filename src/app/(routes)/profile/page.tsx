@@ -75,7 +75,7 @@ export default function Profile() {
                                             name="firstName"
                                             value={userData.firstName}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.firstName}</p>
@@ -89,7 +89,7 @@ export default function Profile() {
                                             name="secondName"
                                             value={userData.secondName}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.secondName}</p>
@@ -105,7 +105,7 @@ export default function Profile() {
                                             name="email"
                                             value={userData.email}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.email}</p>
@@ -119,7 +119,7 @@ export default function Profile() {
                                             name="phoneNumber"
                                             value={userData.phoneNumber}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.phoneNumber}</p>
@@ -135,7 +135,7 @@ export default function Profile() {
                                             name="university"
                                             value={userData.university}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.university}</p>
@@ -149,7 +149,7 @@ export default function Profile() {
                                             name="gucId"
                                             value={userData.gucId}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.gucId}</p>
@@ -165,7 +165,7 @@ export default function Profile() {
                                             name="roleName"
                                             value={userData.role}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.role}</p>
@@ -179,7 +179,7 @@ export default function Profile() {
                                             name="committee"
                                             value={userData.committee}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text"
+                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.committee}</p>
