@@ -59,10 +59,10 @@ export default function Header() {
                     </button>
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                    <Popover className="relative">
-                        <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text">
+                    <Popover className="relative group">
+                        <PopoverButton className=" group-hover:text-light-primary dark:group-hover:text-dark-secondary flex items-center gap-x-1 text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text">
                             We Provide
-                            <ChevronDown aria-hidden="true" className="h-5 w-5 flex-none text-slate-400" />
+                            <ChevronDown aria-hidden="true" className="group-hover:text-light-primary dark:group-hover:text-dark-secondary h-5 w-5 flex-none text-slate-400" />
                         </PopoverButton>
 
                         <PopoverPanel
@@ -98,21 +98,21 @@ export default function Header() {
                     <Link
                         rel="noopener noreferrer"
                         href="/about"
-                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
+                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-secondary"
                     >
                         About Us
                     </Link>
                     <Link
                         rel="noopener noreferrer"
                         href="/recruitment"
-                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
+                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-secondary"
                     >
                         Recruitment’24/25
                     </Link>
                     <Link
                         rel="noopener noreferrer"
                         href="/calendar"
-                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text"
+                        className="text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-secondary"
                     >
                         Our Calendar
                     </Link>
@@ -122,10 +122,10 @@ export default function Header() {
                     <Link
                         rel="noopener noreferrer"
                         href="/login"
-                        className="flex items-center text-sm font-semibold leading-6 text-light-text dark:text-dark-text"
+                        className="flex items-center text-sm font-semibold leading-6 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-secondary"
                     >
                         Log in
-                        <LogIn className="ml-2" />
+                        <LogIn className="ml-2 hover:text-light-primary dark:hover:text-dark-secondary" />
                     </Link>
                 </div>}
                 {isAuthenticated && <div className="hidden lg:flex lg:flex-1 lg:justify-end relative group">

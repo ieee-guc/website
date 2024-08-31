@@ -13,8 +13,14 @@ export default function SideBar(props: any) {
     return (
         <div className="relative text-nowrap">
             {/* Sidebar for larger screens */}
+            {/* Sidebar toggle button */}
+            {!isOpen && <button
+                className={`fixed top-4 left-10 z-10 bg-light-sub-bg dark:bg-dark-sub-bg flex items-center w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-border ${isOpen ? 'bg-light-border' : 'bg-light-sub-bg'} text-white transition duration-200 ease-in-out align-middle justify-end`}
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <ChevronRight className="text-light-text dark:text-dark-text" />
+            </button>}
             <div className={`hidden sm:flex flex-col items-center z-50 ${isOpen ? 'w-44' : 'w-16'} transition-all duration-300 text-light-text dark:text-dark-text bg-light-sub-bg dark:bg-dark-sub-bg h-dvh fixed`}>
-                {/* Sidebar toggle button */}
                 <button onClick={() => setIsOpen(!isOpen)}
                     className="flex items-center w-full px-3 mt-3 border-b-2 border-light-border dark:border-dark-border pb-2">
                     <Image src={Logo} width={40} height={40} alt="IEEE" className="rounded-xl" />
