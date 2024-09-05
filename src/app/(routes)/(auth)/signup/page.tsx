@@ -2,10 +2,9 @@
 import Logo from '../../../../../public/ieee-logo.png'
 import Image from 'next/image'
 import { ChevronsRight } from 'react-feather'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import Link from 'next/link'
-import Head from "next/head";
 
 export default function Login() {
     const [name, setName] = useState("")
@@ -32,11 +31,12 @@ export default function Login() {
         router.push('/login');
     };
 
+    useEffect(() => {
+        document.title = "Sign Up | IEEE GUC"
+    })
+
     return (
         <>
-            <Head>
-                <title>Sign Up</title>
-            </Head>
             <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
                 <section className="bg-gray-50 dark:bg-gray-900 w-full">
                     <div className="flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-full">

@@ -20,6 +20,7 @@ const config: Config = {
                     // 'sub-bg': '#e2e8f0',
                     'sub-bg': '#f3f4f6',
                     'nav-bg': '#ffffff',
+                    'red': '#b91c1c',
                 },
                 dark: {
                     primary: '#0A4593',
@@ -31,6 +32,7 @@ const config: Config = {
                     'sub-bg': '#1f2937',
                     // 'sub-bg': '#1e293b',
                     'nav-bg': '#020617',
+                    'red': '#f87171',
                 },
             },
         },

@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "IEEE GUC",
-    description: "IEEE GUC landing page",
+    description: "IEEE GUC",
 };
 
 export default function RootLayout({

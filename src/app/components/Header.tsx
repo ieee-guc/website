@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { useAuth } from '../contexts/authContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import axios from 'axios';
 
 const products = [
     { name: 'Soft Skills Podcast', description: 'Enhance your soft skills to excel at university', href: '/podcast', icon: Mic, color: "group-hover:text-violet-600" },
@@ -21,6 +22,7 @@ export default function Header() {
     const router = useRouter();
     const { isAuthenticated, logout } = useAuth()
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [weProvideOpen, setWeProvideOpen] = useState(false)
     const [showProfileOptions, setShowProfileOptions] = useState(false);
 
     const handleProfileMouseEnter = () => {
@@ -31,9 +33,34 @@ export default function Header() {
         setShowProfileOptions(false);
     };
 
+    const handleWeProvideMouseEnter = () => {
+        setWeProvideOpen(true);
+    };
+
+    const handleWeProvideMouseLeave = () => {
+        setWeProvideOpen(false);
+    };
+
     useEffect(() => {
-        console.log("isAuthenticated", isAuthenticated)
-    }, [isAuthenticated]);
+        console.log("weprovide  ", weProvideOpen)
+    }, [weProvideOpen]);
+
+    useEffect(() => {
+        // const committeeData = {
+        //     name: 'New Committee',
+        //     description: 'Description of the new committee',
+        //     photoUrl: 'http://example.com/photo.jpg'
+        // };
+        // console.log("hi")
+        // axios.post('http://localhost:5000/api/committees', committeeData)
+        //     .then((response) => {
+        //         console.log("Response from server:", response.data);
+        //     })
+        //     .catch((error) => {
+        //         console.error("Error posting data:", error);
+        //     });
+    }, []);
+
     return (
         <header className="bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
@@ -59,13 +86,13 @@ export default function Header() {
                     </button>
                 </div>
                 <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-                    <Popover className="relative group">
+                    <Popover className="relative group" onMouseEnter={handleWeProvideMouseEnter} onMouseLeave={handleWeProvideMouseLeave} onFocus={() => setWeProvideOpen(true)} onBlur={() => setWeProvideOpen(false)}>
                         <PopoverButton className=" group-hover:text-light-primary dark:group-hover:text-dark-secondary flex items-center gap-x-1 text-sm font-semibold leading-6p-1 text-light-text dark:text-dark-text">
                             We Provide
                             <ChevronDown aria-hidden="true" className="group-hover:text-light-primary dark:group-hover:text-dark-secondary h-5 w-5 flex-none text-slate-400" />
                         </PopoverButton>
 
-                        <PopoverPanel
+                        {weProvideOpen && <PopoverPanel
                             transition
                             className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text shadow-lg ring-1 ring-slate-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
                         >
@@ -92,7 +119,7 @@ export default function Header() {
                                     </div>
                                 ))}
                             </div>
-                        </PopoverPanel>
+                        </PopoverPanel>}
                     </Popover>
 
                     <Link

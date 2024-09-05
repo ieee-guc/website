@@ -19,3 +19,7 @@ nav,
 div {
     transition: color 50ms linear, background-color 200ms linear;
 }
+
+html {
+    scroll-behavior: smooth;
+}

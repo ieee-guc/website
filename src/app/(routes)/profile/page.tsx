@@ -1,11 +1,8 @@
 "use client"
-import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { User, Camera, Key, Edit, Lock, X, Check } from "react-feather";
-import John from "../../../../public/john.jpg"
 import { useAuth } from "../../contexts/authContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Profile() {
     const { isAuthenticated } = useAuth();
@@ -32,6 +29,10 @@ export default function Profile() {
             [name]: value,
         }));
     };
+
+    useEffect(() => {
+        document.title = "Profile | IEEE GUC"
+    })
 
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">

@@ -2,18 +2,17 @@
 import ComingSoon from "../../components/ComingSoon";
 import Loading from "@/app/components/Loading";
 import { useState, useEffect } from "react";
-import SEO from "@/app/components/SEO";
 
 export default function About() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(false);
+        document.title = "About Us | IEEE GUC"
     }, []);
 
     return (
         <>
-            <SEO pageTitle="About Us" pageDescription="About IEEE GUC" />
             <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
                 <section className="about sm:w-8/12 w-full">
                     {/* <h1 className="text-5xl text-light-text dark:text-dark-text h-fit"> About Us</h1>

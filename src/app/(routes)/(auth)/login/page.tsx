@@ -2,16 +2,18 @@
 import Logo from '../../../../../public/ieee-logo.png'
 import Image from 'next/image'
 import { ChevronsRight } from 'react-feather'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../../contexts/authContext';
 import Link from 'next/link'
-import Head from "next/head";
+import axios from 'axios'
 
 export default function Login() {
     const { isAuthenticated, login } = useAuth();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
+
     const router = useRouter();
 
     const handleEmailChange = (event: any) => {
@@ -21,25 +23,53 @@ export default function Login() {
         setPassword(event.target.value);
     };
 
-    const handleSubmitLogIn = (event: any) => {
+    // const handleSubmitLogIn = (event: any) => {
+    //     event.preventDefault();
+    //     login();
+    //     if (email === "member") {
+    //         router.push('/member/dashboard');
+    //     } else if (email === "head") {
+    //         router.push('/head/dashboard');
+    //     } else if (email === "director") {
+    //         router.push('/director/dashboard')
+    //     } else {
+    //         router.push('/')
+    //     }
+    // };
+
+    const handleSubmitLogIn = async (event: any) => {
         event.preventDefault();
-        login();
-        if (email === "member") {
-            router.push('/member/dashboard');
-        } else if (email === "head") {
-            router.push('/head/dashboard');
-        } else if (email === "director") {
-            router.push('/director/dashboard')
-        } else {
-            router.push('/')
+
+        try {
+            // const response = await axios.post('http://localhost:5000/api/auth/login', {
+            //     email,
+            //     password
+            // });
+
+            // const { token, role } = response.data;
+            // localStorage.setItem('token', token);
+            login();
+
+            if (email === "member") {
+                router.push('/member/dashboard');
+            } else if (email === "head") {
+                router.push('/head/dashboard');
+            } else if (email === "director") {
+                router.push('/director/dashboard');
+            } else {
+                router.push('/');
+            }
+        } catch (error: any) {
+            setError(error.response?.data?.message || "An error occurred");
         }
     };
 
+    useEffect(() => {
+        document.title = "Log In | IEEE GUC"
+    })
+
     return (
         <>
-            <Head>
-                <title>Log in</title>
-            </Head>
             <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
                 <section className="bg-gray-50 dark:bg-gray-900 w-full">
                     <div className="flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-full">

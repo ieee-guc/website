@@ -1,4 +1,9 @@
 import ComingSoon from "../../components/ComingSoon"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Technical Literacy | IEEE GUC",
+};
 
 export default function TechLiteracySessions() {
     return (
