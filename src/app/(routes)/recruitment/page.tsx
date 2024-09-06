@@ -7,6 +7,8 @@ import Image from "next/image";
 
 export default function Recruitment() {
     const [committees, setCommittees] = useState<Committee[]>([]);
+    const [filteredCommittees, setFilteredCommittees] = useState<Committee[]>([]);
+    const [selectedDirectory, setSelectedDirectory] = useState<string>('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -15,7 +17,7 @@ export default function Recruitment() {
             try {
                 const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
                 setCommittees(response.data.data);
-                console.log("DATAAAA", response.data.data);
+                setFilteredCommittees(response.data.data);
             } catch (error) {
                 setError('Failed to fetch committees');
                 console.error(error);
@@ -30,6 +32,15 @@ export default function Recruitment() {
     useEffect(() => {
         document.title = "Recruitment | IEEE GUC"
     })
+
+    const handleFilterChange = (directory: string) => {
+        setSelectedDirectory(directory);
+        if (directory === '') {
+            setFilteredCommittees(committees);
+        } else {
+            setFilteredCommittees(committees.filter(committee => committee.directory === directory));
+        }
+    };
 
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-4 p-6 bg-light-bg dark:bg-dark-bg">
@@ -59,13 +70,31 @@ export default function Recruitment() {
                         Join Us Now!
                     </Link>
                 </div>
+
                 <div id="committees" className="flex flex-col items-center mt-8 p-4 w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
                     <p className="text-light-text dark:text-dark-text text-center">
                         <span className='font-bold sm:text-3xl text-2xl'>Our Committees ⭐</span>
                     </p>
+                    <div className="my-4">
+                        <label htmlFor="directory-filter" className="text-lg font-semibold text-light-text dark:text-dark-text">
+                            Filter by Directory:
+                        </label>
+                        <select
+                            id="directory-filter"
+                            className="ml-2 p-2 rounded-lg border dark:bg-dark-sub-bg dark:text-dark-text"
+                            value={selectedDirectory}
+                            onChange={(e) => handleFilterChange(e.target.value)}
+                        >
+                            <option value="">All Directories</option>
+                            <option value="Software">Software</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Operation">Operation</option>
+                            <option value="Creative">Creative</option>
+                        </select>
+                    </div>
                     <ul className="text-light-text dark:text-dark-text w-full space-y-2 text-xl sm:pt-8">
-                        {Array.isArray(committees) && committees.length > 0 ? (
-                            committees.map(committee => (
+                        {Array.isArray(filteredCommittees) && filteredCommittees.length > 0 ? (
+                            filteredCommittees.map(committee => (
                                 <li
                                     key={committee._id}
                                     className="py-4 border-b-2 flex"
