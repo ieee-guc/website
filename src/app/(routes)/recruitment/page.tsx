@@ -86,10 +86,10 @@ export default function Recruitment() {
                             onChange={(e) => handleFilterChange(e.target.value)}
                         >
                             <option value="">All Directories</option>
-                            <option value="Software">Software</option>
-                            <option value="Hardware">Hardware</option>
                             <option value="Operation">Operation</option>
                             <option value="Creative">Creative</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Software">Software</option>
                         </select>
                     </div>
                     <ul className="text-light-text dark:text-dark-text w-full space-y-2 text-xl sm:pt-8">
