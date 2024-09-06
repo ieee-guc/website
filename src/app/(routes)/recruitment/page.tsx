@@ -13,7 +13,7 @@ export default function Recruitment() {
     useEffect(() => {
         const fetchCommittees = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/committees');
+                const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
                 setCommittees(response.data.data);
                 console.log("DATAAAA", response.data.data);
             } catch (error) {
@@ -47,11 +47,7 @@ export default function Recruitment() {
                         You&apos;ve come to the right place! Hurry up and secure your place in one of our amazing committees.
                         <br />
                         <br />
-                        <Link href="about" target="_blank" className="text-md p-1.5 underline-offset-4 text-light-primary hover:underline dark:text-dark-secondary hover:font-bold text-center font-semibold">About IEEE GUC</Link>
-                        <br />
-                        <Link href="#committees" className="text-md p-1.5 underline-offset-4 text-light-primary hover:underline dark:text-dark-secondary hover:font-bold text-center font-semibold">Our Amazing Committees</Link>
-                        <br />
-                        <span className="italic text-light-red dark:text-dark-red font-semibold">Recruitment closes on 21st of September!</span>
+                        <span className="italic text-light-red dark:text-dark-red font-semibold">Recruitment closes on 21/9!</span>
                         <br />
                         We look forward to have you in our family! 😊
                     </p>

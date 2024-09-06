@@ -52,7 +52,7 @@ export default function Header() {
         //     photoUrl: 'http://example.com/photo.jpg'
         // };
         // console.log("hi")
-        // axios.post('http://localhost:5000/api/committees', committeeData)
+        // axios.post('https://ieeeguc-backend-production.up.railway.app/api/committees', committeeData)
         //     .then((response) => {
         //         console.log("Response from server:", response.data);
         //     })
