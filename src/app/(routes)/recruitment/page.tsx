@@ -73,7 +73,7 @@ export default function Recruitment() {
 
                 <div id="committees" className="flex flex-col items-center mt-8 p-4 w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
                     <p className="text-light-text dark:text-dark-text text-center">
-                        <span className='font-bold sm:text-3xl text-2xl'>Our Committees ⭐</span>
+                        <span className='font-bold text-lg sm:text-3xl'>Our Committees ⭐</span>
                     </p>
                     <div className="my-4">
                         <label htmlFor="directory-filter" className="text-lg font-semibold text-light-text dark:text-dark-text">
@@ -99,26 +99,15 @@ export default function Recruitment() {
                                     key={committee._id}
                                     className="py-4 border-b-2 flex"
                                 >
-                                    <div className="flex gap-4 flex-col sm:flex-row">
-                                        {/* Image Container */}
-                                        <div className="relative w-full h-64 sm:w-1/4 sm:h-auto aspect-w-1 aspect-h-1 bg-light-nav-bg dark:bg-dark-nav-bg rounded-xl overflow-hidden">
-                                            <Image
-                                                src={committee.photoURL}
-                                                alt={committee.name}
-                                                layout="fill"
-                                                objectFit="cover"
-                                                className="rounded-xl"
-                                            />
+                                    <div className="flex gap-4">
+                                        <div className="imgContainer sm:w-1/4 aspect-w-1 aspect-h-1 bg-light-nav-bg dark:bg-dark-nav-bg h-full rounded-xl relative">
+                                            <Image src={committee.photoURL} alt={committee.name} className="rounded-xl w-full h-full object-cover" fill={true} />
                                         </div>
-
-                                        {/* Text Container */}
-                                        <div className="flex flex-col sm:w-3/4">
+                                        <div className="txtContainer flex-col sm:w-3/4">
                                             <div className="flex items-baseline gap-2">
-                                                <p className="text-2xl font-semibold">{committee.icon}</p>
+                                                <p className="sm:text-2xl font-semibold">{committee.icon} </p>
                                                 <div>
-                                                    <p className="text-2xl font-semibold">
-                                                        {committee.name}{committee.abbreviation ? ` (${committee.abbreviation})` : ''}
-                                                    </p>
+                                                    <p className="sm:text-2xl font-semibold">{committee.name}{committee.abbreviation ? ` (${committee.abbreviation})` : ''}</p>
                                                     <p className="mb-2">{committee.directory} Directory</p>
                                                 </div>
                                             </div>
