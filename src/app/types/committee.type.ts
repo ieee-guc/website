@@ -7,6 +7,10 @@ export interface Committee {
     abbreviation?: string;
     photoURL: string;
     description: string;
-    head: Types.ObjectId;
-    directory: 'Software' | 'Operation' | 'Hardware' | 'Creative' | 'JTP';
+    head: {
+        id: Types.ObjectId;
+        firstName: string;
+        secondName: string;
+        photoURL: string;
+    }; directory: 'Software' | 'Operation' | 'Hardware' | 'Creative' | 'JTP';
 }
