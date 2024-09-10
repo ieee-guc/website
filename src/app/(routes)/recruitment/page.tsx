@@ -12,13 +12,11 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ChevronsRight } from "react-feather";
+import { ChevronsRight, Loader } from "react-feather";
 
 export default function Recruitment() {
     const [committees, setCommittees] = useState<Committee[]>([]);
-    const [filteredCommittees, setFilteredCommittees] = useState<Committee[]>([]);
     const [uniqueDirectories, setUniqueDirectories] = useState<string[]>([]);
-    const [selectedDirectory, setSelectedDirectory] = useState<string>('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -27,8 +25,6 @@ export default function Recruitment() {
             try {
                 const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
                 setCommittees(response.data.data);
-                setFilteredCommittees(response.data.data);
-                setUniqueDirectories(Array.from(new Set(committees.map(committee => committee.directory))));
             } catch (error) {
                 setError('Failed to fetch committees');
                 console.error(error);
@@ -38,20 +34,18 @@ export default function Recruitment() {
         };
 
         fetchCommittees();
-    }, [committees])
+    }, []);
+
+    useEffect(() => {
+        if (committees.length > 0) {
+            const directories = Array.from(new Set(committees.map(committee => committee.directory)));
+            setUniqueDirectories(directories);
+        }
+    }, [committees]);
 
     useEffect(() => {
         document.title = "Recruitment | IEEE GUC"
     })
-
-    const handleFilterChange = (directory: string) => {
-        setSelectedDirectory(directory);
-        if (directory === '') {
-            setFilteredCommittees(committees);
-        } else {
-            setFilteredCommittees(committees.filter(committee => committee.directory === directory));
-        }
-    };
 
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-4 p-2 bg-light-bg dark:bg-dark-bg">
@@ -81,101 +75,63 @@ export default function Recruitment() {
                 </div>
 
                 <div id="committees" className="flex flex-col items-center mt-2 p-2 w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-12 rounded-xl border-light-border dark:border">
-                    <p className="text-light-text dark:text-dark-text text-center">
+                    <p className="text-light-text dark:text-dark-text text-center mb-4">
                         <span className='font-bold text-3xl'>Our Committees ⭐</span>
                     </p>
-                    <Accordion type="single" collapsible className="w-full sm:w-3/4 bg-white px-4 rounded-xl mt-2">
-                        {uniqueDirectories.map((directory, index) => (
-                            <AccordionItem key={index} value={`item-${index}`}>
-                                <AccordionTrigger className="text-xl font-semibold">
-                                    {directory} Committees
-                                </AccordionTrigger>
-                                <AccordionContent>
-                                    {committees.filter(committee => committee.directory === directory).map((committee, index) => (
-                                        <div
-                                            key={committee._id}
-                                            className="py-4 border-b-2 flex"
-                                        >
-                                            <div className="flex gap-4 flex-col sm:flex-row">
-                                                <div className="imgContainer sm:w-1/4 w-1/2 aspect-square self-center aspect-w-1 aspect-h-1 bg-light-nav-bg dark:bg-dark-nav-bg h-full rounded-xl relative">
-                                                    <Image
-                                                        src={committee.photoURL}
-                                                        alt={committee.name}
-                                                        className="w-full h-full object-cover rounded-lg"
-                                                        width={200}
-                                                        height={200}
-                                                    />
-                                                </div>
-                                                <div className="txtContainer flex-col sm:w-3/4 space-y-4 sm:space-y-2">
-                                                    <div>
-                                                        <div className="flex items-baseline gap-2">
-                                                            <p className="text-xl font-semibold">{committee.icon} </p>
-                                                            <div>
-                                                                <p className="text-xl font-semibold">{committee.name}{committee.abbreviation ? ` (${committee.abbreviation})` : ''}</p>
+                    {loading ?
+                        <Loader
+                            size={50}
+                            strokeWidth={1.5}
+                            className="text-light-primary dark:text-dark-secondary mb-2 truck-animation rotating"
+                        /> :
+                        <Accordion type="single" collapsible className="w-full sm:w-3/4 bg-white px-4 rounded-xl mt-2">
+                            {uniqueDirectories.map((directory, index) => (
+                                <AccordionItem key={index} value={`item-${index}`}>
+                                    <AccordionTrigger className="text-xl font-semibold">
+                                        {directory} Committees
+                                    </AccordionTrigger>
+                                    <AccordionContent>
+                                        {committees.filter(committee => committee.directory === directory).map((committee, index) => (
+                                            <div
+                                                key={committee._id}
+                                                className="py-4 border-b-2 flex"
+                                            >
+                                                <div className="flex gap-4 flex-col sm:flex-row">
+                                                    <div className="imgContainer sm:w-1/4 w-1/2 aspect-square self-center aspect-w-1 aspect-h-1 bg-light-nav-bg dark:bg-dark-nav-bg h-full rounded-xl relative">
+                                                        <Image
+                                                            src={committee.photoURL}
+                                                            alt={committee.name}
+                                                            className="w-full h-full object-cover rounded-lg"
+                                                            width={200}
+                                                            height={200}
+                                                        />
+                                                    </div>
+                                                    <div className="txtContainer flex-col sm:w-3/4 space-y-4 sm:space-y-2">
+                                                        <div>
+                                                            <div className="flex items-baseline gap-2">
+                                                                <p className="text-xl font-semibold">{committee.icon} </p>
+                                                                <div>
+                                                                    <p className="text-xl font-semibold">{committee.name}{committee.abbreviation ? ` (${committee.abbreviation})` : ''}</p>
+                                                                </div>
                                                             </div>
+                                                            <p className="text-base">{committee.description}</p>
                                                         </div>
-                                                        <p className="text-base">{committee.description}</p>
-                                                    </div>
-                                                    <div className="flex items-center space-x-2">
-                                                        <Avatar className="w-8 h-8">
-                                                            <AvatarImage src={committee.head?.photoURL} alt={`User ${index}`} />
-                                                            <AvatarFallback>U{index}</AvatarFallback>
-                                                        </Avatar>
-                                                        <span className="text-sm font-medium">{committee.head?.firstName} {committee.head?.secondName}</span>
+                                                        <div className="flex items-center space-x-2">
+                                                            <Avatar className="w-8 h-8">
+                                                                <AvatarImage src={committee.head?.photoURL} alt={`User ${index}`} />
+                                                                <AvatarFallback></AvatarFallback>
+                                                            </Avatar>
+                                                            <span className="text-sm font-medium">{committee.head?.firstName} {committee.head?.secondName}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                    {/* <div className="my-4">
-                        <label htmlFor="directory-filter" className="text-lg font-semibold text-light-text dark:text-dark-text">
-                            Filter by Directory:
-                        </label>
-                        <select
-                            id="directory-filter"
-                            className="ml-2 p-2 rounded-lg border dark:bg-dark-sub-bg dark:text-dark-text"
-                            value={selectedDirectory}
-                            onChange={(e) => handleFilterChange(e.target.value)}
-                        >
-                            <option value="">All Directories</option>
-                            <option value="Operation">Operation</option>
-                            <option value="Creative">Creative</option>
-                            <option value="Hardware">Hardware</option>
-                            <option value="Software">Software</option>
-                        </select>
-                    </div>
-                    <ul className="text-light-text dark:text-dark-text w-full space-y-2 text-xl sm:pt-8">
-                        {Array.isArray(filteredCommittees) && filteredCommittees.length > 0 ? (
-                            filteredCommittees.map(committee => (
-                                <li
-                                    key={committee._id}
-                                    className="py-4 border-b-2 flex"
-                                >
-                                    <div className="flex gap-4">
-                                        <div className="imgContainer sm:w-1/4 aspect-w-1 aspect-h-1 bg-light-nav-bg dark:bg-dark-nav-bg h-full rounded-xl relative">
-                                            <Image src={committee.photoURL} alt={committee.name} className="rounded-xl w-full h-full object-cover" fill={true} />
-                                        </div>
-                                        <div className="txtContainer flex-col sm:w-3/4">
-                                            <div className="flex items-baseline gap-2">
-                                                <p className="sm:text-2xl font-semibold">{committee.icon} </p>
-                                                <div>
-                                                    <p className="sm:text-2xl font-semibold">{committee.name}{committee.abbreviation ? ` (${committee.abbreviation})` : ''}</p>
-                                                    <p className="mb-2">{committee.directory} Directory</p>
-                                                </div>
-                                            </div>
-                                            <p>{committee.description}</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            ))
-                        ) : (
-                            <li>No committees available</li>
-                        )}
-                    </ul> */}
+                                        ))}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    }
                 </div>
             </section>
         </main >
