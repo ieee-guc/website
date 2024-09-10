@@ -94,7 +94,7 @@ export default function Recruitment() {
                                         {committees.filter(committee => committee.directory === directory).map((committee, index) => (
                                             <div
                                                 key={committee._id}
-                                                className="py-4 border-b-2 flex"
+                                                className="py-4 border-t-2 flex"
                                             >
                                                 <div className="flex gap-4 flex-col sm:flex-row">
                                                     <div className="imgContainer sm:w-1/4 w-1/2 aspect-square self-center aspect-w-1 aspect-h-1 bg-light-nav-bg dark:bg-dark-nav-bg h-full rounded-xl relative">
