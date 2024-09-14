@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ChevronsRight, Slash } from "react-feather";
+import { CheckCircle, ChevronsRight, Slash } from "react-feather";
 import Image from "next/image";
 import Logo from '../../../../../public/ieee-logo.png';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,8 @@ import { useState, useEffect } from "react";
 import { Committee } from "@/app/types/committee.type";
 import axios from "axios";
 import { useToast } from "@/hooks/use-toast"
+import { usePathname } from 'next/navigation';
+import { ImpulseSpinner } from 'react-spinners-kit';
 
 const validationSchema = Yup.object({
     firstName: Yup.string()
@@ -38,14 +40,17 @@ const validationSchema = Yup.object({
 });
 
 export default function RecruitmentForm() {
+    const currentPath = usePathname();
     const { toast } = useToast()
     const router = useRouter();
     const [committees, setCommittees] = useState<Committee[]>([]);
     const [directories, setDirectories] = useState<string[]>([]);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         const fetchCommittees = async () => {
             try {
                 const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
@@ -53,6 +58,8 @@ export default function RecruitmentForm() {
             } catch (error) {
                 setError('Failed to fetch committees');
                 console.error(error);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -79,52 +86,34 @@ export default function RecruitmentForm() {
         directory: '',
         committee: '',
     };
-
-    // const handleSubmit = (values: any) => {
-    //     delete values.directory
-    //     const dataToSubmit = { ...values };
-    //     const response = axios.post('https://ieeeguc-backend-production.up.railway.app/api/applications', dataToSubmit)
-    //         .then(response => {
-    //             console.log('Form submitted successfully:', response);
-    //             toast({
-    //                 title: "Scheduled: Catch up",
-    //                 description: "Friday, February 10, 2023 at 5:57 PM",
-    //                 className: "bg-green-200 text-white",
-    //             })
-    //         })
-    //         .catch(error => {
-    //             console.error('Error submitting form:', error);
-    //             toast({
-    //                 title: "Error",
-    //                 description: error,
-    //                 className: "bg-red-200 text-light-red dark:text-dark-red ",
-    //             })
-    //         });
-    // };
     const handleSubmit = (values: any) => {
         delete values.directory;
         const dataToSubmit = { ...values };
 
         axios.post('https://ieeeguc-backend-production.up.railway.app/api/applications', dataToSubmit)
             .then(response => {
+                setSuccess(true);
                 console.log('Form submitted successfully:', response);
                 toast({
                     title: "Success",
-                    description: "Form submitted successfully!",
+                    description: "Your application has been submitted successfully!",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
             })
             .catch(error => {
                 console.error('Error submitting form:', error);
+                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
+                if (errorMessage.includes('duplicate')) {
+                    errorMessage = "You have already submitted an application"
+                }
+                if (!errorMessage.includes('circular')) {
+                    toast({
+                        title: "Error",
+                        description: errorMessage,  // Ensure the error is converted to a string
+                        className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                    });
+                }
 
-                // Displaying the error message as a string
-                const errorMessage = error?.response?.data?.message || error.message || "An error occurred";
-
-                toast({
-                    title: "Error",
-                    description: errorMessage,  // Ensure the error is converted to a string
-                    className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
-                });
             });
     };
 
@@ -132,7 +121,29 @@ export default function RecruitmentForm() {
         <main className="flex w-full h-auto flex-col items-center justify-between py-12 px-6 bg-light-bg dark:bg-dark-bg">
             <section className="about sm:w-8/12 w-11/12">
                 {/* <div className="h-auto flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-11/12"> */}
-                {success ? (<></>) :
+                {success ? (<section className="mt-16 w-full flex flex-col items-center justify-between">
+                    <div className="w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
+                        <div className="coming-soon-container relative flex flex-col items-center justify-center ">
+                            <div className="tool-container">
+                                <CheckCircle
+                                    size={180}
+                                    strokeWidth={1.5}
+                                    className="text-light-primary dark:text-dark-secondary m-0 truck-animation"
+                                />
+                            </div>
+                        </div>
+                        <h1 className="text-5xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
+                        <p className="text-xl text-center text-light-text dark:text-dark-text">We will contact you by email soon</p>
+                        <div className="text-center mt-4">
+                            <Link rel="noopener noreferrer"
+                                href={'/'}
+                                className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                            >
+                                Go to Homepage
+                            </Link>
+                        </div>
+                    </div>
+                </section>) :
                     (<div className="flex flex-col items-center  p-2 w-full h-full sm:py-8 py-4 rounded-xl ">
                         <div className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
                             <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
@@ -262,27 +273,31 @@ export default function RecruitmentForm() {
                                                 </div>
                                             )}
 
-                                            <button
-                                                disabled={!(isValid && dirty)}
-                                                type="submit"
-                                                className="disabled:bg-gray-600 disabled:cursor-not-allowed overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
-                                                onClick={(event) => handleSubmit(event)}
-                                            >
-                                                Submit Application
-                                                {!(isValid && dirty) ? (
-                                                    <Slash
-                                                        className="feather-chevron-right text-white"
-                                                        size={24}
-                                                    />
-                                                ) : (
-                                                    <ChevronsRight
-                                                        className="feather-chevron-right text-white"
-                                                        size={24}
-                                                    />
+                                                {loading ? (
+                                                    <div className="flex items-center justify-center h-full">
+                                                        <ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" />
+                                                    </div>) : (
+                                                    <button
+                                                        disabled={!(isValid && dirty)}
+                                                        type="submit"
+                                                        className="disabled:bg-gray-600 disabled:cursor-not-allowed overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
+                                                        onClick={(event) => handleSubmit(event)}
+                                                    >
+                                                        Submit Application
+                                                        {!(isValid && dirty) ? (
+                                                            <Slash
+                                                                className="feather-chevron-right text-white"
+                                                                size={24}
+                                                            />
+                                                        ) : (
+                                                            <ChevronsRight
+                                                                className="feather-chevron-right text-white"
+                                                                size={24}
+                                                            />
+                                                        )}
+
+                                                    </button>
                                                 )}
-
-                                            </button>
-
                                             <p className="text-xs font-light text-gray-500 dark:text-gray-400">
                                                 Already applied? <Link href="/login" className="font-medium hover:underline">Check application status</Link>
                                             </p>
