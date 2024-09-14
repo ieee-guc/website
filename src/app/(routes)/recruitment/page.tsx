@@ -47,7 +47,7 @@ export default function Recruitment() {
     })
 
     return (
-        <main className="flex w-full min-h-screen flex-col items-center justify-between py-4 p-2 bg-light-bg
+        <main className="flex w-full min-h-screen flex-col items-center justify-between pb-12 py-4 p-2 bg-light-bg
         dark:bg-dark-bg">
             <section className="about sm:w-8/12 w-11/12">
                 <div className="flex flex-col items-center  p-2 w-full  h-full sm:py-16 py-8 rounded-xl ">

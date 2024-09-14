@@ -6,6 +6,7 @@ import Preferences from "../components/Preferences";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import { AuthProvider } from "../contexts/authContext";
+import Top from "../components/Top";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
             <body className={inter.className}>
                 <AuthProvider>
                     <Header />
+                    <Top />
                     {children}
                     <Analytics />
                     <Preferences />
