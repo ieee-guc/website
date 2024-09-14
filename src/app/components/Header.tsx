@@ -83,9 +83,9 @@ export default function Header() {
                     {/* Desktop Menu */}
                     <NavigationMenuList className="hidden sm:flex items-center space-x-8">
                         <NavigationMenuItem>
-                            <NavigationMenuTrigger className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
-                                We Offer
-                            </NavigationMenuTrigger>
+                            {/* <NavigationMenuTrigger className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                                We Provide
+                            </NavigationMenuTrigger> */}
                             <NavigationMenuContent>
                                 <ul className="gap-2 grid w-[400px] md:w-[500px] lg:w-[400px] bg-light-nav-bg dark:bg-dark-nav-bg">
                                     <div className="p-2">
@@ -223,10 +223,10 @@ export default function Header() {
                         <div className="-my-6 divide-y divide-light-text dark:divide-dark-text">
                             <div className="space-y-2 py-6">
                                 <Disclosure as="div" className="-mx-3">
-                                    <DisclosureButton className="group flex w-full items-center justify-between rounded-xl py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg">
+                                    {/* <DisclosureButton className="group flex w-full items-center justify-between rounded-xl py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg">
                                         We Provide
                                         <ChevronDown aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
-                                    </DisclosureButton>
+                                    </DisclosureButton> */}
                                     <DisclosurePanel className="mt-2 space-y-2">
                                         {[...products].map((item) => (
                                             <DisclosureButton

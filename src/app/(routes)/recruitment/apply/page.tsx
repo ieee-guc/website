@@ -293,7 +293,7 @@ export default function RecruitmentForm() {
                                                             <ChevronsRight
                                                                 className="feather-chevron-right text-white"
                                                                 size={24}
-                                                            />
+                                                        />
                                                         )}
 
                                                     </button>
