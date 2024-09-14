@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 "use client"
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -48,7 +47,8 @@ export default function Recruitment() {
     })
 
     return (
-        <main className="flex w-full min-h-screen flex-col items-center justify-between py-4 p-2 bg-light-bg dark:bg-dark-bg">
+        <main className="flex w-full min-h-screen flex-col items-center justify-between py-4 p-2 bg-light-bg
+        dark:bg-dark-bg">
             <section className="about sm:w-8/12 w-11/12">
                 <div className="flex flex-col items-center  p-2 w-full  h-full sm:py-16 py-8 rounded-xl ">
                     <p className="text-light-text dark:text-dark-text text-center text-xl">
@@ -57,14 +57,19 @@ export default function Recruitment() {
                         <br />
                         Ready for a fun, growth-filled year?
                         <br />
-                        <span className="italic text-light-red dark:text-dark-red font-semibold">Secure your spot before 21/9!</span>
+                        <span className="italic text-light-red dark:text-dark-red font-semibold">
+                            Secure your spot before 21/9!
+                        </span>
                         <br />
                         We can&apos;t wait to welcome you! 😊
                     </p>
                     <Link
                         href="/recruitment/apply"
                         target="_blank"
-                        className="overflow-hidden mt-2 signin-button relative sm:w-1/4 w-3/4 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg items-center px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center"
+                        className="overflow-hidden mt-2 signin-button relative sm:w-1/4 w-3/4 text-white bg-primary-600
+                        hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl
+                        text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800
+                        bg-light-primary flex justify-center items-center"
                     >
                         <p>Join Us Now!</p>
                         <ChevronsRight
@@ -74,7 +79,7 @@ export default function Recruitment() {
                     </Link>
                 </div>
 
-                <div id="committees" className="flex flex-col items-center mt-2 p-2 w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-12 rounded-xl border-light-border dark:border">
+                <div id="committees" className="flex flex-col items-center mt-2 p-2 w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-12 rounded-xl border-light-border dark:border-dark-border">
                     <p className="text-light-text dark:text-dark-text text-center mb-4">
                         <span className='font-bold text-3xl'>Our Committees ⭐</span>
                     </p>
@@ -84,7 +89,7 @@ export default function Recruitment() {
                             strokeWidth={1.5}
                             className="text-light-primary dark:text-dark-secondary mb-2 truck-animation rotating"
                         /> :
-                        <Accordion type="single" collapsible className="w-full sm:w-3/4 bg-white px-4 rounded-xl mt-2">
+                        <Accordion type="single" collapsible className="w-full sm:w-3/4 bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-4 rounded-xl mt-2">
                             {uniqueDirectories.map((directory, index) => (
                                 <AccordionItem key={index} value={`item-${index}`}>
                                     <AccordionTrigger className="text-xl font-semibold">
@@ -94,10 +99,10 @@ export default function Recruitment() {
                                         {committees.filter(committee => committee.directory === directory).map((committee, index) => (
                                             <div
                                                 key={committee._id}
-                                                className="py-4 border-t-2 flex"
+                                                className="py-4 border-t-2 flex border-light-border dark:border-dark-border "
                                             >
                                                 <div className="flex gap-4 flex-col sm:flex-row">
-                                                    <div className="imgContainer sm:w-1/4 w-1/2 aspect-square self-center aspect-w-1 aspect-h-1 bg-light-nav-bg dark:bg-dark-nav-bg h-full rounded-xl relative">
+                                                    <div className="imgContainer sm:w-1/4 w-1/2 aspect-square self-center aspect-w-1 aspect-h-1 bg-light-bg dark:bg-dark-bg h-full rounded-xl relative">
                                                         <Image
                                                             src={committee.photoURL}
                                                             alt={committee.name}

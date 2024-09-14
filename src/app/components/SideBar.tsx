@@ -15,7 +15,7 @@ export default function SideBar(props: any) {
             {/* Sidebar for larger screens */}
             {/* Sidebar toggle button */}
             {!isOpen && <button
-                className={`fixed top-4 left-10 z-10 bg-light-sub-bg dark:bg-dark-sub-bg flex items-center w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-border ${isOpen ? 'bg-light-border' : 'bg-light-sub-bg'} text-white transition duration-200 ease-in-out align-middle justify-end`}
+                className={`hidden fixed top-4 left-10 z-10 bg-light-sub-bg dark:bg-dark-sub-bg sm:flex items-center w-10 h-10 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-border ${isOpen ? 'bg-light-border' : 'bg-light-sub-bg'} text-white transition duration-200 ease-in-out align-middle justify-end`}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 <ChevronRight className="text-light-text dark:text-dark-text" />
