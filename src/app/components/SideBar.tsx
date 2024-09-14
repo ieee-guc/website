@@ -37,7 +37,7 @@ export default function SideBar(props: any) {
                 {/* Sidebar menu items */}
                 <div className="w-full px-2">
                     {props.sections.map((section: any) => (
-                        <Link key={section.id} className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
+                        <Link key={section.id} className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded-xl hover:bg-light-border dark:hover:bg-dark-border ${currentPath === section.link ? 'bg-light-border dark:bg-dark-border' : ''}`} href={section.link}>
                             {section.icon}
                             {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                                 {section.title}
@@ -45,7 +45,7 @@ export default function SideBar(props: any) {
                             {isOpen && <span className="ml-2 text-sm font-medium ">{section.title}</span>}
                         </Link>
                     ))}
-                    <Link className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-light-border dark:hover:bg-dark-border `} href="/">
+                    <Link className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded-xl hover:bg-light-border dark:hover:bg-dark-border `} href="/">
                         <LogOut className="w-6 h-6" />
                         {!isOpen && <span className="absolute left-16 bg-light-border dark:bg-dark-border opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                             Log Out

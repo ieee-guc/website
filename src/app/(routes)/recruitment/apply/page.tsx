@@ -1,209 +1,299 @@
 "use client"
 import Link from "next/link";
-import ComingSoon from "../../../components/ComingSoon"
-import type { Metadata } from "next";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { ChevronsRight } from "react-feather";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { ChevronsRight, Slash } from "react-feather";
 import Image from "next/image";
-import Logo from '../../../../../public/ieee-logo.png'
+import Logo from '../../../../../public/ieee-logo.png';
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from "react";
+import { Committee } from "@/app/types/committee.type";
+import axios from "axios";
+import { useToast } from "@/hooks/use-toast"
 
 const validationSchema = Yup.object({
     firstName: Yup.string()
         .min(3, 'First name must be at least 3 characters')
-        .required('Required'),
+        .max(30, 'First name must be at most 30 characters')
+        .required('First name is required'),
     secondName: Yup.string()
-        .min(3, 'Second name must be at least 3 characters'),
+        .min(3, 'Second name must be at least 3 characters')
+        .max(30, 'Second name must be at most 30 characters')
+        .required('Second name is required'),
     email: Yup.string()
         .email('Invalid email address')
-        .required('Required'),
-    mobileNumber: Yup.string()
+        .required('Email is required'),
+    phone: Yup.string()
         .matches(/^[0-9]{11}$/, 'Mobile number must be exactly 11 digits')
-        .required('Required'),
+        .required('Mobile number is required'),
+    universityId: Yup.string()
+        .required('GUC ID is required'),
+    directory: Yup.string()
+        .oneOf(['Software', 'Hardware', 'JTP', 'Operation', 'Creative'], 'Please choose a directory')
+        .required('Directory is required'),
     committee: Yup.string()
-        .oneOf(['Software', 'Hardware', 'JTP', 'Operation', 'Creative'], 'Invalid selection')
-        .required('Required'),
+        .required('Committee is required'),
 });
 
 export default function RecruitmentForm() {
-    useEffect(() => {
-        document.title = "Recruitment Form | IEEE GUC"
-    })
-    const initialValues = {
-        name: '',
-        email: '',
-    };
-
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
+    const { toast } = useToast()
     const router = useRouter();
+    const [committees, setCommittees] = useState<Committee[]>([]);
+    const [directories, setDirectories] = useState<string[]>([]);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
 
-    const handleNameChange = (event: any) => {
-        setName(event.target.value);
-    };
-    const handleEmailChange = (event: any) => {
-        setEmail(event.target.value);
-    };
-    const handlePasswordChange = (event: any) => {
-        setPassword(event.target.value);
-    };
-    const handleConfirmPasswordChange = (event: any) => {
-        setConfirmPassword(event.target.value);
+    useEffect(() => {
+        const fetchCommittees = async () => {
+            try {
+                const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
+                setCommittees(response.data.data);
+            } catch (error) {
+                setError('Failed to fetch committees');
+                console.error(error);
+            }
+        };
+
+        fetchCommittees();
+    }, []);
+
+    useEffect(() => {
+        if (committees.length > 0) {
+            const dirs = Array.from(new Set(committees.map(committee => committee.directory)));
+            setDirectories(dirs);
+        }
+    }, [committees]);
+
+    useEffect(() => {
+        document.title = "Recruitment | IEEE GUC"
+    })
+
+    const initialValues = {
+        firstName: '',
+        secondName: '',
+        email: '',
+        phone: '',
+        universityId: '',
+        directory: '',
+        committee: '',
     };
 
-    const handleSubmitLogIn = (event: any) => {
-        event.preventDefault();
-        router.push('/login');
+    // const handleSubmit = (values: any) => {
+    //     delete values.directory
+    //     const dataToSubmit = { ...values };
+    //     const response = axios.post('https://ieeeguc-backend-production.up.railway.app/api/applications', dataToSubmit)
+    //         .then(response => {
+    //             console.log('Form submitted successfully:', response);
+    //             toast({
+    //                 title: "Scheduled: Catch up",
+    //                 description: "Friday, February 10, 2023 at 5:57 PM",
+    //                 className: "bg-green-200 text-white",
+    //             })
+    //         })
+    //         .catch(error => {
+    //             console.error('Error submitting form:', error);
+    //             toast({
+    //                 title: "Error",
+    //                 description: error,
+    //                 className: "bg-red-200 text-light-red dark:text-dark-red ",
+    //             })
+    //         });
+    // };
+    const handleSubmit = (values: any) => {
+        delete values.directory;
+        const dataToSubmit = { ...values };
+
+        axios.post('https://ieeeguc-backend-production.up.railway.app/api/applications', dataToSubmit)
+            .then(response => {
+                console.log('Form submitted successfully:', response);
+                toast({
+                    title: "Success",
+                    description: "Form submitted successfully!",
+                    className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
+                });
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+
+                // Displaying the error message as a string
+                const errorMessage = error?.response?.data?.message || error.message || "An error occurred";
+
+                toast({
+                    title: "Error",
+                    description: errorMessage,  // Ensure the error is converted to a string
+                    className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                });
+            });
     };
 
     return (
-        <main className="flex w-full min-h-full flex-col items-center justify-between py-12 px-6 bg-light-bg dark:bg-dark-bg">
-            <section className="bg-gray-50 dark:bg-gray-900 w-full my-12">
-                <div className="flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-11/12">
-                    <div className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
-                        <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
-                        IEEE GUC
-                    </div>
-                    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:w-8/12 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                            <div className="mb-8">
-                                <h1 className="text-lg font-bold text-center leading-tight tracking-tight text-light-text md:text-2xl dark:text-white">
-                                    Grow our Family!
-                                </h1>
-                                <p className="text-sm font-semibold text-center leading-tight tracking-tight text-light-text md:text-lg dark:text-white">
-                                    Apply to join our club
-                                </p>
-                            </div>
-                            <form className="space-y-4 md:space-y-6" action="#">
-                                <div className="flex justify-between gap-4">
-                                    <div className="grid w-1/2 items-center gap-1.5">
-                                        <Label
-                                            htmlFor="firstName"
-                                            className="block mb-2 text-sm font-medium text-light-text dark:text-white"
-                                        >
-                                            First name&nbsp;
-                                            <span className="text-red-700 dark:text-red-300 text-md font-bold">*</span>
-                                        </Label>
-                                        <Input type="string" id="firstName" placeholder="John"
-                                            className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-slate-500"
-                                        />
-                                    </div>
-                                    <div className="grid w-1/2 items-center gap-1.5">
-                                        <Label
-                                            htmlFor="secondName"
-                                            className="block mb-2 text-sm font-medium text-light-text dark:text-white"
-                                        >
-                                            Second name
-                                        </Label>
-                                        <Input type="string" id="secondName" placeholder="Doe"
-                                            className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-slate-500"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="grid w-full items-center gap-1.5">
-                                    <Label
-                                        htmlFor="email"
-                                        className="block mb-2 text-sm font-medium text-light-text dark:text-white"
-                                    >
-                                        Email&nbsp;
-                                        <span className="text-red-700 dark:text-red-300 text-md font-bold">*</span>
-                                    </Label>
-                                    <Input
-                                        type="email"
-                                        id="email"
-                                        placeholder="johndoe@email.com"
-                                        onChange={handleEmailChange}
-                                        value={email}
-                                        className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-slate-500"
-                                    />
-                                </div>
-                                <div className="grid w-full items-center gap-1.5">
-                                    <Label
-                                        htmlFor="phone"
-                                        className="block mb-2 text-sm font-medium text-light-text dark:text-white"
-                                    >
-                                        Mobile Number&nbsp;
-                                        <span className="text-red-700 dark:text-red-300 text-md font-bold">*</span>
-                                    </Label>
-                                    <Input
-                                        type="string"
-                                        id="phone"
-                                        placeholder="01234567899"
-                                        className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-slate-500"
-                                    />
-                                </div>
-                                <div className="grid w-full items-center gap-1.5">
-                                    <Label
-                                        htmlFor="universityID"
-                                        className="block mb-2 text-sm font-medium text-light-text dark:text-white"
-                                    >
-                                        GUC ID&nbsp;
-                                        <span className="text-red-700 dark:text-red-300 text-md font-bold">*</span>
-                                    </Label>
-                                    <Input
-                                        type="string"
-                                        id="universityID"
-                                        placeholder="61-1234"
-                                        className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-slate-500"
-                                    />
-                                </div>
-                                <div className="grid w-full items-center gap-1.5">
-                                    <Label
-                                        htmlFor="universityID"
-                                        className="block mb-2 text-sm font-medium text-light-text dark:text-white"
-                                    >
-                                        Directory&nbsp;
-                                        <span className="text-red-700 dark:text-red-300 text-md font-bold">*</span>
-                                    </Label>
-                                    <Input
-                                        type="string"
-                                        id="universityID"
-                                        placeholder="61-1234"
-                                        className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-slate-500"
-                                    />
-                                </div>
-                                <div className="grid w-full items-center gap-1.5">
-                                    <Label
-                                        htmlFor="Chosen Directory"
-                                        className="block mb-2 text-sm font-medium text-light-text dark:text-white"
-                                    >
-                                        Committee&nbsp;
-                                        <span className="text-red-700 dark:text-red-300 text-md font-bold">*</span>
-                                    </Label>
-                                    <Input
-                                        type="string"
-                                        id="universityID"
-                                        placeholder="61-1234"
-                                        className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:text-slate-500"
-                                    />
-                                </div>
-
-
-                                <button
-                                    type="submit"
-                                    className="overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
-                                    onClick={(event) => handleSubmitLogIn(event)}
-                                >
-                                    Submit Application
-                                    <ChevronsRight
-                                        className="feather-chevron-right text-white"
-                                        size={24}
-                                    />
-                                </button>
-                                <p className="text-xs font-light text-gray-500 dark:text-gray-400">
-                                    Already applied? <Link href="/login" className="font-medium hover:underline">Check application status</Link>
-                                </p>
-                            </form>
+        <main className="flex w-full h-auto flex-col items-center justify-between py-12 px-6 bg-light-bg dark:bg-dark-bg">
+            <section className="about sm:w-8/12 w-11/12">
+                {/* <div className="h-auto flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-11/12"> */}
+                {success ? (<></>) :
+                    (<div className="flex flex-col items-center  p-2 w-full h-full sm:py-8 py-4 rounded-xl ">
+                        <div className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
+                            <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
+                            IEEE GUC
                         </div>
-                    </div>
-                </div>
-            </section>
+                        <div className="w-full bg-white rounded-xl shadow dark:border md:mt-0 sm:w-8/12 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                                <div className="mb-8">
+                                    <h1 className="text-lg font-bold text-center leading-tight tracking-tight text-light-text md:text-2xl dark:text-white">
+                                        Grow our Family!
+                                    </h1>
+                                    <p className="text-sm font-semibold text-center leading-tight tracking-tight text-light-text md:text-lg dark:text-white">
+                                        Apply to join our club
+                                    </p>
+                                </div>
+                                <Formik
+                                    initialValues={initialValues}
+                                    validationSchema={validationSchema}
+                                    onSubmit={handleSubmit}
+                                >
+                                    {({ values, handleChange, errors, touched, isValid, dirty }) => (
+                                        <Form className="space-y-2 md:space-y-4">
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="firstName" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    First name <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="firstName"
+                                                    name="firstName"
+                                                    placeholder="John"
+                                                    className="placeholder:text-slate-400 focus:border-black focus:border-4 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                />
+                                                <ErrorMessage name="firstName" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="secondName" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Second name <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="secondName"
+                                                    name="secondName"
+                                                    placeholder="Doe"
+                                                    className="placeholder:text-slate-400 focus:border-black focus:border-4 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                />
+                                                <ErrorMessage name="secondName" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="email" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Email <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="email"
+                                                    name="email"
+                                                    placeholder="johndoe@email.com"
+                                                    className="placeholder:text-slate-400 focus:border-black focus:border-4 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                />
+                                                <ErrorMessage name="email" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="phone" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Mobile Number <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="phone"
+                                                    name="phone"
+                                                    placeholder="01234567899"
+                                                    className="placeholder:text-slate-400 focus:border-black focus:border-4 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                />
+                                                <ErrorMessage name="phone" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="universityId" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    GUC ID <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field
+                                                    as={Input}
+                                                    id="universityId"
+                                                    name="universityId"
+                                                    placeholder="61-1234"
+                                                    className="placeholder:text-slate-400 focus:ring-4 focus:ring-blue-500 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                />
+                                                <ErrorMessage name="universityId" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="directory" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Directory <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field as="select" name="directory"
+                                                    className="placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                >
+                                                    <option value="" label="Select a directory" />
+                                                    {directories.map(directory => {
+                                                        return <option key={directory} value={directory}>{directory}</option>
+                                                    })}
+                                                </Field>
+                                                <ErrorMessage name="directory" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="committee" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Committee <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field as="select" name="committee"
+                                                    className="placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                >
+                                                    <option value="" label="Select a committee" />
+                                                    {committees
+                                                        .filter(committee => committee.directory === values.directory)
+                                                        .map(committee => {
+                                                            return <option key={committee._id} value={committee._id}>{committee.name}</option>
+                                                        })}
+                                                </Field>
+                                                <ErrorMessage name="committee" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+
+                                            {(Object.keys(errors).length > 0 && Object.keys(touched).length > 0) && (
+                                                <div className="text-light-red dark:text-dark-red text-sm">
+                                                    Please fix the errors in the application before submitting.
+                                                </div>
+                                            )}
+
+                                            <button
+                                                disabled={!(isValid && dirty)}
+                                                type="submit"
+                                                className="disabled:bg-gray-600 disabled:cursor-not-allowed overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
+                                                onClick={(event) => handleSubmit(event)}
+                                            >
+                                                Submit Application
+                                                {!(isValid && dirty) ? (
+                                                    <Slash
+                                                        className="feather-chevron-right text-white"
+                                                        size={24}
+                                                    />
+                                                ) : (
+                                                    <ChevronsRight
+                                                        className="feather-chevron-right text-white"
+                                                        size={24}
+                                                    />
+                                                )}
+
+                                            </button>
+
+                                            <p className="text-xs font-light text-gray-500 dark:text-gray-400">
+                                                Already applied? <Link href="/login" className="font-medium hover:underline">Check application status</Link>
+                                            </p>
+                                        </Form>
+                                    )}
+                                </Formik>
+                            </div>
+                        </div>
+                    </div>)
+                }
+            </section >
         </main >
     );
 };

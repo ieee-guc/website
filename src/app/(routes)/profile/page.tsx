@@ -76,7 +76,7 @@ export default function Profile() {
                                             name="firstName"
                                             value={userData.firstName}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.firstName}</p>
@@ -90,7 +90,7 @@ export default function Profile() {
                                             name="secondName"
                                             value={userData.secondName}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.secondName}</p>
@@ -106,7 +106,7 @@ export default function Profile() {
                                             name="email"
                                             value={userData.email}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.email}</p>
@@ -120,7 +120,7 @@ export default function Profile() {
                                             name="phoneNumber"
                                             value={userData.phoneNumber}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.phoneNumber}</p>
@@ -136,7 +136,7 @@ export default function Profile() {
                                             name="university"
                                             value={userData.university}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.university}</p>
@@ -150,7 +150,7 @@ export default function Profile() {
                                             name="gucId"
                                             value={userData.gucId}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.gucId}</p>
@@ -166,7 +166,7 @@ export default function Profile() {
                                             name="roleName"
                                             value={userData.role}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.role}</p>
@@ -180,7 +180,7 @@ export default function Profile() {
                                             name="committee"
                                             value={userData.committee}
                                             onChange={handleInputChange}
-                                            className="w-full border px-1 rounded text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
+                                            className="w-full border px-1 rounded-xl text-light-text dark:text-dark-text dark:bg-dark-nav-bg"
                                         />
                                     ) : (
                                         <p>{userData.committee}</p>
@@ -192,13 +192,13 @@ export default function Profile() {
                                     {isEditMode ? (<button
                                         onClick={() => setIsEditMode(false)}
                                         type="button"
-                                        className="flex justify-center items-center border-2 border-light-primary w-full p-2 transition-all duration-300 rounded bg-light-sub-bg dark:bg-dark-sub-bg text-light-primary dark:text-dark-text dark:border-dark-text hover:scale-105 active:scale-95"
+                                        className="flex justify-center items-center border-2 border-light-primary w-full p-2 transition-all duration-300 rounded-xl bg-light-sub-bg dark:bg-dark-sub-bg text-light-primary dark:text-dark-text dark:border-dark-text hover:scale-105 active:scale-95"
                                     >
                                         <X className="mr-2" />
                                         Cancel Changes
                                     </button>) : (<button
                                         type="button"
-                                        className="flex justify-center items-center border-2 border-light-primary w-full p-2 transition-all duration-300 rounded bg-light-sub-bg dark:bg-dark-sub-bg text-light-primary dark:text-dark-text dark:border-dark-text hover:scale-105 active:scale-95"
+                                        className="flex justify-center items-center border-2 border-light-primary w-full p-2 transition-all duration-300 rounded-xl bg-light-sub-bg dark:bg-dark-sub-bg text-light-primary dark:text-dark-text dark:border-dark-text hover:scale-105 active:scale-95"
                                     >
                                         <Lock className="mr-2" />
                                         Change Password
@@ -208,14 +208,14 @@ export default function Profile() {
                                     {isEditMode ? (<button
                                         onClick={handleEditClick}
                                         type="button"
-                                        className="flex justify-center items-center border-2 border-light-primary bg-light-primary w-full p-2 transition-all duration-300 hover:scale-105 rounded text-dark-text active:scale-95"
+                                        className="flex justify-center items-center border-2 border-light-primary bg-light-primary w-full p-2 transition-all duration-300 hover:scale-105 rounded-xl text-dark-text active:scale-95"
                                     >
                                         <Check className="mr-2" />
                                         Save Changes
                                     </button>) : (<button
                                         onClick={handleEditClick}
                                         type="button"
-                                        className="flex justify-center items-center border-2 border-light-primary bg-light-primary w-full p-2 transition-all duration-300 hover:scale-105 rounded text-dark-text active:scale-95"
+                                        className="flex justify-center items-center border-2 border-light-primary bg-light-primary w-full p-2 transition-all duration-300 hover:scale-105 rounded-xl text-dark-text active:scale-95"
                                     >
                                         <Edit className="mr-2" />
                                         Edit Details

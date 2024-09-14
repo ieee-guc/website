@@ -19,7 +19,11 @@ const config: Config = {
                     border: '#e2e8f0',
                     'sub-bg': '#f3f4f6',
                     'nav-bg': '#ffffff',
-                    red: '#b91c1c'
+                    red: '#b91c1c',
+                    'danger-bg': '#ef4a44',
+                    'danger-text': '#fef2f2',
+                    'success-bg': '#22c55e',
+                    'success-text': '#052e16'
                 },
                 dark: {
                     primary: '#0A4593',
@@ -30,7 +34,11 @@ const config: Config = {
                     border: '#374151',
                     'sub-bg': '#1f2937',
                     'nav-bg': '#020617',
-                    red: '#f87171'
+                    red: '#f87171',
+                    'danger-bg': '#ef4a44',
+                    'danger-text': '#fef2f2',
+                    'success-bg': '#22c55e',
+                    'success-text': '#052e16'
                 },
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',

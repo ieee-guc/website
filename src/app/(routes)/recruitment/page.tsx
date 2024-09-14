@@ -47,13 +47,11 @@ export default function Recruitment() {
     })
 
     return (
-        <main className="flex w-full min-h-screen flex-col items-center justify-between pb-12 py-4 p-2 bg-light-bg
-        dark:bg-dark-bg">
+        <main className="flex w-full min-h-screen flex-col items-center justify-between pb-12 py-4 p-2 bg-light-bg dark:bg-dark-bg">
             <section className="about sm:w-8/12 w-11/12">
                 <div className="flex flex-col items-center  p-2 w-full  h-full sm:py-16 py-8 rounded-xl ">
                     <p className="text-light-text dark:text-dark-text text-center text-xl">
-                        <span className='font-bold text-3xl'>IEEE GUC Recruitment is now open! 🚀</span>
-                        <br />
+                        <span className='font-bold text-3xl'>We&apos;re recruiting! 🚀</span>
                         <br />
                         Ready for a fun, growth-filled year?
                         <br />
@@ -106,7 +104,7 @@ export default function Recruitment() {
                                                         <Image
                                                             src={committee.photoURL}
                                                             alt={committee.name}
-                                                            className="w-full h-full object-cover rounded-lg"
+                                                            className="w-full h-full object-cover rounded-xl"
                                                             width={200}
                                                             height={200}
                                                         />

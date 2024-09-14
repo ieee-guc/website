@@ -63,7 +63,7 @@ export default function Header() {
                             <button
                                 type="button"
                                 onClick={() => setMobileMenuOpen(true)}
-                                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700"
+                                className="-m-2.5 inline-flex items-center justify-center rounded-xl p-2.5 text-slate-700"
                             >
                                 <span className="sr-only">Open main menu</span>
                                 <Menu />
@@ -223,7 +223,7 @@ export default function Header() {
                         <div className="-my-6 divide-y divide-light-text dark:divide-dark-text">
                             <div className="space-y-2 py-6">
                                 <Disclosure as="div" className="-mx-3">
-                                    <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg">
+                                    <DisclosureButton className="group flex w-full items-center justify-between rounded-xl py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg">
                                         We Provide
                                         <ChevronDown aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
                                     </DisclosureButton>
@@ -234,7 +234,7 @@ export default function Header() {
                                                 as="a"
                                                 href={item.href}
                                                 onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                                className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                                className="block rounded-xl py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                             >
                                                 <item.icon aria-hidden="true" className="h-4 w-4 inline mr-2 text-slate-600 group-hover:text-light-primary" />
                                                 {item.name}
@@ -246,7 +246,7 @@ export default function Header() {
                                     rel="noopener noreferrer"
                                     href="/about"
                                     onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                    className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     About Us
                                 </Link>
@@ -254,7 +254,7 @@ export default function Header() {
                                     rel="noopener noreferrer"
                                     href="/recruitment"
                                     onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                    className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Recruitment’24/25
                                 </Link>
@@ -262,7 +262,7 @@ export default function Header() {
                                     rel="noopener noreferrer"
                                     href="/calendar"
                                     onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                    className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
                                     Our Calendar
                                 </Link>
@@ -274,7 +274,7 @@ export default function Header() {
                                             rel="noopener noreferrer"
                                             href="/login"
                                             onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                            className="flex -mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                            className="flex -mx-3 rounded-xl px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                         >
                                             Log in <LogIn className="ml-2" />
                                         </Link>
@@ -284,9 +284,9 @@ export default function Header() {
                                         <div className="mt-6">
                                             <Link
                                                 rel="noopener noreferrer"
-                                                href="/recruitment"
+                                                href="/profile"
                                                 onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                                className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                             >
                                                 Profile
                                             </Link>
@@ -294,9 +294,9 @@ export default function Header() {
                                         <div>
                                             <Link
                                                 rel="noopener noreferrer"
-                                                href="/login"
+                                                href="/"
                                                 onClick={() => { setMobileMenuOpen(false); logout() }}
-                                                className="w-full -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                                className="w-full -mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                             >
                                                 Log Out <LogOut className="ml-2 inline-block" />
                                             </Link>
