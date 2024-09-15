@@ -26,7 +26,15 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-export default function ResponsiveDialog({ trigger, title, children }: { trigger: React.ReactElement, title: string, children: React.ReactNode }) {
+export default function ResponsiveDialog({ trigger, title, children, danger, confirm, dangerAction, confirmAction }: {
+    trigger: React.ReactElement,
+    title: string,
+    children: React.ReactNode,
+    danger: boolean,
+    confirm: boolean,
+    dangerAction: React.MouseEventHandler<HTMLButtonElement>,
+    confirmAction: React.MouseEventHandler<HTMLButtonElement>
+}) {
     const [open, setOpen] = React.useState(false)
     const isDesktop = useMediaQuery("(min-width: 768px)")
 
@@ -41,7 +49,7 @@ export default function ResponsiveDialog({ trigger, title, children }: { trigger
         <Dialog open={open} onOpenChange={setOpen}>
             {React.cloneElement(trigger, { onClick: handleClick })}
             <DialogContent
-                className="sm:max-w-[425px] bg-light-sub-bg dark:bg-dark-sub-bg rounded-xl"
+                className="sm:max-w-[425px] bg-light-sub-bg dark:bg-dark-sub-bg rounded-xl text-light-text dark:text-dark-text"
             >
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
@@ -50,8 +58,10 @@ export default function ResponsiveDialog({ trigger, title, children }: { trigger
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter className="pt-2">
+                    {danger ? <Button variant="outline" onClick={(event) => { dangerAction(event); setOpen(false); window.location.reload(); }} className="bg-light-danger-bg dark:bg-dark-danger-bg text-white hover:bg-white hover:text-light-danger-bg">Confirm</Button> : <></>}
+                    {confirm ? <Button variant="outline" onClick={(event) => { confirmAction(event); setOpen(false); }} className="bg-light-primary text-white hover:bg-white hover:text-light-primary">Confirm</Button> : <></>}
                     <DialogClose asChild>
-                        <Button variant="outline" onClick={closeDialog}>Close</Button>
+                        <Button variant="outline" className="hover:bg-slate-700 hover:text-slate-300 bg-slate-300 text-slate-700">Close</Button>
                     </DialogClose>
                 </DialogFooter>
             </DialogContent>
@@ -60,7 +70,7 @@ export default function ResponsiveDialog({ trigger, title, children }: { trigger
         <Drawer open={open} onOpenChange={setOpen}>
             {React.cloneElement(trigger, { onClick: handleClick })}
             <DrawerContent
-                className="bg-light-sub-bg dark:bg-dark-sub-bg"
+                className="bg-light-sub-bg dark:bg-dark-sub-bg text-light-text dark:text-dark-text"
             >
                 <DrawerHeader className="text-left">
                     <DrawerTitle>{title}</DrawerTitle>
@@ -69,11 +79,13 @@ export default function ResponsiveDialog({ trigger, title, children }: { trigger
                     </DrawerDescription>
                 </DrawerHeader>
                 <DrawerFooter className="pt-2">
+                    {danger ? <Button variant="outline" onClick={(event) => { dangerAction(event); setOpen(false); window.location.reload(); }} className="bg-light-danger-bg dark:bg-dark-danger-bg text-white hover:bg-white hover:text-light-danger-bg">Confirm</Button> : <></>}
+                    {confirm ? <Button variant="outline" onClick={(event) => { confirmAction(event); setOpen(false); }} className="bg-light-primary text-white hover:bg-white hover:text-light-primary">Confirm</Button> : <></>}
                     <DrawerClose asChild>
                         <Button variant="outline" onClick={closeDialog}>Close</Button>
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>
-        </Drawer>
+        </Drawer >
     );
 }

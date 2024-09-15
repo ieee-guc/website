@@ -24,11 +24,105 @@ import {
 import { Input } from "@/components/ui/input"
 import { Filter, Search, UserPlus } from "react-feather"
 import ResponsiveDialog from "@/app/components/ResponsiveDialog"
+import { useState } from "react"
+import axios from "axios"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
+
+const UserAddForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        secondName: '',
+        email: '',
+        phone: '',
+        role: '',
+        committee: '',
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData(prevFormData => ({ ...prevFormData, [name]: value }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        onSubmit(formData);
+    };
+
+    return (
+        <form className="space-y-4 mt-4">
+            <div>
+                <label htmlFor="firstName" className="block text-sm font-medium">First Name</label>
+                <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+            </div>
+            <div>
+                <label htmlFor="secondName" className="block text-sm font-medium">Second Name</label>
+                <input
+                    type="text"
+                    id="secondName"
+                    name="secondName"
+                    value={formData.secondName}
+                    onChange={handleChange}
+                    className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+            </div>
+            <div>
+                <label htmlFor="email" className="block text-sm font-medium">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+            </div>
+            <div>
+                <label htmlFor="phone" className="block text-sm font-medium">Phone</label>
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+            </div>
+            <div>
+                <label htmlFor="role" className="block text-sm font-medium">Role</label>
+                <input
+                    type="text"
+                    id="role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+            </div>
+            <div>
+                <label htmlFor="committee" className="block text-sm font-medium">Committee</label>
+                <input
+                    type="text"
+                    id="committee"
+                    name="committee"
+                    value={formData.committee}
+                    onChange={handleChange}
+                    className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+            </div>
+        </form>
+    );
+};
 
 export function UserDataTable<TData, TValue>({
     columns,
@@ -38,6 +132,7 @@ export function UserDataTable<TData, TValue>({
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
     )
+
     const table = useReactTable({
         data,
         columns,
@@ -53,11 +148,22 @@ export function UserDataTable<TData, TValue>({
         getFilteredRowModel: getFilteredRowModel(),
     })
 
+    const handleAddUserSubmit = async (userData: any) => {
+        try {
+            console.log("User Data: ", userData);  // Log the entire userData object
+            await axios.post('https://ieeeguc-backend-production.up.railway.app/api/users', userData);
+            console.log('User added successfully!');
+        } catch (error) {
+            console.error('Error adding user:', error);
+        }
+    };
+
+
     return (
         <div>
             <div className="flex items-center py-4 justify-evenly gap-4 flex-col sm:flex-row">
                 <div
-                    className="flex items-center space-x-0 placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <Search className="text-slate-400 dark:text-gray-400 ml-4" />
                     <Input
                         placeholder="Search by email..."
@@ -69,7 +175,7 @@ export function UserDataTable<TData, TValue>({
                     />
                 </div>
                 <div
-                    className="flex items-center space-x-0 placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
                     <Input
                         placeholder="Filter by role..."
@@ -81,7 +187,7 @@ export function UserDataTable<TData, TValue>({
                     />
                 </div>
                 <div
-                    className="flex items-center space-x-0 placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
                     <Input
                         placeholder="Filter by committee..."
@@ -92,39 +198,35 @@ export function UserDataTable<TData, TValue>({
                         className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block w-full dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                 </div>
-                <div className="w-full sm:w-fit ">
-                    < ResponsiveDialog
-                        trigger={
-                            <Button
-                                variant={"outline"}
-                                className='w-full sm:w-fit bg-light-sub-bg dark:bg-dark-sub-bg h-full rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-110 active:scale-90'
-                            ><UserPlus />&nbsp;&nbsp;Add user</Button>}
-                        title="Add User"
-                    >
-                        <>
-                        </>
-                    </ResponsiveDialog>
-
-                </div>
+                <ResponsiveDialog
+                    title="Add New User"
+                    danger={false}
+                    dangerAction={() => { }}
+                    confirm={true}
+                    confirmAction={(event) => { handleAddUserSubmit(event) }}
+                    trigger={<Button
+                        variant={"outline"}
+                        className='w-full sm:w-fit bg-light-sub-bg dark:bg-dark-sub-bg h-full rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-110 active:scale-90'
+                    ><UserPlus />&nbsp;&nbsp;Add user</Button>}
+                >
+                    <UserAddForm onSubmit={handleAddUserSubmit} />
+                </ResponsiveDialog>
             </div>
-            <div className="rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text">
-                <Table className="border-light-border dark:border-dark-border">
+            <div className="rounded-xl border dark:border-gray-600">
+                <Table className="text-light-text dark:text-dark-text">
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
-                                {headerGroup.headers.map((header) => {
-                                    return (
-                                        <TableHead key={header.id} className="border-b border-light-border dark:border-dark-border"
-                                        >
-                                            {header.isPlaceholder
-                                                ? null
-                                                : flexRender(
-                                                    header.column.columnDef.header,
-                                                    header.getContext()
-                                                )}
-                                        </TableHead>
-                                    )
-                                })}
+                                {headerGroup.headers.map((header) => (
+                                    <TableHead key={header.id}>
+                                        {header.isPlaceholder
+                                            ? null
+                                            : flexRender(
+                                                header.column.columnDef.header,
+                                                header.getContext()
+                                            )}
+                                    </TableHead>
+                                ))}
                             </TableRow>
                         ))}
                     </TableHeader>
@@ -134,11 +236,13 @@ export function UserDataTable<TData, TValue>({
                                 <TableRow
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
-                                    className="border-b border-light-border dark:border-dark-border"
                                 >
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell key={cell.id}>
-                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            {flexRender(
+                                                cell.column.columnDef.cell,
+                                                cell.getContext()
+                                            )}
                                         </TableCell>
                                     ))}
                                 </TableRow>
@@ -153,25 +257,32 @@ export function UserDataTable<TData, TValue>({
                     </TableBody>
                 </Table>
             </div>
-            <div className="flex items-center justify-end space-x-2 py-4">
-                <Button
-                    className="bg-light-sub-bg dark:bg-dark-sub-bg text-light-text dark:text-dark-text"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
-                >
-                    Previous
-                </Button>
-                <Button
-                    className="bg-light-sub-bg dark:bg-dark-sub-bg text-light-text dark:text-dark-text"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
-                >
-                    Next
-                </Button>
+            <div className="flex justify-between items-center py-4 space-y-4 flex-col sm:flex-row">
+                <div className="flex items-center space-x-2">
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => table.previousPage()}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        Previous
+                    </Button>
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => table.nextPage()}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        Next
+                    </Button>
+                </div>
+                <span className="flex items-center gap-1 text-sm font-medium">
+                    Page
+                    <strong>
+                        {table.getState().pagination.pageIndex + 1} of{" "}
+                        {table.getPageCount()}
+                    </strong>
+                </span>
             </div>
         </div>
     )
