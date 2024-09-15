@@ -57,7 +57,6 @@ export default function RecruitmentForm() {
                 setCommittees(response.data.data);
             } catch (error) {
                 setError('Failed to fetch committees');
-                console.error(error);
             } finally {
                 setLoading(false);
             }
@@ -93,7 +92,6 @@ export default function RecruitmentForm() {
         axios.post('https://ieeeguc-backend-production.up.railway.app/api/applications', dataToSubmit)
             .then(response => {
                 setSuccess(true);
-                console.log('Form submitted successfully:', response);
                 toast({
                     title: "Success",
                     description: "Your application has been submitted successfully!",
@@ -101,7 +99,6 @@ export default function RecruitmentForm() {
                 });
             })
             .catch(error => {
-                console.error('Error submitting form:', error);
                 let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
                 if (errorMessage.includes('duplicate')) {
                     errorMessage = "You have already submitted an application"

@@ -22,14 +22,15 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input"
-import { Filter, Search } from "react-feather"
+import { Filter, Search, UserPlus } from "react-feather"
+import ResponsiveDialog from "@/app/components/ResponsiveDialog"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function UserDataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
@@ -90,6 +91,20 @@ export function DataTable<TData, TValue>({
                         }
                         className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block w-full dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
+                </div>
+                <div className="w-full sm:w-fit ">
+                    < ResponsiveDialog
+                        trigger={
+                            <Button
+                                variant={"outline"}
+                                className='w-full sm:w-fit bg-light-sub-bg dark:bg-dark-sub-bg h-full rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-110 active:scale-90'
+                            ><UserPlus />&nbsp;&nbsp;Add user</Button>}
+                        title="Add User"
+                    >
+                        <>
+                        </>
+                    </ResponsiveDialog>
+
                 </div>
             </div>
             <div className="rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text">
