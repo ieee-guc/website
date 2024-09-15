@@ -24,6 +24,7 @@ export default function Recruitment() {
             try {
                 const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
                 setCommittees(response.data.data);
+                console.log(response.data.data)
             } catch (error) {
                 setError('Failed to fetch committees');
                 console.error(error);

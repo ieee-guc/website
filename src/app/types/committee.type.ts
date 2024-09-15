@@ -1,4 +1,4 @@
-import { Document, Types } from 'mongoose';
+import { Types } from 'mongoose';
 
 export interface Committee {
     _id: string;
@@ -12,5 +12,6 @@ export interface Committee {
         firstName: string;
         secondName: string;
         photoURL: string;
-    }; directory: 'Software' | 'Operation' | 'Hardware' | 'Creative' | 'JTP';
+    };
+    directory: 'Software' | 'Operation' | 'Hardware' | 'Creative' | 'JTP';
 }
