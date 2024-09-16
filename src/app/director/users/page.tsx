@@ -26,6 +26,40 @@ import RejectApplication from "./RejectApplication";
 
 const usersColumns: ColumnDef<User>[] = [
     {
+        accessorKey: "photo",
+        header: "Photo",
+        cell: ({ row }) => {
+            const photoURL = row.original.photoURL;
+            const firstName = row.original.firstName;
+            const secondName = row.original.secondName;
+            return (<ResponsiveDialog
+                trigger={
+                    <div className="group flex space-x-2 cursor-pointer items-center">
+                        <Image
+                            className="w-1000 h-1000 rounded-full object-cover"
+                            src={photoURL || "https://i.imgur.com/70sZB5B.png"}
+                            alt={`User ${row.original._id}`}
+                            width={50}
+                            height={50}
+                        />
+                    </div>}
+                title={`${firstName} ${secondName} Photo`}
+                confirm={false}
+                danger={false}
+                confirmAction={() => { }}
+                dangerAction={() => { }}
+            >
+                <Image
+                    className="w-full h-full object-cover rounded-xl"
+                    src={photoURL || "https://i.imgur.com/70sZB5B.png"}
+                    alt={`User ${row.original._id}`}
+                    width={500}
+                    height={500}
+                />
+            </ResponsiveDialog >)
+        }
+    },
+    {
         accessorKey: "name",
         header: "Name",
         cell: ({ row }) => {
@@ -209,7 +243,7 @@ const applicationsColumns: ColumnDef<Application>[] = [
 
             return (
                 <div className="flex items-center space-x-2">
-                    <div className={`w-4 h-4 rounded-full ${status === "accepted" ? "bg-light-success-bg dark:bg-dark-success-bg bg-light-error-bg dark:bg-dark-error-bg" : status === "rejected" ? "bg-light-danger-bg dark:bg-dark-danger-bg" : "bg-light-secondary"}`}></div>
+                    <div className={`w - 4 h - 4 rounded - full ${status === "accepted" ? "bg-light-success-bg dark:bg-dark-success-bg bg-light-error-bg dark:bg-dark-error-bg" : status === "rejected" ? "bg-light-danger-bg dark:bg-dark-danger-bg" : "bg-light-secondary"}`}></div>
                     <p>{status?.charAt(0).toUpperCase() + status?.slice(1).toLowerCase()}</p>
 
                 </div >
