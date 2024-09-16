@@ -20,19 +20,29 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDown } from "lucide-react";
-import { Eye } from "react-feather";
+import { Eye, Copy, Check } from "react-feather";
 import ResponsiveDialog from "@/app/components/ResponsiveDialog";
 import Link from "next/link";
 import Image from "next/image";
 import EditUser from "./EditUser";
 import DeleteUser from './DeleteUser';
 import { ImpulseSpinner } from 'react-spinners-kit';
+import { Committee } from "@/app/types/committee.type";
 
 const usersColumns: ColumnDef<User>[] = [
     {
         accessorKey: "name",
         header: "Name",
-        cell: ({ row }) => `${row.original.firstName ? row.original.firstName : ''} ${row.original.secondName ? row.original.secondName : ''}`,
+        // cell: ({ row }) => `${}`,
+        cell: ({ row }) => {
+            const name = (row.original.firstName ? row.original.firstName : '') + " " + (row.original.secondName ? row.original.secondName : '')
+            return (<div className="group flex space-x-2 cursor-copy items-center">
+                <p className="" onClick={() => navigator.clipboard.writeText(name)}
+                >{name}</p >
+                <Copy size={14} className="hidden group-hover:flex group-active:hidden" />
+                <Check size={14} className="bg-light-success-bg dark:bg-dark-success-bg text-light-success-text dark:text-dark-success-text p-0 rounded-full hidden group-hover:hidden group-active:flex" />
+            </div>)
+        }
     },
     {
         accessorKey: "email",
@@ -45,14 +55,33 @@ const usersColumns: ColumnDef<User>[] = [
                 <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
         ),
+        cell: ({ row }) => {
+            const email = row.original.email
+            return (<div className="group flex space-x-2 cursor-copy items-center">
+                <p className="" onClick={() => navigator.clipboard.writeText(email)}
+                >{email}</p >
+                <Copy size={14} className="hidden group-hover:flex group-active:hidden" />
+                <Check size={14} className="bg-light-success-bg dark:bg-dark-success-bg text-light-success-text dark:text-dark-success-text p-0 rounded-full hidden group-hover:hidden group-active:flex" />
+            </div>)
+        }
     },
     {
         accessorKey: "phone",
         header: "Phone",
+        cell: ({ row }) => {
+            const phone = row.original.phone
+            return (<div className="group flex space-x-2 cursor-copy items-center">
+                <p className="" onClick={() => navigator.clipboard.writeText(phone)}
+                >{phone}</p >
+                <Copy size={14} className="hidden group-hover:flex group-active:hidden" />
+                <Check size={14} className="bg-light-success-bg dark:bg-dark-success-bg text-light-success-text dark:text-dark-success-text p-0 rounded-full hidden group-hover:hidden group-active:flex" />
+            </div>)
+        }
     },
     {
         accessorKey: "role",
         header: "Role",
+        cell: ({ row }) => row.original.role.charAt(0).toUpperCase() + row.original.role.slice(1).toLowerCase(),
     },
     {
         accessorKey: "committee",
@@ -108,6 +137,8 @@ export default function Users() {
     const [loadingUsers, setLoadingUsers] = useState(true);
     const [applications, setApplications] = useState<Application[]>([]);
     const [loadingApplications, setLoadingApplications] = useState(true);
+    const [committees, setCommittees] = useState<String[]>([]);
+    const [roles, setRoles] = useState<String[]>([]);
 
     const applicationsColumns: ColumnDef<Application>[] = [
         {
@@ -140,39 +171,11 @@ export default function Users() {
         {
             accessorKey: "committee",
             header: "Committee",
-            cell: ({ row }) => row.original.committee
+            // cell: ({ row }) => row.original.committee
         },
         {
             accessorKey: "status",
             header: "Status",
-        },
-        {
-            id: "actions",
-            cell: ({ row }) => {
-                const user = row.original
-
-                return (
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" className="h-8 w-8 p-0">
-                                <span className="sr-only">Open menu</span>
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="bg-white">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem
-                                className="hover:text-red-500 hover:cursor-pointer"
-                                onClick={() => navigator.clipboard.writeText(user.email)}
-                            >
-                                Copy Email
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>View customer</DropdownMenuItem>
-                            <DropdownMenuItem>View user details</DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                )
-            },
         },
     ]
 
@@ -180,6 +183,13 @@ export default function Users() {
         axios.get('https://ieeeguc-backend-production.up.railway.app/api/users')
             .then((response) => {
                 setUsers(response.data.data);
+                setCommittees(
+                    Array.from(new Set<String>(
+                        response.data.data
+                            .filter((user: { committee: { name: string } }) => user.committee && user.committee.name) // Filter out users without a committee or name
+                            .map((user: { committee: { name: string } }) => user.committee.name) // Map to committee names
+                    ))
+                );
                 console.log(response.data.data)
             })
             .catch((error) => {
