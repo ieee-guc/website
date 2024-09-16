@@ -81,9 +81,11 @@ export function UserDataTable<TData, TValue>({
                     <Search className="text-slate-400 dark:text-gray-400 ml-4" />
 
                     <Input
-                        placeholder="Search by name, email, or phone..."
-                        value={searchValue}
-                        onChange={(event) => handleSearch(event.target.value)}
+                        placeholder="Search by email..."
+                        value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+                        onChange={(event) =>
+                            table.getColumn("email")?.setFilterValue(event.target.value)
+                        }
                         className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-11/12 mx-auto"
                     />
                 </div>

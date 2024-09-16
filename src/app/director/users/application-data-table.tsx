@@ -58,15 +58,16 @@ export function ApplicationDataTable<TData, TValue>({
         <div>
             <div className="flex items-center py-4 justify-between gap-4 flex-col sm:flex-row">
                 <div
-                    className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Search className="text-slate-400 dark:text-gray-400 ml-4" />
+
                     <Input
                         placeholder="Search by email..."
                         value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
                         onChange={(event) =>
                             table.getColumn("email")?.setFilterValue(event.target.value)
                         }
-                        className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block w-full dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-11/12 mx-auto"
                     />
                 </div>
                 <div

@@ -87,7 +87,7 @@ export default function AddUser() {
             trigger={<Button
                 title="Add new user"
                 variant={"outline"}
-                className='w-full sm:w-fit bg-light-sub-bg dark:bg-dark-sub-bg h-full rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-110 active:scale-90'
+                className=' mx-auto w-11/12 sm:w-fit bg-light-sub-bg dark:bg-dark-sub-bg h-full rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-110 active:scale-90'
             ><UserPlus className="mr-2" />Add user</Button>}
         >
             <form className="space-y-2">
