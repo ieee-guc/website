@@ -7,12 +7,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button";
 import axios from 'axios';
 import { ColumnDef } from "@tanstack/react-table";
-import { Application } from '@/app/types/application.type';
 import { Committee } from "../../types/committee.type";
-import { ArrowUpDown } from "lucide-react";
 import { Eye, Copy, Check } from "react-feather";
 import ResponsiveDialog from "@/app/components/ResponsiveDialog";
-import Link from "next/link";
 import Image from "next/image";
 import { ImpulseSpinner } from 'react-spinners-kit';
 import EditCommittee from "./EditCommittee";

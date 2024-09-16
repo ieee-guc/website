@@ -26,6 +26,7 @@ import { Filter, Search } from "react-feather"
 import { useState } from "react"
 import axios from "axios"
 import { Committee } from "@/app/types/committee.type"
+import AddCommittee from "./AddCommittee"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -68,16 +69,16 @@ export function CommitteeDataTable<TData, TValue>({
 
     return (
         <div>
-            {/* <div className="flex items-center py-4 justify-evenly gap-4 flex-col sm:flex-row">
+            <div className="flex items-center py-4 justify-evenly gap-4 flex-col sm:flex-row">
                 <div
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Search className="text-slate-400 dark:text-gray-400 ml-4" />
 
                     <Input
-                        placeholder="Search by email..."
-                        value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+                        placeholder="Search by name..."
+                        value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
                         onChange={(event) =>
-                            table.getColumn("email")?.setFilterValue(event.target.value)
+                            table.getColumn("name")?.setFilterValue(event.target.value)
                         }
                         className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-11/12 mx-auto"
                     />
@@ -86,19 +87,20 @@ export function CommitteeDataTable<TData, TValue>({
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
                     <select
-                        value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) => table.getColumn("role")?.setFilterValue(event.target.value)}
+                        value={(table.getColumn("directory")?.getFilterValue() as string) ?? ""}
+                        onChange={(event) => table.getColumn("directory")?.setFilterValue(event.target.value)}
                         className="text-sm p-2.5 focus:outline-none placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 rounded-xl focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     >
-                        <option value="">Filter by role...</option>
-                        {roles.map((role: string) => (
-                            <option key={role} value={role}>
-                                {role}
+                        <option value="">Filter by directory...</option>
+                        {["Software", "Hardware", "Operation", "Creative", "JTP"].map((directory) => (
+                            <option key={directory} value={directory}>
+                                {directory}
                             </option>
                         ))}
                     </select>
                 </div>
-                <div
+                <AddCommittee />
+                {/* <div
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
                     <select
@@ -113,8 +115,9 @@ export function CommitteeDataTable<TData, TValue>({
                             </option>
                         ))}
                     </select>
-                </div>
-            </div> */}
+                </div> */}
+            </div>
+
             <div className="rounded-xl border dark:border-gray-600">
                 <Table className="text-light-text dark:text-dark-text">
                     <TableHeader>
