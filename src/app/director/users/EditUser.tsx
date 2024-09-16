@@ -59,7 +59,7 @@ export default function EditUser({ user }: { user: any }) {
         committee: user.committee || '',
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData(prevFormData => {
             const updatedData = { ...prevFormData, [name]: value };
