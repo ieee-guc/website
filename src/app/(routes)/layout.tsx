@@ -9,7 +9,6 @@ import { AuthProvider } from "../contexts/authContext";
 import Top from "../components/Top";
 import { Toaster } from "@/components/ui/toaster"
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

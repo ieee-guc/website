@@ -23,7 +23,7 @@ const config: Config = {
                     'danger-bg': '#ef4a44',
                     'danger-text': '#fef2f2',
                     'success-bg': '#22c55e',
-                    'success-text': '#052e16'
+                    'success-text': '#ffffff'
                 },
                 dark: {
                     primary: '#0A4593',

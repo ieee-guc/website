@@ -7,17 +7,27 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
+import { UserPlus } from 'react-feather';
 
-export default function EditUser({ user }: { user: any }) {
+export default function AddUser() {
     const { toast } = useToast()
 
-    const handleEdit = async (data: any) => {
-        await axios.patch(`https://ieeeguc-backend-production.up.railway.app/api/users/${user._id}`, data)
+    const handleAddUser = async (data: any) => {
+        await axios.post(`https://ieeeguc-backend-production.up.railway.app/api/users`, data)
             .then(() => {
                 toast({
                     title: "Success",
-                    description: "The user has been updated",
+                    description: "The user has been added",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
+                });
+                setFormData({
+                    firstName: '',
+                    secondName: '',
+                    email: '',
+                    password: '',
+                    phone: '',
+                    role: '',
+                    committee: '',
                 });
             })
             .catch((error) => {
@@ -30,12 +40,13 @@ export default function EditUser({ user }: { user: any }) {
     };
 
     const [formData, setFormData] = useState({
-        firstName: user.firstName || '',
-        secondName: user.secondName || '',
-        email: user.email || '',
-        phone: user.phone || '',
-        role: user.role || '',
-        committee: user.committee?.name || '',
+        firstName: '',
+        secondName: '',
+        email: '',
+        password: '',
+        phone: '',
+        role: '',
+        committee: '',
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,16 +59,17 @@ export default function EditUser({ user }: { user: any }) {
 
     return (
         <ResponsiveDialog
+            title="Add New User"
             danger={false}
             dangerAction={() => { }}
             confirm={true}
-            confirmAction={() => { handleEdit(formData); }}
-            trigger={<Button className="p-1 hover:text-light-primary dark:hover:text-dark-secondary">
-                <Edit size={18} />
-            </Button>}
-            title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
+            confirmAction={() => { handleAddUser(formData); }}
+            trigger={<Button
+                variant={"outline"}
+                className='w-full sm:w-fit bg-light-sub-bg dark:bg-dark-sub-bg h-full rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-110 active:scale-90'
+            ><UserPlus className="mr-2" />Add user</Button>}
         >
-            <form className="space-y-4">
+            <form className="space-y-2">
                 <div>
                     <input
                         type="text"
@@ -73,8 +85,8 @@ export default function EditUser({ user }: { user: any }) {
                     <input
                         type="text"
                         id="secondName"
-                        name="secondName"
                         placeholder="Second Name"
+                        name="secondName"
                         value={formData.secondName}
                         onChange={handleChange}
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
@@ -85,8 +97,19 @@ export default function EditUser({ user }: { user: any }) {
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="email"
+                        placeholder="Email"
                         value={formData.email}
+                        onChange={handleChange}
+                        className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
+                    />
+                </div>
+                <div>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
                         onChange={handleChange}
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     />
@@ -96,7 +119,7 @@ export default function EditUser({ user }: { user: any }) {
                         type="text"
                         id="phone"
                         name="phone"
-                        placeholder="phone"
+                        placeholder="Phone"
                         value={formData.phone}
                         onChange={handleChange}
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
@@ -121,7 +144,7 @@ export default function EditUser({ user }: { user: any }) {
                         placeholder="Committee"
                         value={formData.committee}
                         onChange={handleChange}
-                        className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
+                        className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-11/12 mx-auto"
                     />
                 </div>
             </form>

@@ -24,6 +24,7 @@ import ResponsiveDialog from "@/app/components/ResponsiveDialog";
 import Link from "next/link";
 import Image from "next/image";
 import EditUser from "./EditUser";
+import DeleteUser from './DeleteUser';
 
 const usersColumns: ColumnDef<User>[] = [
     {
@@ -94,23 +95,8 @@ const usersColumns: ColumnDef<User>[] = [
                     </ResponsiveDialog>
 
                     <EditUser user={user} />
-                    {/* <ResponsiveDialog
-                        danger={false}
-                        dangerAction={() => { }}
-                        confirm={true}
-                        confirmAction={() => { handleEdit(formData); }}
-                        trigger={<Button className="p-1 hover:text-light-primary dark:hover:text-dark-secondary">
-                            <Edit size={18} />
-                        </Button>}
-                        title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
-                    >
-                        <div>
-                            <UserEditForm
-                                user={user}
-                                onChange={(updatedData) => handleFormChange(updatedData)}
-                            />
-                        </div>
-                    </ResponsiveDialog> */}
+
+                    <DeleteUser user={user} />
 
                     < ResponsiveDialog
                         danger={true}
