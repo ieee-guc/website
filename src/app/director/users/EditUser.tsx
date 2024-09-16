@@ -4,12 +4,33 @@ import React from 'react'
 import ResponsiveDialog from '@/app/components/ResponsiveDialog';
 import { Edit } from 'react-feather';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
+import { Committee } from '@/app/types/committee.type';
 
 export default function EditUser({ user }: { user: any }) {
     const { toast } = useToast()
+    const [committees, setCommittees] = useState([]);
+    const [directories, setDirectories] = useState([]);
+    useEffect(() => {
+        axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees')
+            .then((response: any) => {
+                setCommittees(response.data.data);
+                if (committees.length > 0) {
+                    const dirs: any = Array.from(new Set(committees.map((committee: any) => committee.directory)));
+                    setDirectories(dirs);
+                }
+            })
+            .catch((error) => {
+                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
+                toast({
+                    title: "Error",
+                    description: errorMessage,
+                    className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                });
+            })
+    })
 
     const handleEdit = async (data: any) => {
         await axios.patch(`https://ieeeguc-backend-production.up.railway.app/api/users/${user._id}`, data)
@@ -35,7 +56,7 @@ export default function EditUser({ user }: { user: any }) {
         email: user.email || '',
         phone: user.phone || '',
         role: user.role || '',
-        committee: user.committee?.name || '',
+        committee: user.committee || '',
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -113,16 +134,32 @@ export default function EditUser({ user }: { user: any }) {
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     />
                 </div>
-                <div>
+                {/* <div>
                     <input
                         type="text"
                         id="committee"
                         name="committee"
                         placeholder="Committee"
-                        value={formData.committee}
+                        value={formData.committee._id}
                         onChange={handleChange}
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     />
+                </div> */}
+                <div>
+                    <select
+                        id="committee"
+                        name="committee"
+                        value={formData.committee._id}  // Make sure this matches the _id of the committee
+                        onChange={handleChange}
+                        className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-11/12 mx-auto"
+                    >
+                        <option value="" disabled>Select Committee</option>
+                        {committees.map((committee: any) => (
+                            <option key={committee._id} value={committee._id}>
+                                {committee.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             </form>
         </ResponsiveDialog>

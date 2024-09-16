@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import { UserDataTable } from "./user-data-table"
@@ -19,7 +20,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ArrowUpDown } from "lucide-react";
-import { Copy, Edit, Trash2, Eye } from "react-feather";
+import { Eye } from "react-feather";
 import ResponsiveDialog from "@/app/components/ResponsiveDialog";
 import Link from "next/link";
 import Image from "next/image";
@@ -63,10 +64,6 @@ const usersColumns: ColumnDef<User>[] = [
         header: "Actions",
         cell: ({ row }) => {
             const user = row.original;
-            const handleEdit = async (data: any) => {
-                await axios.patch(`https://ieeeguc-backend-production.up.railway.app/api/users/${user._id}`, data);
-
-            };
 
             return (
                 <div>
@@ -143,7 +140,7 @@ export default function Users() {
         {
             accessorKey: "committee",
             header: "Committee",
-            cell: ({ row }) => row.original.committee?.name
+            cell: ({ row }) => row.original.committee
         },
         {
             accessorKey: "status",
@@ -183,6 +180,7 @@ export default function Users() {
         axios.get('https://ieeeguc-backend-production.up.railway.app/api/users')
             .then((response) => {
                 setUsers(response.data.data);
+                console.log(response.data.data)
             })
             .catch((error) => {
                 let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
@@ -217,15 +215,15 @@ export default function Users() {
 
     useEffect(() => {
         fetchUsers();
-    });
+    }, []);
 
     useEffect(() => {
         fetchApplications();
-    });
+    }, []);
 
     useEffect(() => {
         document.title = "Users"
-    })
+    }, [])
 
     return (
         <section className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
