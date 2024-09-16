@@ -65,7 +65,7 @@ export default function ResponsiveDialog({
         <>
             {memoizedTrigger}
             {isDesktop ? (
-                <Dialog open={open} onOpenChange={setOpen}>
+                <Dialog open={open} onOpenChange={setOpen} >
                     <DialogContent className="sm:max-w-[425px] bg-light-sub-bg dark:bg-dark-sub-bg rounded-xl text-light-text dark:text-dark-text">
                         <DialogHeader>
                             <DialogTitle>{title}</DialogTitle>

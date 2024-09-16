@@ -86,7 +86,12 @@ const usersColumns: ColumnDef<User>[] = [
     {
         accessorKey: "committee",
         header: "Committee",
-        cell: ({ row }) => row.original.committee?.name
+        cell: ({ row }) => row.original.committee?.name || "No Committee",
+        filterFn: (row, column, filterValue) => {
+            const committeeObject: Committee = row.getValue(column);
+            const committeeName: String = committeeObject.name;
+            return committeeName.toString().toLowerCase().includes(filterValue.toLowerCase());
+        },
     },
     {
         id: "actions",
@@ -95,15 +100,14 @@ const usersColumns: ColumnDef<User>[] = [
             const user = row.original;
 
             return (
-                <div>
+                <div className="flex">
                     <ResponsiveDialog
                         title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
                         danger={false}
                         dangerAction={() => { }}
                         confirm={false}
                         confirmAction={() => { }}
-                        // trigger={<div className="flex items-center"><Eye size={18} /></div>}
-                        trigger={<Button className="p-1 hover:text-light-primary dark:hover:text-dark-secondary">
+                        trigger={<Button className="p-1 hover:text-light-primary dark:hover:text-dark-secondary h-fit">
                             <Eye size={18} /></Button>}
                     >
                         {user.photoURL ? <Image className="w-1/2 self-center rounded-xl mx-auto my-4" src={user.photoURL} alt="" width={200} height={200} /> : null}
@@ -137,8 +141,8 @@ export default function Users() {
     const [loadingUsers, setLoadingUsers] = useState(true);
     const [applications, setApplications] = useState<Application[]>([]);
     const [loadingApplications, setLoadingApplications] = useState(true);
-    const [committees, setCommittees] = useState<String[]>([]);
-    const [roles, setRoles] = useState<String[]>([]);
+    const [committees, setCommittees] = useState<string[]>([]);
+    const [roles, setRoles] = useState<string[]>([]);
 
     const applicationsColumns: ColumnDef<Application>[] = [
         {
@@ -184,13 +188,19 @@ export default function Users() {
             .then((response) => {
                 setUsers(response.data.data);
                 setCommittees(
-                    Array.from(new Set<String>(
+                    Array.from(new Set<string>(
                         response.data.data
-                            .filter((user: { committee: { name: string } }) => user.committee && user.committee.name) // Filter out users without a committee or name
-                            .map((user: { committee: { name: string } }) => user.committee.name) // Map to committee names
+                            .filter((user: { committee: { name: string } }) => user.committee && user.committee.name)
+                            .map((user: { committee: { name: string } }) => user.committee.name)
                     ))
                 );
-                console.log(response.data.data)
+                setRoles(
+                    Array.from(new Set<string>(
+                        response.data.data
+                            .filter((user: { role: string }) => user.role)
+                            .map((user: { role: string }) => user.role)
+                    ))
+                );
             })
             .catch((error) => {
                 let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
@@ -247,7 +257,7 @@ export default function Users() {
                         <div className="container mx-auto py-2">
                             {loadingUsers ?
                                 <div className="mx-auto w-fit mt-4"><ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" /> </div> :
-                                <UserDataTable columns={usersColumns} data={users} />}
+                                <UserDataTable columns={usersColumns} data={users} committees={committees} roles={roles} />}
                         </div>
                     </TabsContent>
                     <TabsContent value="applications">

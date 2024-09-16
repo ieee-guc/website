@@ -27,20 +27,23 @@ import ResponsiveDialog from "@/app/components/ResponsiveDialog"
 import { useState } from "react"
 import axios from "axios"
 import AddUser from "./AddUser"
+import { Committee } from "@/app/types/committee.type"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
+    committees: string[]
+    roles: string[]
 }
 
 export function UserDataTable<TData, TValue>({
     columns,
     data,
+    committees,
+    roles
 }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([])
-    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-        []
-    )
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
 
     const table = useReactTable({
         data,
@@ -59,7 +62,7 @@ export function UserDataTable<TData, TValue>({
 
     const handleAddUserSubmit = async (userData: any) => {
         try {
-            console.log("User Data: ", userData);  // Log the entire userData object
+            console.log("User Data: ", userData);
             await axios.post('https://ieeeguc-backend-production.up.railway.app/api/users', userData);
             console.log('User added successfully!');
         } catch (error) {
@@ -86,42 +89,34 @@ export function UserDataTable<TData, TValue>({
                 <div
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
-                    <Input
-                        placeholder="Filter by role..."
+                    <select
                         value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) =>
-                            table.getColumn("role")?.setFilterValue(event.target.value)
-                        }
-                        className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
-                    />
+                        onChange={(event) => table.getColumn("role")?.setFilterValue(event.target.value)}
+                        className="text-sm p-2.5 focus:outline-none placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 rounded-xl focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
+                    >
+                        <option value="">Filter by role...</option>
+                        {roles.map((role: string) => (
+                            <option value={role}>
+                                {role}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
-                    <Input
-                        placeholder="Filter by committee..."
+                    <select
                         value={(table.getColumn("committee")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) =>
-                            table.getColumn("committee")?.setFilterValue(event.target.value)
-                        }
-                        className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
-                    />
-                    {/* <div>
-                        <select
-                            id="committee"
-                            name="committee"
-                            value={formData.committee._id}  // Make sure this matches the _id of the committee
-                            onChange={handleChange}
-                            className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-11/12 mx-auto"
-                        >
-                            <option value="" disabled>Select Committee</option>
-                            {committees.map((committee: any) => (
-                                <option key={committee._id} value={committee._id}>
-                                    {committee.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div> */}
+                        onChange={(event) => table.getColumn("committee")?.setFilterValue(event.target.value)}
+                        className="text-sm p-2.5 focus:outline-none placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 rounded-xl focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
+                    >
+                        <option value="">Filter by committee...</option>
+                        {committees.map((committee: string) => (
+                            <option value={committee}>
+                                {committee}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <AddUser />
             </div>

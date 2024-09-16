@@ -73,7 +73,7 @@ export default function EditUser({ user }: { user: any }) {
             dangerAction={() => { }}
             confirm={true}
             confirmAction={() => { handleEdit(formData); }}
-            trigger={<Button className="p-1 hover:text-light-primary dark:hover:text-dark-secondary">
+            trigger={<Button className="p-1 hover:text-light-primary dark:hover:text-dark-secondary h-fit">
                 <Edit size={18} />
             </Button>}
             title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
