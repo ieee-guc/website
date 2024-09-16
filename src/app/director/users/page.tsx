@@ -39,8 +39,8 @@ const usersColumns: ColumnDef<User>[] = [
                             className="w-1000 h-1000 rounded-full object-cover"
                             src={photoURL || "https://i.imgur.com/70sZB5B.png"}
                             alt={`User ${row.original._id}`}
-                            width={50}
-                            height={50}
+                            width={40}
+                            height={40}
                         />
                     </div>}
                 title={`${firstName} ${secondName} Photo`}
