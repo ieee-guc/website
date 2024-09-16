@@ -1,20 +1,23 @@
+"use client"
+
 import React from 'react'
 import ResponsiveDialog from '@/app/components/ResponsiveDialog';
 import { Trash2 } from 'react-feather';
 import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
+import { Committee } from '@/app/types/committee.type';
 
-
-export default function DeleteApplication({ application }: { application: any }) {
+export default function DeletCommittee({ committee }: { committee: Committee }) {
     const { toast } = useToast()
 
     const handleDelete = async () => {
-        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/applications/${application._id}`)
+        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/committees/${committee._id}`)
             .then(() => {
                 toast({
                     title: "Success",
-                    description: "The application has been deleted",
+                    description: "The committee has been deleted",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
             })
@@ -30,16 +33,15 @@ export default function DeleteApplication({ application }: { application: any })
     return (
         <ResponsiveDialog
             danger={true}
-            dangerAction={(event) => {
-                event?.preventDefault();
-                handleDelete();
-            }}
+            dangerAction={() => { handleDelete() }}
             confirm={false}
             confirmAction={() => { }}
-            trigger={<Button title="Delete" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit"><Trash2 size={18} /></Button>}
-            title={(application.firstName ? application.firstName + " " : "") + (application.secondName ? application.secondName : "")}
+            trigger={<Button title="Delete" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit">
+                <Trash2 size={18} /></Button>}
+            title={committee.name + " " + (committee.abbreviation ? `(${committee.abbreviation})` : '')}
         >
-            <p className="text-xl">You are about to delete this application</p>
+            <p className="text-xl">You are about to delete this committee</p>
+
         </ResponsiveDialog>
     )
 }
