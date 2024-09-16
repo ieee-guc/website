@@ -96,7 +96,7 @@ export function UserDataTable<TData, TValue>({
                     >
                         <option value="">Filter by role...</option>
                         {roles.map((role: string) => (
-                            <option value={role}>
+                            <option key={role} value={role}>
                                 {role}
                             </option>
                         ))}
@@ -112,7 +112,7 @@ export function UserDataTable<TData, TValue>({
                     >
                         <option value="">Filter by committee...</option>
                         {committees.map((committee: string) => (
-                            <option value={committee}>
+                            <option key={committee} value={committee}>
                                 {committee}
                             </option>
                         ))}
@@ -193,6 +193,6 @@ export function UserDataTable<TData, TValue>({
                     </strong>
                 </span>
             </div>
-        </div>
+        </div >
     )
 }
