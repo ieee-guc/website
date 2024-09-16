@@ -86,7 +86,9 @@ export default function ResponsiveDialog({
                         <DrawerHeader className="text-left">
                             <DrawerTitle>{title}</DrawerTitle>
                         </DrawerHeader>
-                        {children}
+                        <div className="w-11/12 sm:w-full mx-auto">
+                            {children}
+                        </div>
                         <DrawerFooter className="pt-2">
                             {danger && <Button variant="outline" onClick={handleDangerAction} className="bg-light-danger-bg dark:bg-dark-danger-bg text-white hover:bg-white hover:text-light-danger-bg">Confirm</Button>}
                             {confirm && <Button variant="outline" onClick={handleConfirmAction} className="bg-light-primary text-white hover:bg-white hover:text-light-primary">Confirm</Button>}

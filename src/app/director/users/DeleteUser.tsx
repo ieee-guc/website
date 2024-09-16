@@ -9,8 +9,8 @@ import { useToast } from '@/hooks/use-toast';
 export default function DeleteUser({ user }: { user: any }) {
     const { toast } = useToast()
 
-    const handleDelete = async (event: any) => {
-        event.preventDefault();
+    const handleDelete = async () => {
+        console.log(user._id)
         await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/users/${user._id}`)
             .then(() => {
                 toast({
@@ -31,13 +31,16 @@ export default function DeleteUser({ user }: { user: any }) {
     return (
         <ResponsiveDialog
             danger={true}
-            dangerAction={() => { }}
+            dangerAction={(event) => {
+                event?.preventDefault();
+                handleDelete();
+            }}
             confirm={false}
-            confirmAction={() => { (event: any) => { handleDelete(event); } }}
+            confirmAction={() => { }}
             trigger={<Button className="p-1 hover:text-light-red dark:hover:text-dark-red"><Trash2 size={18} /></Button>}
             title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
         >
-            <p className="text-xl w-11/12">You are about to delete this user.</p>
+            <p className="text-xl">You are about to delete this user.</p>
         </ResponsiveDialog>
     )
 }

@@ -25,6 +25,7 @@ import Link from "next/link";
 import Image from "next/image";
 import EditUser from "./EditUser";
 import DeleteUser from './DeleteUser';
+import { ImpulseSpinner } from 'react-spinners-kit';
 
 const usersColumns: ColumnDef<User>[] = [
     {
@@ -98,20 +99,6 @@ const usersColumns: ColumnDef<User>[] = [
 
                     <DeleteUser user={user} />
 
-                    < ResponsiveDialog
-                        danger={true}
-                        dangerAction={() => {
-                            axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/users/${row.original._id}`)
-                        }}
-                        confirm={false}
-                        confirmAction={() => { }}
-                        trigger={<Button className="p-1 hover:text-light-red dark:hover:text-dark-red"><Trash2 size={18} /></Button>}
-                        title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
-                    >
-                        <div>
-                            <p className="text-xl">You are about to delete this user.</p>
-                        </div>
-                    </ResponsiveDialog>
                 </div >
             );
         },
@@ -121,7 +108,9 @@ const usersColumns: ColumnDef<User>[] = [
 export default function Users() {
     const { toast } = useToast()
     const [users, setUsers] = useState<User[]>([]);
+    const [loadingUsers, setLoadingUsers] = useState(true);
     const [applications, setApplications] = useState<Application[]>([]);
+    const [loadingApplications, setLoadingApplications] = useState(true);
 
     const applicationsColumns: ColumnDef<Application>[] = [
         {
@@ -202,7 +191,10 @@ export default function Users() {
                     description: errorMessage,
                     className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
                 });
-            });
+            })
+            .finally(() => {
+                setLoadingUsers(false);
+            })
     };
 
     const fetchApplications = async () => {
@@ -217,6 +209,9 @@ export default function Users() {
                     description: errorMessage,
                     className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
                 });
+            })
+            .finally(() => {
+                setLoadingApplications(false);
             });
     };
 
@@ -242,12 +237,16 @@ export default function Users() {
                     </TabsList>
                     <TabsContent value="users">
                         <div className="container mx-auto py-2">
-                            <UserDataTable columns={usersColumns} data={users} />
+                            {loadingUsers ?
+                                <div className="mx-auto w-fit mt-4"><ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" /> </div> :
+                                <UserDataTable columns={usersColumns} data={users} />}
                         </div>
                     </TabsContent>
                     <TabsContent value="applications">
                         <div className="container mx-auto py-2">
-                            <ApplicationDataTable columns={applicationsColumns} data={applications} />
+                            {loadingApplications ?
+                                <div className="mx-auto w-fit mt-4"><ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" /> </div> :
+                                <ApplicationDataTable columns={applicationsColumns} data={applications} />}
                         </div>
                     </TabsContent>
                 </Tabs>
