@@ -6,15 +6,15 @@ import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
 
 
-export default function DeleteUser({ user }: { user: any }) {
+export default function DeleteApplication({ application }: { application: any }) {
     const { toast } = useToast()
 
     const handleDelete = async () => {
-        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/users/${user._id}`)
+        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/applications/${application._id}`)
             .then(() => {
                 toast({
                     title: "Success",
-                    description: "The user has been deleted",
+                    description: "The application has been deleted",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
             })
@@ -37,9 +37,9 @@ export default function DeleteUser({ user }: { user: any }) {
             confirm={false}
             confirmAction={() => { }}
             trigger={<Button title="Delete" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit"><Trash2 size={18} /></Button>}
-            title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
+            title={(application.firstName ? application.firstName + " " : "") + (application.secondName ? application.secondName : "")}
         >
-            <p className="text-xl">You are about to delete this user.</p>
+            <p className="text-xl">You are about to delete this application.</p>
         </ResponsiveDialog>
     )
 }

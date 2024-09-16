@@ -11,14 +11,6 @@ import axios from 'axios';
 import { ColumnDef } from "@tanstack/react-table";
 import { Application } from '@/app/types/application.type';
 import { User } from "../../types/user.type";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { ArrowUpDown } from "lucide-react";
 import { Eye, Copy, Check } from "react-feather";
 import ResponsiveDialog from "@/app/components/ResponsiveDialog";
@@ -28,12 +20,14 @@ import EditUser from "./EditUser";
 import DeleteUser from './DeleteUser';
 import { ImpulseSpinner } from 'react-spinners-kit';
 import { Committee } from "@/app/types/committee.type";
+import DeleteApplication from "./DeleteApplication";
+import AcceptApplication from "./AcceptApplication";
+import RejectApplication from "./RejectApplication";
 
 const usersColumns: ColumnDef<User>[] = [
     {
         accessorKey: "name",
         header: "Name",
-        // cell: ({ row }) => `${}`,
         cell: ({ row }) => {
             const name = (row.original.firstName ? row.original.firstName : '') + " " + (row.original.secondName ? row.original.secondName : '')
             return (<div className="group flex space-x-2 cursor-copy items-center">
@@ -107,7 +101,7 @@ const usersColumns: ColumnDef<User>[] = [
                         dangerAction={() => { }}
                         confirm={false}
                         confirmAction={() => { }}
-                        trigger={<Button className="p-1 hover:text-light-primary dark:hover:text-dark-secondary h-fit">
+                        trigger={<Button title="View" className="p-1 hover:text-light-primary dark:hover:text-dark-secondary h-fit">
                             <Eye size={18} /></Button>}
                     >
                         {user.photoURL ? <Image className="w-1/2 self-center rounded-xl mx-auto my-4" src={user.photoURL} alt="" width={200} height={200} /> : null}
@@ -135,6 +129,112 @@ const usersColumns: ColumnDef<User>[] = [
     },
 ];
 
+const applicationsColumns: ColumnDef<Application>[] = [
+    {
+        accessorKey: "name",
+        header: "Name",
+        cell: ({ row }) => {
+            const name = (row.original.firstName ? row.original.firstName : '') + " " + (row.original.secondName ? row.original.secondName : '')
+            return (<div className="group flex space-x-2 cursor-copy items-center">
+                <p className="" onClick={() => navigator.clipboard.writeText(name)}
+                >{name}</p >
+                <Copy size={14} className="hidden group-hover:flex group-active:hidden" />
+                <Check size={14} className="bg-light-success-bg dark:bg-dark-success-bg text-light-success-text dark:text-dark-success-text p-0 rounded-full hidden group-hover:hidden group-active:flex" />
+            </div>)
+        }
+    },
+    {
+        accessorKey: "email",
+        header: ({ column }) => (
+            <Button
+                variant="ghost"
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                Email
+                <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+        ),
+        cell: ({ row }) => {
+            const email = row.original.email
+            return (<div className="group flex space-x-2 cursor-copy items-center">
+                <p className="" onClick={() => navigator.clipboard.writeText(email)}
+                >{email}</p >
+                <Copy size={14} className="hidden group-hover:flex group-active:hidden" />
+                <Check size={14} className="bg-light-success-bg dark:bg-dark-success-bg text-light-success-text dark:text-dark-success-text p-0 rounded-full hidden group-hover:hidden group-active:flex" />
+            </div>)
+        }
+    },
+    {
+        accessorKey: "phone",
+        header: "Phone",
+        cell: ({ row }) => {
+            const phone = row.original.phone
+            return (<div className="group flex space-x-2 cursor-copy items-center">
+                <p className="" onClick={() => navigator.clipboard.writeText(phone)}
+                >{phone}</p >
+                <Copy size={14} className="hidden group-hover:flex group-active:hidden" />
+                <Check size={14} className="bg-light-success-bg dark:bg-dark-success-bg text-light-success-text dark:text-dark-success-text p-0 rounded-full hidden group-hover:hidden group-active:flex" />
+            </div>)
+        }
+    },
+    {
+        accessorKey: "universityId",
+        header: "GUC ID",
+        cell: ({ row }) => {
+            const universityId = row.original.universityId
+            return (<div className="group flex space-x-2 cursor-copy items-center">
+                <p className="" onClick={() => navigator.clipboard.writeText(universityId)}
+                >{universityId}</p >
+                <Copy size={14} className="hidden group-hover:flex group-active:hidden" />
+                <Check size={14} className="bg-light-success-bg dark:bg-dark-success-bg text-light-success-text dark:text-dark-success-text p-0 rounded-full hidden group-hover:hidden group-active:flex" />
+            </div>)
+        }
+    },
+    {
+        accessorKey: "committee",
+        header: "Committee",
+        cell: ({ row }) => row.original.committee?.name || "No Committee",
+        filterFn: (row, column, filterValue) => {
+            const committeeObject: Committee = row.getValue(column);
+            console.log(committeeObject)
+            const committeeName: String = committeeObject.name;
+            return committeeName.toString().toLowerCase().includes(filterValue.toLowerCase());
+        },
+    },
+    {
+        accessorKey: "status",
+        header: "Status",
+        cell: ({ row }) => {
+            const status = row.original.status || "Pending";
+
+            return (
+                <div className="flex items-center space-x-2">
+                    <div className={`w-4 h-4 rounded-full ${status === "accepted" ? "bg-light-success-bg dark:bg-dark-success-bg bg-light-error-bg dark:bg-dark-error-bg" : status === "rejected" ? "bg-light-danger-bg dark:bg-dark-danger-bg" : "bg-light-secondary"}`}></div>
+                    <p>{status?.charAt(0).toUpperCase() + status?.slice(1).toLowerCase()}</p>
+
+                </div >
+            );
+        },
+    },
+    {
+        id: "actions",
+        header: "Actions",
+        cell: ({ row }) => {
+            const application = row.original;
+            const status = application.status || "Pending";
+
+            return (
+                <div className="flex justify-end">
+                    {status === "pending" && <AcceptApplication application={application} />}
+                    {status === "pending" && <RejectApplication application={application} />}
+                    <DeleteApplication application={application} />
+
+                </div >
+            );
+        },
+    }
+]
+
 export default function Users() {
     const { toast } = useToast()
     const [users, setUsers] = useState<User[]>([]);
@@ -142,46 +242,9 @@ export default function Users() {
     const [applications, setApplications] = useState<Application[]>([]);
     const [loadingApplications, setLoadingApplications] = useState(true);
     const [committees, setCommittees] = useState<string[]>([]);
+    const [applicationCommittees, setApplicationCommittees] = useState<string[]>([]);
     const [roles, setRoles] = useState<string[]>([]);
-
-    const applicationsColumns: ColumnDef<Application>[] = [
-        {
-            accessorKey: "name",
-            header: "Name",
-            cell: ({ row }) => `${row.original.firstName ? row.original.firstName : ''} ${row.original.secondName ? row.original.secondName : ''}`,
-        },
-        {
-            accessorKey: "email",
-            header: ({ column }) => {
-                return (
-                    <Button
-                        variant="ghost"
-                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                    >
-                        Email
-                        <ArrowUpDown className="ml-2 h-4 w-4" />
-                    </Button>
-                )
-            },
-        },
-        {
-            accessorKey: "phone",
-            header: "Phone",
-        },
-        {
-            accessorKey: "universityId",
-            header: "GUC ID",
-        },
-        {
-            accessorKey: "committee",
-            header: "Committee",
-            // cell: ({ row }) => row.original.committee
-        },
-        {
-            accessorKey: "status",
-            header: "Status",
-        },
-    ]
+    const [statuses, setStatuses] = useState<string[]>([]);
 
     const fetchUsers = async () => {
         axios.get('https://ieeeguc-backend-production.up.railway.app/api/users')
@@ -219,6 +282,20 @@ export default function Users() {
         axios.get('https://ieeeguc-backend-production.up.railway.app/api/applications')
             .then((response) => {
                 setApplications(response.data.data);
+                setApplicationCommittees(
+                    Array.from(new Set<string>(
+                        response.data.data
+                            .filter((applicant: { committee: { name: string } }) => applicant.committee && applicant.committee.name)
+                            .map((applicant: { committee: { name: string } }) => applicant.committee.name)
+                    ))
+                );
+                setStatuses(
+                    Array.from(new Set<string>(
+                        response.data.data
+                            .filter((application: { status: string }) => application.status)
+                            .map((application: { status: string }) => application.status)
+                    ))
+                );
             })
             .catch((error) => {
                 let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
@@ -264,7 +341,7 @@ export default function Users() {
                         <div className="container mx-auto py-2">
                             {loadingApplications ?
                                 <div className="mx-auto w-fit mt-4"><ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" /> </div> :
-                                <ApplicationDataTable columns={applicationsColumns} data={applications} />}
+                                <ApplicationDataTable columns={applicationsColumns} data={applications} committees={applicationCommittees} statuses={statuses} />}
                         </div>
                     </TabsContent>
                 </Tabs>

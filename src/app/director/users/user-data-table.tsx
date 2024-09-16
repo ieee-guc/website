@@ -23,11 +23,10 @@ import {
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input"
 import { Filter, Search, UserPlus } from "react-feather"
-import ResponsiveDialog from "@/app/components/ResponsiveDialog"
 import { useState } from "react"
 import axios from "axios"
 import AddUser from "./AddUser"
-import { Committee } from "@/app/types/committee.type"
+import { User } from "@/app/types/user.type"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -60,16 +59,19 @@ export function UserDataTable<TData, TValue>({
         getFilteredRowModel: getFilteredRowModel(),
     })
 
-    const handleAddUserSubmit = async (userData: any) => {
-        try {
-            console.log("User Data: ", userData);
-            await axios.post('https://ieeeguc-backend-production.up.railway.app/api/users', userData);
-            console.log('User added successfully!');
-        } catch (error) {
-            console.error('Error adding user:', error);
-        }
+    const [searchValue, setSearchValue] = useState('');
+    const handleSearch = (value: string) => {
+        setSearchValue(value);
+        table.getColumn("name")?.setFilterValue(value);
+        table.getColumn("email")?.setFilterValue(value);
+        table.getColumn("phone")?.setFilterValue(value);
     };
-
+    const filteredData = data.filter((user: any) => {
+        const userObject: User = user
+        userObject.firstName.toLowerCase().includes(searchValue.toLowerCase())
+        userObject.email.toLowerCase().includes(searchValue.toLowerCase())
+        userObject.phone?.toLowerCase().includes(searchValue.toLowerCase())
+    });
 
     return (
         <div>
@@ -77,13 +79,12 @@ export function UserDataTable<TData, TValue>({
                 <div
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Search className="text-slate-400 dark:text-gray-400 ml-4" />
+
                     <Input
-                        placeholder="Search by email..."
-                        value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) =>
-                            table.getColumn("email")?.setFilterValue(event.target.value)
-                        }
-                        className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
+                        placeholder="Search by name, email, or phone..."
+                        value={searchValue}
+                        onChange={(event) => handleSearch(event.target.value)}
+                        className="placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 focus:border-primary-600 block dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-11/12 mx-auto"
                     />
                 </div>
                 <div
@@ -169,6 +170,7 @@ export function UserDataTable<TData, TValue>({
             <div className="flex justify-between items-center py-4 space-y-4 flex-col sm:flex-row">
                 <div className="flex items-center space-x-2">
                     <Button
+                        className="text-light-text dark:text-dark-text bg-light-sub-bg dark:bg-dark-sub-bg"
                         variant="outline"
                         size="sm"
                         onClick={() => table.previousPage()}
@@ -177,6 +179,7 @@ export function UserDataTable<TData, TValue>({
                         Previous
                     </Button>
                     <Button
+                        className="text-light-text dark:text-dark-text bg-light-sub-bg dark:bg-dark-sub-bg"
                         variant="outline"
                         size="sm"
                         onClick={() => table.nextPage()}
@@ -185,7 +188,7 @@ export function UserDataTable<TData, TValue>({
                         Next
                     </Button>
                 </div>
-                <span className="flex items-center gap-1 text-sm font-medium">
+                <span className="flex items-center gap-1 text-sm font-medium text-light-text dark:text-dark-text">
                     Page
                     <strong>
                         {table.getState().pagination.pageIndex + 1} of{" "}

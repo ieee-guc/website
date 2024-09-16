@@ -1,20 +1,20 @@
 import React from 'react'
 import ResponsiveDialog from '@/app/components/ResponsiveDialog';
-import { Trash2 } from 'react-feather';
+import { X } from 'react-feather';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
 
 
-export default function DeleteUser({ user }: { user: any }) {
+export default function RejectApplication({ application }: { application: any }) {
     const { toast } = useToast()
 
-    const handleDelete = async () => {
-        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/users/${user._id}`)
+    const handleReject = async () => {
+        await axios.patch(`https://ieeeguc-backend-production.up.railway.app/api/applications/${application._id}/status`, { status: 'rejected' })
             .then(() => {
                 toast({
                     title: "Success",
-                    description: "The user has been deleted",
+                    description: "The applicant has been rejected",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
             })
@@ -32,14 +32,14 @@ export default function DeleteUser({ user }: { user: any }) {
             danger={true}
             dangerAction={(event) => {
                 event?.preventDefault();
-                handleDelete();
+                handleReject();
             }}
             confirm={false}
             confirmAction={() => { }}
-            trigger={<Button title="Delete" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit"><Trash2 size={18} /></Button>}
-            title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
+            trigger={<Button title="Accept applicant" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit"><X size={18} /></Button>}
+            title={(application.firstName ? application.firstName + " " : "") + (application.secondName ? application.secondName : "")}
         >
-            <p className="text-xl">You are about to delete this user.</p>
+            <p className="text-xl">You are about to reject this application.</p>
         </ResponsiveDialog>
     )
 }
