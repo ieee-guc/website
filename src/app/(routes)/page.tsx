@@ -7,11 +7,38 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import Logo from "../../../public/ieee-logo.png";
+import Link from "next/link";
 
 export default function Home() {
+    const carouselItems = [
+        { photo: "https://i.imgur.com/LDZIC9N.jpeg", title: "Technical Sessions" },
+        { photo: "https://i.imgur.com/iPlR0yM.png", title: "Informative Talks" },
+        { photo: "https://i.imgur.com/JommQrQ.png", title: "Practical Workshops" },
+        { photo: "https://i.imgur.com/uPmCzvR.png", title: "Fun Trips" },
+        { photo: "https://i.imgur.com/mtF86F9.png", title: "Ushering Events" },
+    ]
     return (
-        <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
+        <main className="flex w-full min-h-screen flex-col items-center justify-between py-6 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <section className="w-9/12">
+                <div className="w-fit mx-auto text-3xl text-light-text dark:text-dark-text mb-4">
+                    <div className="flex items-center mb-2 text-2xl font-semibold text-light-text dark:text-white mx-auto w-fit">
+                        <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
+                    </div>
+                    <div className=" typewriter w-fit mx-auto text-3xl text-center">
+                        <h1 className="text-4xl font-bold">Welcome to IEEE GUC</h1>
+                        <p className='text-2xl text-center font-bold w-fit mx-auto'>Team Work Makes the Dream Work</p>
+                        {/* <div className="text-center mt-1">
+                            <Link rel="noopener noreferrer"
+                                href="recruitment"
+                                className="border rounded-xl text-base p-2  hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold text-center text-light-text dark:text-dark-text"
+                            >
+                                Join Us Now!
+                            </Link>
+                        </div> */}
+                    </div>
+                </div>
                 <Carousel
                     opts={{
                         align: "start",
@@ -19,20 +46,23 @@ export default function Home() {
                     className="w-full"
                 >
                     <CarouselContent>
-                        {Array.from({ length: 5 }).map((_, index) => (
+                        {carouselItems.map((item, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                                 <div className="p-1">
-                                    <Card className="w-full">
-                                        <CardContent className="flex aspect-square items-center justify-center p-6">
-                                            <span className="text-3xl font-semibold">{index + 1}</span>
+                                    <Card className="w-full rounded-xl p-0">
+                                        <CardContent className="flex aspect-square items-center justify-center p-0 w-full">
+                                            <div className="relative">
+                                                <Image src={item.photo} alt={item.title} width={1200} height={1200} className="w-full h-full rounded-xl" />
+                                                <p className="absolute w-full text-center bottom-4 opacity-75 p-2 bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text">{item.title}</p>
+                                            </div>
                                         </CardContent>
                                     </Card>
                                 </div>
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious variant={"default"} className="text-white hover:text-white bg-light-primary hover:bg-light-secondary disabled:bg-" />
-                    <CarouselNext className="text-white hover:text-white bg-light-primary hover:bg-light-secondary" />
+                    <CarouselPrevious variant={"default"} className="text-white hover:text-white bg-light-primary hover:bg-light-primary" />
+                    <CarouselNext className="text-white hover:text-white bg-light-primary hover:bg-light-primary active:bg-light-primary" />
                 </Carousel>
             </section>
         </main>
