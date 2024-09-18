@@ -115,7 +115,7 @@ export default function RecruitmentForm() {
     };
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
+        if (success) {
             const script = document.createElement("script");
             script.src = "https://assets.calendly.com/assets/external/widget.js";
             script.async = true;
