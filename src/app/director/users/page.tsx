@@ -117,6 +117,7 @@ const usersColumns: ColumnDef<User>[] = [
         cell: ({ row }) => row.original.committee?.name || "No Committee",
         filterFn: (row, column, filterValue) => {
             const committeeObject: Committee = row.getValue(column);
+            console.log(committeeObject)
             const committeeName: String = committeeObject.name;
             return committeeName.toString().toLowerCase().includes(filterValue.toLowerCase());
         },
@@ -243,7 +244,7 @@ const applicationsColumns: ColumnDef<Application>[] = [
 
             return (
                 <div className="flex items-center space-x-2">
-                    <div className={`w - 4 h - 4 rounded - full ${status === "accepted" ? "bg-light-success-bg dark:bg-dark-success-bg bg-light-error-bg dark:bg-dark-error-bg" : status === "rejected" ? "bg-light-danger-bg dark:bg-dark-danger-bg" : "bg-light-secondary"}`}></div>
+                    <div className={`w-4 h-4 rounded-full ${status === "accepted" ? "bg-light-success-bg dark:bg-dark-success-bg bg-light-error-bg dark:bg-dark-error-bg" : status === "rejected" ? "bg-light-danger-bg dark:bg-dark-danger-bg" : "bg-light-secondary"}`}></div>
                     <p>{status?.charAt(0).toUpperCase() + status?.slice(1).toLowerCase()}</p>
 
                 </div >

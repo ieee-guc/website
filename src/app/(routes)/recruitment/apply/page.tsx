@@ -114,6 +114,15 @@ export default function RecruitmentForm() {
             });
     };
 
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const script = document.createElement("script");
+            script.src = "https://assets.calendly.com/assets/external/widget.js";
+            script.async = true;
+            document.body.appendChild(script);
+        }
+    }, []);
+
     return (
         <main className="flex w-full h-auto flex-col items-center justify-between py-12 px-6 bg-light-bg dark:bg-dark-bg">
             <section className="about sm:w-8/12 w-11/12">
@@ -123,22 +132,22 @@ export default function RecruitmentForm() {
                         <div className="coming-soon-container relative flex flex-col items-center justify-center ">
                             <div className="tool-container">
                                 <CheckCircle
-                                    size={180}
+                                    size={100}
                                     strokeWidth={1.5}
                                     className="text-light-primary dark:text-dark-secondary m-0 truck-animation"
                                 />
                             </div>
                         </div>
-                        <h1 className="text-5xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
-                        <p className="text-xl text-center text-light-text dark:text-dark-text">We will contact you by email soon</p>
-                        <div className="text-center mt-4">
-                            <Link rel="noopener noreferrer"
+                        <h1 className="text-3xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
+                        <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment</p>
+                        {/* <Link rel="noopener noreferrer"
                                 href={'/'}
                                 className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                             >
                                 Go to Homepage
-                            </Link>
-                        </div>
+                            </Link> */}
+                        <div className="calendly-inline-widget w-full h-dvh" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     </div>
                 </section>) :
                     (<div className="flex flex-col items-center  p-2 w-full h-full sm:py-8 py-4 rounded-xl ">
@@ -270,34 +279,34 @@ export default function RecruitmentForm() {
                                                 </div>
                                             )}
 
-                                                {loading ? (
-                                                    <div className="flex items-center justify-center h-full">
-                                                        <ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" />
-                                                    </div>) : (
-                                                    <button
-                                                        disabled={!(isValid && dirty)}
-                                                        type="submit"
-                                                        className="disabled:bg-gray-600 disabled:cursor-not-allowed overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
-                                                        onClick={(event) => handleSubmit(event)}
-                                                    >
-                                                        Submit Application
-                                                        {!(isValid && dirty) ? (
-                                                            <Slash
-                                                                className="feather-chevron-right text-white"
-                                                                size={24}
-                                                            />
-                                                        ) : (
-                                                            <ChevronsRight
-                                                                className="feather-chevron-right text-white"
-                                                                size={24}
+                                            {loading ? (
+                                                <div className="flex items-center justify-center h-full">
+                                                    <ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" />
+                                                </div>) : (
+                                                <button
+                                                    disabled={!(isValid && dirty)}
+                                                    type="submit"
+                                                    className="disabled:bg-gray-600 disabled:cursor-not-allowed overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
+                                                    onClick={(event) => handleSubmit(event)}
+                                                >
+                                                    Submit Application
+                                                    {!(isValid && dirty) ? (
+                                                        <Slash
+                                                            className="feather-chevron-right text-white"
+                                                            size={24}
                                                         />
-                                                        )}
+                                                    ) : (
+                                                        <ChevronsRight
+                                                            className="feather-chevron-right text-white"
+                                                            size={24}
+                                                        />
+                                                    )}
 
-                                                    </button>
-                                                )}
-                                            <p className="text-xs font-light text-gray-500 dark:text-gray-400">
+                                                </button>
+                                            )}
+                                            {/* <p className="text-xs font-light text-gray-500 dark:text-gray-400">
                                                 Already applied? <Link href="/login" className="font-medium hover:underline">Check application status</Link>
-                                            </p>
+                                            </p> */}
                                         </Form>
                                     )}
                                 </Formik>

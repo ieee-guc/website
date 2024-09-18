@@ -34,7 +34,7 @@ export default function Top() {
     }, []);
 
     return (
-        <div className="fixed bottom-6 right-6 opacity-0 transition-opacity duration-500" style={{ opacity: isVisible ? 1 : 0 }}>
+        <div className="z-10 fixed bottom-6 right-6 opacity-0 transition-opacity duration-500" style={{ opacity: isVisible ? 1 : 0 }}>
             <div
                 className="coming-soon-container relative flex flex-col items-center justify-center cursor-pointer"
                 onClick={scrollToTop}
