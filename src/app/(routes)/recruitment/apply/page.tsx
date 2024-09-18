@@ -139,17 +139,17 @@ export default function RecruitmentForm() {
                             </div>
                         </div>
                         <h1 className="text-3xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
-                        <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment from below</p>
-                        <div className="calendly-inline-widget w-full h-fit" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment</p>
                         <div className="text-center mt-4">
                             <Link rel="noopener noreferrer"
                                 href={'/'}
-                                className="text-md p-1.5 underline-offset-4 hover:text-light-primary cursor-pointer hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                                className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                             >
                                 Go to Homepage
                             </Link>
                         </div>
+                        <div className="calendly-inline-widget w-full h-dvh" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     </div>
                 </section>) :
                     (<div className="flex flex-col items-center  p-2 w-full h-full sm:py-8 py-4 rounded-xl ">
