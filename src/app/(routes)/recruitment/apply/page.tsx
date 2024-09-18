@@ -307,7 +307,7 @@ export default function RecruitmentForm() {
                                                 </button>
                                             )}
                                             <p className="text-xs font-light text-gray-500 dark:text-gray-400">
-                                                Already applied? <Link href="/login" className="font-medium hover:underline">Check application status</Link>
+                                                <Link href="/login" className="font-medium hover:underline">Back to committees</Link>
                                             </p>
                                         </Form>
                                     )}
