@@ -140,7 +140,7 @@ export default function RecruitmentForm() {
                         </div>
                         <h1 className="text-3xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
                         <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment from below</p>
-                        <div className="calendly-inline-widget w-full h-dvh" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
+                        <div className="calendly-inline-widget w-full h-fit" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
                         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                         <div className="text-center mt-4">
                             <Link rel="noopener noreferrer"

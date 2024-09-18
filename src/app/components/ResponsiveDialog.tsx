@@ -53,7 +53,6 @@ export default function ResponsiveDialog({
     const handleDangerAction = React.useCallback((event: any) => {
         dangerAction(event);
         setOpen(false);
-        window.location.reload();
     }, [dangerAction]);
 
     const handleConfirmAction = React.useCallback((event: any) => {
