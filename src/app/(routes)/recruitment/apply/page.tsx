@@ -127,31 +127,32 @@ export default function RecruitmentForm() {
         <main className="flex w-full h-auto flex-col items-center justify-between py-12 px-6 bg-light-bg dark:bg-dark-bg">
             <section className="about sm:w-8/12 w-11/12">
                 {/* <div className="h-auto flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-11/12"> */}
-                {success ? (<section className="mt-16 w-full flex flex-col items-center justify-between">
-                    <div className="w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
-                        <div className="coming-soon-container relative flex flex-col items-center justify-center ">
-                            <div className="tool-container">
-                                <CheckCircle
-                                    size={100}
-                                    strokeWidth={1.5}
-                                    className="text-light-primary dark:text-dark-secondary m-0 truck-animation"
-                                />
+                {success ? (
+                    <section className="mt-16 w-full flex flex-col items-center justify-between">
+                        <div className="w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
+                            <div className="coming-soon-container relative flex flex-col items-center justify-center ">
+                                <div className="tool-container">
+                                    <CheckCircle
+                                        size={100}
+                                        strokeWidth={1.5}
+                                        className="text-light-primary dark:text-dark-secondary m-0 truck-animation"
+                                    />
+                                </div>
                             </div>
+                            <h1 className="text-3xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
+                            <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment</p>
+                            <div className="text-center my-4">
+                                <Link rel="noopener noreferrer"
+                                    href={'/'}
+                                    className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                                >
+                                    Go to Homepage
+                                </Link>
+                            </div>
+                            <div className="calendly-inline-widget w-full h-dvh" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
+                            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                         </div>
-                        <h1 className="text-3xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
-                        <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment</p>
-                        <div className="text-center mt-4">
-                            <Link rel="noopener noreferrer"
-                                href={'/'}
-                                className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
-                            >
-                                Go to Homepage
-                            </Link>
-                        </div>
-                        <div className="calendly-inline-widget w-full h-dvh" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                    </div>
-                </section>) :
+                    </section>) :
                     (<div className="flex flex-col items-center  p-2 w-full h-full sm:py-8 py-4 rounded-xl ">
                         <div className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
                             <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
