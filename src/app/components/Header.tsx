@@ -137,6 +137,13 @@ export default function Header() {
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link href="/gallery" legacyBehavior passHref >
+                                <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                                    Our Gallery
+                                </NavigationMenuLink>
+                            </Link>
+                        </NavigationMenuItem>
                     </NavigationMenuList>
                 </div>
 

@@ -69,18 +69,18 @@ export default function About() {
                                 </p>
                                 <p className="italic">President</p>
                                 <div className="flex space-x-1">
-                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                        <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                        <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                     </Link>
-                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                        <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                        <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                     </Link>
-                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                         <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                     </Link>
-                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                         <div className="tiktok-container w-6 h-6">
-                                            <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                         </div>
                                     </Link>
                                 </div>
@@ -96,18 +96,18 @@ export default function About() {
                                     </p>
                                     <p className="italic">Operation Director</p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <div className="tiktok-container w-6 h-6">
-                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
                                         </Link>
                                     </div>
@@ -124,18 +124,18 @@ export default function About() {
                                         Creative Director
                                     </p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <div className="tiktok-container w-6 h-6">
-                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
                                         </Link>
                                     </div>
@@ -149,18 +149,18 @@ export default function About() {
                                     </p>
                                     <p className="italic">JTP Director</p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <div className="tiktok-container w-6 h-6">
-                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
                                         </Link>
                                     </div>
@@ -174,18 +174,18 @@ export default function About() {
                                     </p>
                                     <p className="italic">Hardware Director</p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                            <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                         </Link>
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <div className="tiktok-container w-6 h-6">
-                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
                                         </Link>
                                     </div>
@@ -199,7 +199,7 @@ export default function About() {
                                     </p>
                                     <p className="italic">Software Director</p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/in/john-roufaeil" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                        <Link href="https://www.linkedin.com/in/john-roufaeil" rel="noopener noreferrer" target="_blank">
                                             <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                         </Link>
                                     </div>
@@ -223,18 +223,18 @@ export default function About() {
                                             Paula Habib
                                         </p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -249,18 +249,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Mobile Development Co-head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -274,18 +274,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">UI/UX Design Head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -299,18 +299,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Data Analysis Head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -324,18 +324,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Data Analysis Co-head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -349,18 +349,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Machine Learning Head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -374,18 +374,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Machine Learning Co-head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -399,18 +399,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Cyber Security Head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -424,18 +424,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Cyber Security Co-head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -449,18 +449,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Web Development Head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -474,18 +474,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Web Development Co-head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -499,18 +499,18 @@ export default function About() {
                                         </p>
                                         <p className="italic">Web Development Co-head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white hover:mt-1 duration-500  rounded inline p-1" />
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
                                             </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank" title="LinkedIn Page - IEEE GUC">
+                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 hover:mt-1 duration-500  rounded inline p-1" />
+                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                                 </div>
                                             </Link>
                                         </div>
@@ -523,10 +523,10 @@ export default function About() {
 
                     <div className="text-center mt-1">
                         <Link rel="noopener noreferrer"
-                            href={'/recruitment'}
+                            href={'/gallery'}
                             className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                         >
-                            Visit our Gallery Album
+                            Visit our Gallery
                         </Link>
                     </div>
                 </section>
