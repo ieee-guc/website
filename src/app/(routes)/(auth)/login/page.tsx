@@ -7,12 +7,14 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '../../../contexts/authContext';
 import Link from 'next/link'
 import axios from 'axios'
+import { useToast } from "@/hooks/use-toast"
 
 export default function Login() {
     const { isAuthenticated, login } = useAuth();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const { toast } = useToast()
 
     const router = useRouter();
 
@@ -40,6 +42,11 @@ export default function Login() {
     const handleSubmitLogIn = async (event: any) => {
         event.preventDefault();
 
+        // toast({
+        //     title: "Success",
+        //     description: "Your application has been submitted successfully!",
+        //     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
+        // });
         try {
             // const response = await axios.post('https://ieeeguc-backend-production.up.railway.app/api/auth/login', {
             //     email,

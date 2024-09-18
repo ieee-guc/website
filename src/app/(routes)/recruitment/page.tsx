@@ -85,7 +85,7 @@ export default function Recruitment() {
                             strokeWidth={1.5}
                             className="text-light-primary dark:text-dark-secondary mb-2 truck-animation rotating"
                         /> :
-                        <Accordion type="single" collapsible className="w-full sm:w-3/4 bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-4 rounded-xl mt-2">
+                        <Accordion type="multiple" className="w-full sm:w-3/4 bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-4 rounded-xl mt-2">
                             {uniqueDirectories.map((directory, index) => (
                                 <AccordionItem key={index} value={`item-${index}`}>
                                     <AccordionTrigger className="text-xl font-semibold">
