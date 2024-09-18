@@ -62,7 +62,6 @@ export default function Recruitment() {
                     </p>
                     <Link
                         href="/recruitment/apply"
-                        target="_blank"
                         className="overflow-hidden mt-2 signin-button relative sm:w-1/4 w-3/4 text-white bg-primary-600
                         hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl
                         text-lg px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800
