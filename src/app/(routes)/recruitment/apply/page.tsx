@@ -127,7 +127,7 @@ export default function RecruitmentForm() {
         <main className="flex w-full h-auto flex-col items-center justify-between py-12 px-6 bg-light-bg dark:bg-dark-bg">
             <section className="about sm:w-8/12 w-11/12">
                 {/* <div className="h-auto flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-11/12"> */}
-                {success ? (<section className="mt-16 w-full flex flex-col items-center justify-between">
+                {!success ? (<section className="mt-16 w-full flex flex-col items-center justify-between">
                     <div className="w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
                         <div className="coming-soon-container relative flex flex-col items-center justify-center ">
                             <div className="tool-container">
@@ -139,15 +139,17 @@ export default function RecruitmentForm() {
                             </div>
                         </div>
                         <h1 className="text-3xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
-                        <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment</p>
-                        {/* <Link rel="noopener noreferrer"
-                                href={'/'}
-                                className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
-                            >
-                                Go to Homepage
-                            </Link> */}
+                        <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment from below</p>
                         <div className="calendly-inline-widget w-full h-dvh" data-url="https://calendly.com/john-f-roufaeil/head-interview-ieee-guc?hide_event_type_details=1&hide_gdpr_banner=1"></div>
                         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        <div className="text-center mt-4">
+                            <Link rel="noopener noreferrer"
+                                href={'/'}
+                                className="text-md p-1.5 underline-offset-4 hover:text-light-primary cursor-pointer hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                            >
+                                Go to Homepage
+                            </Link>
+                        </div>
                     </div>
                 </section>) :
                     (<div className="flex flex-col items-center  p-2 w-full h-full sm:py-8 py-4 rounded-xl ">
@@ -304,9 +306,9 @@ export default function RecruitmentForm() {
 
                                                 </button>
                                             )}
-                                            {/* <p className="text-xs font-light text-gray-500 dark:text-gray-400">
+                                            <p className="text-xs font-light text-gray-500 dark:text-gray-400">
                                                 Already applied? <Link href="/login" className="font-medium hover:underline">Check application status</Link>
-                                            </p> */}
+                                            </p>
                                         </Form>
                                     )}
                                 </Formik>
