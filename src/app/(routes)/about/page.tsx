@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Facebook, Instagram, Linkedin } from 'react-feather';
 import TikTok from "../../../../public/tik-tok.svg"
+import dcc from "../../../../public/dcc.png"
 
 export default function About() {
     const [isLoading, setIsLoading] = useState(true);
@@ -56,11 +57,26 @@ export default function About() {
                         </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row w-full sm:space-x-8">
+                    <div className="flex flex-col sm:flex-row w-full sm:space-x-8 p-12 rounded-xl">
                         <div className="w-full p-0">
-                            <h2 className="text-2xl font-semibold">Meet the Family!</h2>
-                            <p className="w-full">At IEEE GUC, our passionate team drives our mission with diverse skills and experiences. Discover the individuals behind our initiatives and see how they contribute to our vibrant community.</p>
-                            <div className="flex flex-col space-y-1 items-center mt-4">
+                            <h2 className="text-2xl text-center font-semibold">Our Partners</h2>
+                            <p className="sm:w-10/12 text-center mx-auto">Our partners fuel our mission with their unique expertise and support, empowering us to make a lasting impact together.</p>
+                            <div className="flex flex-col space-y-1 items-center mt-8">
+                                <Link href="https://www.datacamp.com/donates" rel="noopener noreferrer" target="_blank">
+                                    <div>
+                                        <Image src={dcc} alt="president" width={300} height={300} className="rounded-xl w-50 h-auto" />
+                                    </div>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="flex flex-col sm:flex-row w-full sm:space-x-8 bg-light-sub-bg dark:bg-dark-sub-bg p-12 rounded-xl">
+                        <div className="w-full p-0">
+                            <h2 className="text-2xl text-center font-semibold">Meet the Family!</h2>
+                            <p className="sm:w-10/12 text-center mx-auto">Our passionate team drives our mission with diverse skills and experiences. <br /> Discover the individuals behind our initiatives and see how they contribute to our vibrant community!</p>
+                            <div className="flex flex-col space-y-1 items-center mt-8">
                                 <div>
                                     <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-40 h-40" />
                                 </div>
@@ -207,7 +223,7 @@ export default function About() {
                             </div>
 
                             <Tabs defaultValue="Software" className="mt-8">
-                                <TabsList className="space-x-0 sm:space-x-2 bg-gray-200 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full min-w-fit mx-auto  dark:border-none dark:bg-dark-sub-bg dark:text-white py-2 sm:py-6 flex justify-evenly">
+                                <TabsList className="space-x-0 sm:space-x-2 bg-gray-200 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full min-w-fit mx-auto  dark:border-none dark:bg-dark-nav-bg dark:text-white py-2 sm:py-6 flex justify-evenly">
                                     <TabsTrigger value="Operation" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">Operation</TabsTrigger>
                                     <TabsTrigger value="Creative" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">Creative</TabsTrigger>
                                     <TabsTrigger value="JTP" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">JTP</TabsTrigger>
@@ -222,6 +238,7 @@ export default function About() {
                                         <p className="font-semibold flex items-center">
                                             Paula Habib
                                         </p>
+                                        <p className="italic">Mobile Development Head</p>
                                         <div className="flex space-x-1">
                                             <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                                 <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
@@ -238,7 +255,6 @@ export default function About() {
                                                 </div>
                                             </Link>
                                         </div>
-                                        <p className="italic">Mobile Development Head</p>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>

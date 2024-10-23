@@ -31,19 +31,12 @@ export default function RootLayout({
         { id: "8", title: "Calendar", link: "/director/calendar", icon: <Calendar className="w-6 h-6" /> },
     ]
     return (
-        <html lang="en">
-            <body className={inter.className}>
-                <div className="sidebar-parent">
-                    <SideBar sections={sections} />
-                    <div className="children-parent sm:ml-16 ml-0 sm:mb-0 mb-16">
-                        {children}
-                        <Analytics />
-                        <Footer />
-                    </div>
-                    <Toaster />
-                </div>
-                <Preferences />
-            </body>
-        </html>
+        <div className="sidebar-parent">
+            <SideBar sections={sections} />
+            <div className="children-parent sm:ml-16 ml-0 sm:mb-0 mb-16">
+                {children}
+                <Footer />
+            </div>
+        </div>
     );
 }

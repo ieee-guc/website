@@ -49,9 +49,9 @@ export default function Home() {
                                 <div className="p-1">
                                     <Card className="w-full rounded-xl p-0">
                                         <CardContent className="flex aspect-square items-center justify-center p-0 w-full">
-                                            <div className="relative">
-                                                <Image src={item.photo} alt={item.title} width={1200} height={1200} className="w-full h-full rounded-xl" />
-                                                <p className="absolute w-full text-center bottom-4 opacity-75 p-2 bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text">{item.title}</p>
+                                            <div className="relative overflow-hidden rounded-xl group">
+                                                <Image src={item.photo} alt={item.title} width={1200} height={1200} className="w-full h-full rounded-xl group-hover:scale-110 transition-all duration-300" />
+                                                <p className="absolute w-full text-center bottom-4 opacity-75 group-hover:opacity-100 transition-all duration-300 p-2 bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text">{item.title}</p>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -62,7 +62,7 @@ export default function Home() {
                     <CarouselPrevious variant={"default"} className="text-white hover:text-white bg-light-primary hover:bg-light-primary" />
                     <CarouselNext className="text-white hover:text-white bg-light-primary hover:bg-light-primary active:bg-light-primary" />
                 </Carousel>
-                <div className="mt-12">
+                <div className="mt-12 text-light-text dark:text-dark-text">
                     <h2 className="text-2xl font-bold text-center">Recruitment for 2024/2025 is now Open!</h2>
                     <p className="text-center">Join our team of IEEE GUC members and grow personally and technically.</p>
                     <div className="text-center mt-1">
