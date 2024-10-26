@@ -6,6 +6,7 @@ import Preferences from "../components/Preferences";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
 import { Feather, Home, Target, Users, Mic, Code, Calendar } from "react-feather";
+import PrayForPalestine from "../components/PrayForPalestine";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         <div className="sidebar-parent">
             <SideBar sections={sections} />
             <div className="children-parent sm:ml-16 ml-0 sm:mb-0 mb-16">
+                <PrayForPalestine />
                 {children}
                 <Footer />
             </div>
