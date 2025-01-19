@@ -128,7 +128,7 @@ export default function Committees() {
     const [loadingCommittees, setLoadingCommittees] = useState(true);
 
     const fetchCommittees = async () => {
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committee')
+        axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees')
             .then((response) => {
                 setCommittees(response.data.data);
             })

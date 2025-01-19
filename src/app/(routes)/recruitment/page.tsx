@@ -22,8 +22,9 @@ export default function Recruitment() {
     useEffect(() => {
         const fetchCommittees = async () => {
             try {
-                const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
-                setCommittees(response.data.data);
+                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committee');
+                setCommittees(response.data);
+                console.log("RES" + JSON.stringify(response));
             } catch (error) {
                 setError('Failed to fetch committees');
             } finally {
