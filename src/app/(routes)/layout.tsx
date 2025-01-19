@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
-import PrayForPalestine from "../components/PrayForPalestine";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +19,6 @@ export default function RootLayout({
     return (
         <div className="flex-col flex">
             <div className='flex flex-col'>
-                <PrayForPalestine />
                 <Header />
             </div>
             {children}

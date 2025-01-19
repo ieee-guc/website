@@ -82,10 +82,10 @@ export default function Header() {
 
                     {/* Desktop Menu */}
                     <NavigationMenuList className="hidden sm:flex items-center space-x-8">
-                        <NavigationMenuItem>
-                            {/* <NavigationMenuTrigger className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                        {/* <NavigationMenuItem>
+                            <NavigationMenuTrigger className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
                                 We Provide
-                            </NavigationMenuTrigger> */}
+                            </NavigationMenuTrigger>
                             <NavigationMenuContent>
                                 <ul className="gap-2 grid w-[400px] md:w-[500px] lg:w-[400px] bg-light-nav-bg dark:bg-dark-nav-bg">
                                     <div className="p-2">
@@ -95,7 +95,7 @@ export default function Header() {
                                                 className="group relative flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-slate-50 dark:hover:bg-slate-700"
                                             >
                                                 <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-slate-50 group-hover:bg-white dark:bg-slate-700 dark:group-hover:bg-slate-950">
-                                                    {/* <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white`} /> */}
+                                                    {/* <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white`} />
                                                     <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white ${item.color}`} />
                                                 </div>
                                                 <div className="flex-auto">
@@ -114,7 +114,7 @@ export default function Header() {
                                     </div>
                                 </ul>
                             </NavigationMenuContent>
-                        </NavigationMenuItem>
+                        </NavigationMenuItem> */}
 
                         <NavigationMenuItem>
                             <Link href="/about" legacyBehavior passHref>
@@ -126,7 +126,7 @@ export default function Header() {
                         <NavigationMenuItem>
                             <Link href="/recruitment" legacyBehavior passHref >
                                 <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
-                                    Recruitment&apos;25
+                                    Recruitment
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
@@ -137,13 +137,13 @@ export default function Header() {
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
-                        <NavigationMenuItem>
+                        {/* <NavigationMenuItem>
                             <Link href="/gallery" legacyBehavior passHref >
                                 <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
                                     Our Gallery
                                 </NavigationMenuLink>
                             </Link>
-                        </NavigationMenuItem>
+                        </NavigationMenuItem> */}
                     </NavigationMenuList>
                 </div>
 
@@ -263,7 +263,7 @@ export default function Header() {
                                     onClick={() => setMobileMenuOpen(false)} // Close menu on link click
                                     className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
-                                    Recruitment’24/25
+                                    Recruitment
                                 </Link>
                                 <Link
                                     rel="noopener noreferrer"

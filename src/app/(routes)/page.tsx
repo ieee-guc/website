@@ -63,7 +63,7 @@ export default function Home() {
                     <CarouselNext className="text-white hover:text-white bg-light-primary hover:bg-light-primary active:bg-light-primary" />
                 </Carousel>
                 <div className="mt-12 text-light-text dark:text-dark-text">
-                    <h2 className="text-2xl font-bold text-center">Recruitment for 2024/2025 is now Open!</h2>
+                    <h2 className="text-2xl font-bold text-center">Second Recruitment for 2024/2025 is now Open!</h2>
                     <p className="text-center">Join our team of IEEE GUC members and grow personally and technically.</p>
                     <div className="text-center mt-1">
                         <Link rel="noopener noreferrer"
@@ -71,6 +71,18 @@ export default function Home() {
                             className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                         >
                             Go to Recruitment Page
+                        </Link>
+                    </div>
+                </div>
+                <div className="mt-12 text-light-text dark:text-dark-text">
+                    <h2 className="text-2xl font-bold text-center">Our Upcoming Events</h2>
+                    {/* <p className="text-center">Join our team of IEEE GUC members and grow personally and technically.</p> */}
+                    <div className="text-center mt-1">
+                        <Link rel="noopener noreferrer"
+                            href={'/calendar'}
+                            className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                        >
+                            Check out our Calendar
                         </Link>
                     </div>
                 </div>

@@ -50,16 +50,15 @@ export default function Recruitment() {
             <section className="about sm:w-8/12 w-11/12">
                 <div className="flex flex-col items-center  p-2 w-full  h-full sm:py-16 py-8 rounded-xl ">
                     <p className="text-light-text dark:text-dark-text text-center text-xl">
-                        <span className='font-bold text-3xl'>We&apos;re recruiting! 🚀</span>
-                        <br />
-                        Ready for a fun, growth-filled year?
-                        <br />
-                        <span className="italic text-light-red dark:text-dark-red font-semibold">
-                            Secure your spot before 21/9!
-                        </span>
+                        <span className='font-bold text-3xl'>Recruitment is Open! 🚀</span>
                         <br />
                         We can&apos;t wait to welcome you! 😊
+                        <br />
+                        <span className="italic text-light-red dark:text-dark-red font-semibold">
+                            Application deadline is 21/9
+                        </span>
                     </p>
+                    <br />
                     <Link
                         href="/recruitment/apply"
                         className="overflow-hidden mt-2 signin-button relative sm:w-1/4 w-3/4 text-white bg-primary-600

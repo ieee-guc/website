@@ -89,7 +89,7 @@ export default function RecruitmentForm() {
         delete values.directory;
         const dataToSubmit = { ...values };
 
-        axios.post('https://ieeeguc-backend-production.up.railway.app/api/applications', dataToSubmit)
+        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/application', dataToSubmit)
             .then(response => {
                 setSuccess(true);
                 toast({
@@ -276,11 +276,12 @@ export default function RecruitmentForm() {
                                                 <ErrorMessage name="committee" component="div" className="text-light-red dark:text-dark-red text-sm" />
                                             </div>
 
-                                            {(Object.keys(errors).length > 0 && Object.keys(touched).length > 0) && (
+                                            {Object.keys(errors).some((field) => touched[field]) && (
                                                 <div className="text-light-red dark:text-dark-red text-sm">
                                                     Please fix the errors in the application before submitting.
                                                 </div>
                                             )}
+
 
                                             {loading ? (
                                                 <div className="flex items-center justify-center h-full">
