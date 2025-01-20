@@ -21,15 +21,18 @@ export default function Home() {
     ]
 
     return (
-        <main className="flex w-full min-h-screen flex-col items-center justify-between py-6 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
+        <main className="flex w-full min-h-screen flex-col items-center justify-between py-6 p-6
+         bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <section className="w-9/12">
                 <div className="w-fit mx-auto text-3xl text-light-text dark:text-dark-text mb-4">
-                    <div className="flex items-center mb-2 text-2xl font-semibold text-light-text dark:text-white mx-auto w-fit">
+                    {/* <div className="flex items-center mb-2 text-2xl font-semibold text-light-text dark:text-white mx-auto w-fit">
                         <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
-                    </div>
-                    <div className=" typewriter w-fit mx-auto text-3xl text-center">
-                        <h1 className="text-4xl font-bold">Welcome to IEEE GUC</h1>
-                        <p className='text-2xl text-center font-bold w-fit mx-auto'>Team Work Makes the Dream Work</p>
+                    </div> */}
+                    <div className="typewriter w-100 mx-auto text-3xl text-center">
+                        <h1 className="text-2xl text-center sm:text-4xl  font-bold">Welcome to IEEE GUC</h1>
+                        <p className='text-base text-center font-bold w-fit mx-auto'>
+                            Team Work Makes the Dream Work
+                        </p>
                     </div>
                 </div>
                 <Carousel

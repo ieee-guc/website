@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --primary: #0A4593;
   --secondary: #6EACDA;
@@ -23,47 +24,58 @@ html {
   scroll-behavior: smooth;
 }
 
-.typewriter {
-  display: inline-block;
-  width: 100%;
-}
+@media (min-width: 440px) {
 
-.typewriter p {
-  overflow: hidden;
-  display: inline-block;
-  white-space: nowrap;
-  font-family: monospace;
-  font-size: 1rem;
-  margin: 0;
-  letter-spacing: 0.1rem;
-  border-bottom: 1px solid transparent;
-  animation: typing 3s steps(60, end), border-glow 4s ease-in-out 1 3s forwards;
+  .typewriter {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .typewriter p {
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    font-family: monospace;
+    font-size: 1rem;
+    margin: 0;
+    letter-spacing: 0.1rem;
+    border-bottom: 1px solid transparent;
+    animation: typing 3s steps(60, end), border-glow 4s ease-in-out 1 3s forwards;
+  }
 }
 
 @keyframes typing {
   from {
-    width: 0;
+    width: 0%;
   }
+
   to {
     width: 100%;
   }
 }
+
 @keyframes border-glow {
   0% {
     border-bottom: 2px solid transparent;
   }
+
   100% {
     border-bottom: 2px solid #64748b;
   }
 }
+
 @keyframes bobbing {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-0.25rem);
   }
 }
+
 .truck-animation {
   display: inline-block;
   animation: bobbing 2s ease-in-out infinite;
@@ -73,10 +85,12 @@ html {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
 .rotating {
   display: inline-block;
   animation: rotate 3s linear infinite;
@@ -86,16 +100,20 @@ html {
   0% {
     content: "";
   }
+
   30% {
     content: ".";
   }
+
   60% {
     content: "..";
   }
+
   100% {
     content: "...";
   }
 }
+
 .loading-dots::after {
   content: "";
   animation: loading-dots 3s ease-in-out infinite;
