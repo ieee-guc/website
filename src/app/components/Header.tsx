@@ -118,28 +118,28 @@ export default function Header() {
 
                         <NavigationMenuItem>
                             <Link href="/about" legacyBehavior passHref>
-                                <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
                                     About Us
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/recruitment" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
                                     Recruitment
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/calendar" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
                                     Calendar
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/gallery" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
                                     Gallery
                                 </NavigationMenuLink>
                             </Link>
