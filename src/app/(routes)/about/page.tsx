@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Facebook, Instagram, Linkedin } from 'react-feather';
 import TikTok from "../../../../public/tik-tok.svg"
 import dcc from "../../../../public/dcc.png"
+import { wrap } from "module";
 
 export default function About() {
     const [isLoading, setIsLoading] = useState(true);
@@ -78,14 +79,14 @@ export default function About() {
                             <p className="sm:w-10/12 text-center mx-auto">Our passionate team drives our mission with diverse skills and experiences. <br /> Discover the individuals behind our initiatives and see how they contribute to our vibrant community!</p>
                             <div className="flex flex-col space-y-1 items-center mt-8">
                                 <div>
-                                    <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-40 h-40" />
+                                    <Image src="https://i.imgur.com/3ztaFVE.jpeg" alt="president" width={200} height={200} className="rounded-full w-40 h-40 object-cover" />
                                 </div>
                                 <p className="font-semibold flex items-center">
                                     Kareem Darwesh
                                 </p>
                                 <p className="italic">President</p>
                                 <div className="flex space-x-1">
-                                    <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                    {/* <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                         <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                     </Link>
                                     <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
@@ -98,21 +99,21 @@ export default function About() {
                                         <div className="tiktok-container w-6 h-6">
                                             <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                         </div>
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             </div>
 
-                            <div className="flex justify-between flex-wrap items-center">
-                                <div className="flex flex-col space-y-1 items-center mt-4">
+                            <div className="flex flex-wrap items-start w-full space-x-4 justify-evenly">
+                                <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-32 h-w-32" />
+                                        <Image src="https://i.imgur.com/wHiEsXh.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Ahmed Salama
                                     </p>
                                     <p className="italic">Operation Director</p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                        {/* <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
                                         <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
@@ -125,13 +126,12 @@ export default function About() {
                                             <div className="tiktok-container w-6 h-6">
                                                 <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
-
-                                <div className="flex flex-col space-y-1 items-center mt-4">
+                                <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-32 h-w-32" />
+                                        <Image src="https://i.imgur.com/nv8MTKK.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Hour ElAhl
@@ -140,7 +140,7 @@ export default function About() {
                                         Creative Director
                                     </p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                        {/* <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
                                         <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
@@ -153,19 +153,21 @@ export default function About() {
                                             <div className="tiktok-container w-6 h-6">
                                                 <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
-                                <div className="flex flex-col space-y-1 items-center mt-4">
+                                <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-32 h-w-32" />
+                                        <Image src="https://i.imgur.com/NTdsih0.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Nadeem Mohamed
                                     </p>
-                                    <p className="italic">JTP Director</p>
+                                    <p className="italic">
+                                        JTP Director
+                                    </p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                        {/* <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
                                         <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
@@ -178,19 +180,19 @@ export default function About() {
                                             <div className="tiktok-container w-6 h-6">
                                                 <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
-                                <div className="flex flex-col space-y-1 items-center mt-4">
+                                <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-32 h-w-32" />
+                                        <Image src="https://i.imgur.com/aeqDi0X.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Ammar Ibrahim
                                     </p>
                                     <p className="italic">Hardware Director</p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
+                                        {/* <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
                                             <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
                                         </Link>
                                         <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
@@ -203,12 +205,12 @@ export default function About() {
                                             <div className="tiktok-container w-6 h-6">
                                                 <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
                                             </div>
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
-                                <div className="flex flex-col space-y-1 items-center mt-4">
+                                <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-32 h-w-32" />
+                                        <Image src="https://i.imgur.com/ij8PF5G.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         John Fayez
@@ -222,314 +224,338 @@ export default function About() {
                                 </div>
                             </div>
 
-                            <Tabs defaultValue="Software" className="mt-8">
-                                <TabsList className="space-x-0 sm:space-x-2 bg-gray-200 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 w-full min-w-fit mx-auto  dark:border-none dark:bg-dark-nav-bg dark:text-white py-2 sm:py-6 flex justify-evenly">
-                                    <TabsTrigger value="Operation" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">Operation</TabsTrigger>
-                                    <TabsTrigger value="Creative" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">Creative</TabsTrigger>
-                                    <TabsTrigger value="JTP" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">JTP</TabsTrigger>
-                                    <TabsTrigger value="Hardware" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">Hardware</TabsTrigger>
-                                    <TabsTrigger value="Software" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-full text-xs sm:text-base p-1">Software</TabsTrigger>
+                            <Tabs defaultValue="Operation" className="mt-8 ">
+                                <TabsList className="space-x-0 sm:space-x-2 bg-gray-200 border
+                                 border-gray-300 text-light-text rounded-xl focus:ring-primary-600
+                                  focus:border-primary-600 w-full min-w-fit mx-auto  dark:border-none
+                                   dark:bg-dark-nav-bg dark:text-white py-2 flex justify-evenly flex-wrap
+                                   whitespace-break-spaces h-fit">
+                                    <TabsTrigger value="Operation" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Operation</TabsTrigger>
+                                    <TabsTrigger value="Creative" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Creative</TabsTrigger>
+                                    <TabsTrigger value="JTP" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">JTP</TabsTrigger>
+                                    <TabsTrigger value="Hardware" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Hardware</TabsTrigger>
+                                    <TabsTrigger value="Software" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Software</TabsTrigger>
                                 </TabsList>
+                                <TabsContent value="Operation" className="w-full flex flex-wrap space-x-4 
+                                justify-evenly items-center">
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/y2ZqreO.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Jana Elahl
+                                        </p>
+                                        <p className="italic">Events Planning Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/9KCtw8e.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Jomana Eltabakh
+                                        </p>
+                                        <p className="italic">Events Planning Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/jdulnyo.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Shahd Ahmed
+                                        </p>
+                                        <p className="italic">Teams Support Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/lrzwhdX.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Menna Bassem
+                                        </p>
+                                        <p className="italic">Teams Support Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/tbxcgRP.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Mohammed Baligh
+                                        </p>
+                                        <p className="italic">Fundraising Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                </TabsContent>
+                                <TabsContent value="Creative" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/L4L4u8h.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Mariam Darwesh
+                                        </p>
+                                        <p className="italic">Design Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/bx4FrDZ.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Malak Sany
+                                        </p>
+                                        <p className="italic">Design Co-head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/zusGIok.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Pakinam Beksawy
+                                        </p>
+                                        <p className="italic">Media Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/dWf3NVv.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Kareem Roshdy
+                                        </p>
+                                        <p className="italic">Media Co-head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/gAKn91J.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Tasneem Khalil
+                                        </p>
+                                        <p className="italic">Marketing Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                </TabsContent>
+                                <TabsContent value="JTP" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/tCOVZt2.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Hana Osama
+                                        </p>
+                                        <p className="italic">Marketing JTP Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/ZTBnNTw.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Hady Hashem
+                                        </p>
+                                        <p className="italic">Marketing JTP Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/2JmSHQq.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Donia Hassan
+                                        </p>
+                                        <p className="italic">Media&Design JTP Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/FM6Lyje.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Sarah Shibl
+                                        </p>
+                                        <p className="italic">Media&Design JTP Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                </TabsContent>
+                                <TabsContent value="Hardware" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/hEY6HAC.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Farah Adel
+                                        </p>
+                                        <p className="italic">R&D Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/ZY0Klne.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Marwan Salah
+                                        </p>
+                                        <p className="italic">Arduino Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/suhbNmm.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Youssef Hussein
+                                        </p>
+                                        <p className="italic">Arduino Co-head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/8N89eih.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Ahmed Ashraf
+                                        </p>
+                                        <p className="italic">Embedded Head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                    <div className="text-center flex flex-col space-y-1 items-center mt-4">
+                                        <div>
+                                            <Image src="https://i.imgur.com/VCGzKoY.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                        </div>
+                                        <p className="font-semibold flex items-center">
+                                            Mostafa Abdelaziz
+                                        </p>
+                                        <p className="italic">Embedded Co-head</p>
+                                        <div className="flex space-x-1"></div>
+                                    </div>
+                                </TabsContent>
                                 <TabsContent value="Software" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/kgpqOdx.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Paula Habib
                                         </p>
                                         <p className="italic">Mobile Development Head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/dAtQA0m.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Mohamed Sherif
                                         </p>
                                         <p className="italic">Mobile Development Co-head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/PNoQM64.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Daniel Sherif
                                         </p>
                                         <p className="italic">UI/UX Design Head</p>
                                         <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
                                         </div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/5mY7LW8.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Shahd Wael
                                         </p>
                                         <p className="italic">Data Analysis Head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/Zkwy0qe.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Omar Magdy
                                         </p>
                                         <p className="italic">Data Analysis Co-head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/h4YLwIU.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Abdelrahman Elsamalouty
                                         </p>
                                         <p className="italic">Machine Learning Head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/FZ9jlz3.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
-                                            Yusuf Sweilam
+                                            Yusuf Swelam
                                         </p>
                                         <p className="italic">Machine Learning Co-head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/vmtZ4ig.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Ahmed Tamer
                                         </p>
                                         <p className="italic">Cyber Security Head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/b5Ms27o.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Amr Mohsen
                                         </p>
                                         <p className="italic">Cyber Security Co-head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/rIgcE1B.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Ahmed Hawater
                                         </p>
                                         <p className="italic">Web Development Head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/trdctDw.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Abdullah Mahmoud
                                         </p>
                                         <p className="italic">Web Development Co-head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src={logo} alt="president" width={200} height={200} className="rounded-full w-28 h-w-28" />
+                                            <Image src="https://i.imgur.com/3trHSVs.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Abdelrahman Talaat
                                         </p>
                                         <p className="italic">Web Development Co-head</p>
-                                        <div className="flex space-x-1">
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Facebook size={100} strokeWidth={1.5} className="w-6 h-6 bg-blue-900 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Instagram size={100} strokeWidth={1.5} className="w-6 h-6 bg-gradient-to-tr from-amber-400 to-pink-600 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                            </Link>
-                                            <Link href="https://www.linkedin.com/company/ieeegucsb/?originalSubdomain=eg" rel="noopener noreferrer" target="_blank">
-                                                <div className="tiktok-container w-6 h-6">
-                                                    <Image alt="TikTok" src={TikTok} className="object-contain bg-gradient-to-br from-cyan-200 via-slate-900 to-rose-500 rounded inline p-1" />
-                                                </div>
-                                            </Link>
-                                        </div>
+                                        <div className="flex space-x-1"></div>
                                     </div>
 
                                 </TabsContent>
@@ -546,7 +572,7 @@ export default function About() {
                         </Link>
                     </div>
                 </section>
-            </main>
+            </main >
         </>
     );
 }

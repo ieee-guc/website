@@ -133,17 +133,17 @@ export default function Header() {
                         <NavigationMenuItem>
                             <Link href="/calendar" legacyBehavior passHref >
                                 <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
-                                    Our Calendar
+                                    Calendar
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
-                        {/* <NavigationMenuItem>
+                        <NavigationMenuItem>
                             <Link href="/gallery" legacyBehavior passHref >
                                 <NavigationMenuLink className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
-                                    Our Gallery
+                                    Gallery
                                 </NavigationMenuLink>
                             </Link>
-                        </NavigationMenuItem> */}
+                        </NavigationMenuItem>
                     </NavigationMenuList>
                 </div>
 
@@ -271,7 +271,15 @@ export default function Header() {
                                     onClick={() => setMobileMenuOpen(false)} // Close menu on link click
                                     className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                 >
-                                    Our Calendar
+                                    Calendar
+                                </Link>
+                                <Link
+                                    rel="noopener noreferrer"
+                                    href="/gallery"
+                                    onClick={() => setMobileMenuOpen(false)} // Close menu on link click
+                                    className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                >
+                                    Gallery
                                 </Link>
                             </div>
                             {!isAuthenticated ?

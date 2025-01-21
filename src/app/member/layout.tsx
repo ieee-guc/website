@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import '../globals.css';
 import Preferences from "../components/Preferences";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
-import { Feather, Home, Target, Calendar, Mic, Code, FileText } from "react-feather";
+import { Home, Target, Calendar, FileText } from "react-feather";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Dashboard",

@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Logo from "../../../public/ieee-logo.png";
 import Link from "next/link";
+import { ArrowRight } from "react-feather";
 
 export default function Home() {
     const carouselItems = [
@@ -66,14 +67,16 @@ export default function Home() {
                     <CarouselNext className="text-white hover:text-white bg-light-primary hover:bg-light-primary active:bg-light-primary" />
                 </Carousel>
                 <div className="mt-12 text-light-text dark:text-dark-text">
-                    <h2 className="text-2xl font-bold text-center">Second Recruitment for 2024/2025 is now Open!</h2>
-                    <p className="text-center">Join our team of IEEE GUC members and grow personally and technically.</p>
+                    <h2 className="text-2xl font-bold text-center">We&apos;re Recruiting!</h2>
+                    <p className="text-center">Second semester recruitment for 2024/2025 season is now open. <br /> Join our team of IEEE GUC members and grow personally and technically.</p>
                     <div className="text-center mt-1">
                         <Link rel="noopener noreferrer"
                             href={'/recruitment'}
-                            className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                            className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                         >
-                            Go to Recruitment Page
+                            <span className="inline-flex items-center">
+                                Go to Recruitment Page <ArrowRight className="ml-2" />
+                            </span>
                         </Link>
                     </div>
                 </div>
@@ -83,9 +86,11 @@ export default function Home() {
                     <div className="text-center mt-1">
                         <Link rel="noopener noreferrer"
                             href={'/calendar'}
-                            className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                            className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary font-bold underline text-center text-light-text dark:text-dark-text"
                         >
-                            Check out our Calendar
+                            <span className="inline-flex items-center">
+                                Checkout Our Calendar <ArrowRight className="ml-2" />
+                            </span>
                         </Link>
                     </div>
                 </div>
