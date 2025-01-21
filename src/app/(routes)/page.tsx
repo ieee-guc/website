@@ -74,7 +74,7 @@ export default function Home() {
                             href={'/recruitment'}
                             className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                         >
-                            <span className="inline-flex items-center">
+                            <span className="truck-animation inline-flex items-center">
                                 Go to Recruitment Page <ArrowRight className="ml-2" />
                             </span>
                         </Link>

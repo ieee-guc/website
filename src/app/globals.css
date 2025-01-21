@@ -77,7 +77,7 @@ html {
 }
 
 .truck-animation {
-  display: inline-block;
+  /* display: inline-block; */
   animation: bobbing 2s ease-in-out infinite;
 }
 
