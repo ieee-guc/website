@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
 import { ArrowLeft } from "react-feather";
 
 export const metadata: Metadata = {
@@ -11,9 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Album1() {
-    const imageDirectory = path.join(process.cwd(), "public/gallery/album1");
-    const images = fs.readdirSync(imageDirectory).map((fileName) => ({
-        src: `/gallery/album1/${fileName}`,
+    const images = Array.from({ length: 39 }, (_, i) => ({
+        src: `/gallery/album1/image${i + 1}.jpg`,
     }));
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">

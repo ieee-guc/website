@@ -2,7 +2,7 @@ import ComingSoon from "../../components/ComingSoon"
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import openingImg from "../../../../public/gallery/album1/cover.png";
+import openingImg from "../../../../public/gallery/album1/cover.jpg";
 import padeletoImg from "../../../../public/gallery/album3/cover.png";
 import alexImg from "../../../../public/gallery/album2/cover.png";
 import triviaImg from "../../../../public/gallery/album4/cover.jpg";
