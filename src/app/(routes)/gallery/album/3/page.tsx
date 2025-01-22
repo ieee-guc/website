@@ -27,7 +27,7 @@ export default async function Album3() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 my-10">
                     {images.map((item, index) => (
                         <Card key={index} className="w-full p-0 h-72">
-                            <CardContent className="group hover:cursor-pointer flex items-center justify-center p-0 w-full h-full flex-col">
+                            <CardContent className="group flex items-center justify-center p-0 w-full h-full flex-col">
                                 <div className="relative overflow-hidden w-full h-full">
                                     <Image
                                         alt="image"

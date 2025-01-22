@@ -79,7 +79,7 @@ export default function About() {
                             <p className="sm:w-10/12 text-center mx-auto">Our passionate team drives our mission with diverse skills and experiences. <br /> Discover the individuals behind our initiatives and see how they contribute to our vibrant community!</p>
                             <div className="flex flex-col space-y-1 items-center mt-8">
                                 <div>
-                                    <Image src="https://i.imgur.com/3ztaFVE.jpeg" alt="president" width={200} height={200} className="rounded-full w-40 h-40 object-cover" />
+                                    <Image src="https://i.imgur.com/3ztaFVE.jpeg" alt="president" width={200} height={200} className="rounded-full w-40 h-40 object-cover" placeholder="blur" blurDataURL="/user.png" />
                                 </div>
                                 <p className="font-semibold flex items-center">
                                     Kareem Darwesh
@@ -106,7 +106,7 @@ export default function About() {
                             <div className="flex flex-wrap items-start w-full space-x-4 justify-evenly">
                                 <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src="https://i.imgur.com/wHiEsXh.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
+                                        <Image src="https://i.imgur.com/wHiEsXh.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Ahmed Salama
@@ -131,7 +131,7 @@ export default function About() {
                                 </div>
                                 <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src="https://i.imgur.com/nv8MTKK.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
+                                        <Image src="https://i.imgur.com/nv8MTKK.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Hour ElAhl
@@ -158,7 +158,7 @@ export default function About() {
                                 </div>
                                 <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src="https://i.imgur.com/NTdsih0.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
+                                        <Image src="https://i.imgur.com/NTdsih0.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Nadeem Mohamed
@@ -185,7 +185,7 @@ export default function About() {
                                 </div>
                                 <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src="https://i.imgur.com/aeqDi0X.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
+                                        <Image src="https://i.imgur.com/aeqDi0X.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         Ammar Ibrahim
@@ -210,7 +210,7 @@ export default function About() {
                                 </div>
                                 <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                     <div>
-                                        <Image src="https://i.imgur.com/ij8PF5G.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" />
+                                        <Image src="https://i.imgur.com/ij8PF5G.png" alt="president" width={200} height={200} className="rounded-full w-32 h-w-32 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                     </div>
                                     <p className="font-semibold flex items-center">
                                         John Fayez
@@ -240,7 +240,7 @@ export default function About() {
                                 justify-evenly items-center">
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/y2ZqreO.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/y2ZqreO.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Jana Elahl
@@ -260,7 +260,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/jdulnyo.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/jdulnyo.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Shahd Ahmed
@@ -292,7 +292,7 @@ export default function About() {
                                 <TabsContent value="Creative" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/L4L4u8h.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/L4L4u8h.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Mariam Darwesh
@@ -302,7 +302,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/bx4FrDZ.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/bx4FrDZ.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Malak Sany
@@ -312,7 +312,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/zusGIok.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/zusGIok.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Pakinam Beksawy
@@ -322,7 +322,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/dWf3NVv.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/dWf3NVv.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Kareem Roshdy
@@ -332,7 +332,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/gAKn91J.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/gAKn91J.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Tasneem Khalil
@@ -344,7 +344,7 @@ export default function About() {
                                 <TabsContent value="JTP" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/tCOVZt2.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/tCOVZt2.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Hana Osama
@@ -354,7 +354,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/ZTBnNTw.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/ZTBnNTw.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Hady Hashem
@@ -364,7 +364,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/2JmSHQq.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/2JmSHQq.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Donia Hassan
@@ -374,7 +374,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/FM6Lyje.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/FM6Lyje.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Sarah Shibl
@@ -386,7 +386,7 @@ export default function About() {
                                 <TabsContent value="Hardware" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/hEY6HAC.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/hEY6HAC.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Farah Adel
@@ -396,7 +396,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/ZY0Klne.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/ZY0Klne.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Marwan Salah
@@ -406,7 +406,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/suhbNmm.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/suhbNmm.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Youssef Hussein
@@ -416,7 +416,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/8N89eih.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/8N89eih.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Ahmed Ashraf
@@ -426,7 +426,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/VCGzKoY.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/VCGzKoY.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Mostafa Abdelaziz
@@ -438,7 +438,7 @@ export default function About() {
                                 <TabsContent value="Software" className="w-full flex flex-wrap space-x-4 justify-evenly items-center">
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/kgpqOdx.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/kgpqOdx.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Paula Habib
@@ -448,7 +448,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/dAtQA0m.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/dAtQA0m.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Mohamed Sherif
@@ -458,7 +458,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/PNoQM64.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/PNoQM64.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Daniel Sherif
@@ -469,7 +469,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/5mY7LW8.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/5mY7LW8.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Shahd Wael
@@ -479,7 +479,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/Zkwy0qe.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/Zkwy0qe.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Omar Magdy
@@ -489,7 +489,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/h4YLwIU.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/h4YLwIU.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Abdelrahman Elsamalouty
@@ -499,7 +499,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/FZ9jlz3.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/FZ9jlz3.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Yusuf Swelam
@@ -509,7 +509,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/vmtZ4ig.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/vmtZ4ig.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Ahmed Tamer
@@ -519,7 +519,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/b5Ms27o.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/b5Ms27o.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Amr Mohsen
@@ -529,7 +529,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/rIgcE1B.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/rIgcE1B.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Ahmed Hawater
@@ -539,7 +539,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/trdctDw.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/trdctDw.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Abdullah Mahmoud
@@ -549,7 +549,7 @@ export default function About() {
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
                                         <div>
-                                            <Image src="https://i.imgur.com/3trHSVs.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
+                                            <Image src="https://i.imgur.com/3trHSVs.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" placeholder="blur" blurDataURL="/user.png" />
                                         </div>
                                         <p className="font-semibold flex items-center">
                                             Abdelrahman Talaat
