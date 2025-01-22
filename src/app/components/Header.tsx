@@ -4,7 +4,6 @@ import * as React from "react"
 import Link from "next/link"
 import {
     NavigationMenu,
-    NavigationMenuContent,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
@@ -15,7 +14,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { Mic, Code, Archive, Users, Terminal, LogIn, Menu, User, Info, LogOut, X, ChevronDown } from 'react-feather'
+import { Mic, Code, Archive, Users, Terminal, LogIn, Menu, User, Info, LogOut, X } from 'react-feather'
 import { useAuth } from '../contexts/authContext';
 import { useRouter } from 'next/navigation';
 import logo from "../../../public/ieee-logo.png"
@@ -43,7 +42,7 @@ export default function Header() {
     const handleMouseLeave = () => setIsProfileOpen(false);
 
     return (
-        <header className="bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text">
+        <header className="bg-dark-primary  text-dark-text">
             {/* <NavigationMenu className="sm:mx-auto sm:max-w-7xl max-w-full flex "> */}
             <NavigationMenu className="sm:mx-auto sm:max-w-7xl sm:px-8 p-4 pr-0 max-w-full justify-between items-center">
                 <div className="flex items-center gap-8 w-full sm:w-fit">
@@ -63,7 +62,7 @@ export default function Header() {
                             <button
                                 type="button"
                                 onClick={() => setMobileMenuOpen(true)}
-                                className="-m-2.5 inline-flex items-center justify-center rounded-xl p-2.5 text-slate-700"
+                                className="-m-2.5 inline-flex items-center justify-center rounded-xl p-2.5 text-dark-text"
                             >
                                 <span className="sr-only">Open main menu</span>
                                 <Menu />
@@ -83,7 +82,7 @@ export default function Header() {
                     {/* Desktop Menu */}
                     <NavigationMenuList className="hidden sm:flex items-center space-x-8">
                         {/* <NavigationMenuItem>
-                            <NavigationMenuTrigger className="hover:text-light-primary dark:hover:text-dark-secondary font-medium text-base">
+                            <NavigationMenuTrigger className="hover:underline hover:font-bold font-medium text-base">
                                 We Provide
                             </NavigationMenuTrigger>
                             <NavigationMenuContent>
@@ -118,28 +117,28 @@ export default function Header() {
 
                         <NavigationMenuItem>
                             <Link href="/about" legacyBehavior passHref>
-                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
                                     About Us
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/recruitment" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
                                     Recruitment
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/calendar" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
                                     Calendar
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/gallery" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:text-light-primary duration-200 dark:hover:text-dark-secondary font-medium text-base">
+                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
                                     Gallery
                                 </NavigationMenuLink>
                             </Link>
@@ -153,10 +152,10 @@ export default function Header() {
                         <Link
                             rel="noopener noreferrer"
                             href="/login"
-                            className="w-fit flex items-center text-base font-medium leading-6 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-secondary"
+                            className="w-fit flex items-center text-base font-medium leading-6 text-dark-text  hover:underline hover:font-bold"
                         >
                             Log in
-                            <LogIn className="ml-2 hover:text-light-primary dark:hover:text-dark-secondary" />
+                            <LogIn className="ml-2 hover:underline hover:font-bold" />
                         </Link>
                     </div>}
 
@@ -243,7 +242,7 @@ export default function Header() {
                                                 onClick={() => setMobileMenuOpen(false)} // Close menu on link click
                                                 className="block rounded-xl py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
                                             >
-                                                <item.icon aria-hidden="true" className="h-4 w-4 inline mr-2 text-slate-600 group-hover:text-light-primary" />
+                                                <item.icon aria-hidden="true" className="h-4 w-4 inline mr-2 text-slate-600 group-hover:underline hover:font-bold" />
                                                 {item.name}
                                             </DisclosureButton>
                                         ))}

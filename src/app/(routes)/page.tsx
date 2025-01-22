@@ -22,7 +22,7 @@ export default function Home() {
     ]
 
     return (
-        <main className="flex w-full min-h-screen flex-col items-center justify-between py-6 p-6
+        <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6
          bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <section className="w-9/12">
                 <div className="w-fit mx-auto text-3xl text-light-text dark:text-dark-text mb-4">

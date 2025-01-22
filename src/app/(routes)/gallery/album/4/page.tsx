@@ -24,6 +24,7 @@ export default async function Album4() {
                         <h1 className="text-base sm:text-xl text-light-text dark:text-dark-text h-fit underline"> DECEMBER 2024</h1>
                     </div>
                 </div>
+                {/* <p className="text-base sm:text-xl my-10 p-4 rounded-xl bg-light-sub-bg dark:bg-dark-sub-bg text-light-text dark:text-dark-text font-"></p> */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 my-10">
                     {images.map((item, index) => (
                         <Card key={index} className="w-full p-0 h-72">

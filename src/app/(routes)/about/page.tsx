@@ -228,13 +228,13 @@ export default function About() {
                                 <TabsList className="space-x-0 sm:space-x-2 bg-gray-200 border
                                  border-gray-300 text-light-text rounded-xl focus:ring-primary-600
                                   focus:border-primary-600 w-full min-w-fit mx-auto  dark:border-none
-                                   dark:bg-dark-nav-bg dark:text-white py-2 flex justify-evenly flex-wrap
+                                   dark:bg-dark-nav-bg dark:text-white py-4 flex justify-evenly flex-wrap
                                    whitespace-break-spaces h-fit">
-                                    <TabsTrigger value="Operation" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Operation</TabsTrigger>
-                                    <TabsTrigger value="Creative" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Creative</TabsTrigger>
-                                    <TabsTrigger value="JTP" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">JTP</TabsTrigger>
-                                    <TabsTrigger value="Hardware" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Hardware</TabsTrigger>
-                                    <TabsTrigger value="Software" className="data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Software</TabsTrigger>
+                                    <TabsTrigger value="Operation" className="hover:bg-gray-50 dark:hover:bg-gray-700 data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Operation</TabsTrigger>
+                                    <TabsTrigger value="Creative" className="hover:bg-gray-50 dark:hover:bg-gray-700 data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Creative</TabsTrigger>
+                                    <TabsTrigger value="JTP" className="hover:bg-gray-50 dark:hover:bg-gray-700 data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">JTP</TabsTrigger>
+                                    <TabsTrigger value="Hardware" className="hover:bg-gray-50 dark:hover:bg-gray-700 data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Hardware</TabsTrigger>
+                                    <TabsTrigger value="Software" className="hover:bg-gray-50 dark:hover:bg-gray-700 data-[state=active]:bg-gray-50 transition-all duration-300 dark:data-[state=active]:bg-gray-700 rounded-xl w-3/4 sm:w-fit px-8 text-base">Software</TabsTrigger>
                                 </TabsList>
                                 <TabsContent value="Operation" className="w-full flex flex-wrap space-x-4 
                                 justify-evenly items-center">
@@ -443,7 +443,7 @@ export default function About() {
                                         <p className="font-semibold flex items-center">
                                             Paula Habib
                                         </p>
-                                        <p className="italic">Mobile Development Head</p>
+                                        <p className="italic">Mobile Dev. Head</p>
                                         <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
@@ -453,7 +453,7 @@ export default function About() {
                                         <p className="font-semibold flex items-center">
                                             Mohamed Sherif
                                         </p>
-                                        <p className="italic">Mobile Development Co-head</p>
+                                        <p className="italic">Mobile Dev. Co-head</p>
                                         <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
@@ -534,7 +534,7 @@ export default function About() {
                                         <p className="font-semibold flex items-center">
                                             Ahmed Hawater
                                         </p>
-                                        <p className="italic">Web Development Head</p>
+                                        <p className="italic">Web Dev. Head</p>
                                         <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
@@ -544,7 +544,7 @@ export default function About() {
                                         <p className="font-semibold flex items-center">
                                             Abdullah Mahmoud
                                         </p>
-                                        <p className="italic">Web Development Co-head</p>
+                                        <p className="italic">Web Dev. Co-head</p>
                                         <div className="flex space-x-1"></div>
                                     </div>
                                     <div className="text-center flex flex-col space-y-1 items-center mt-4">
@@ -554,7 +554,7 @@ export default function About() {
                                         <p className="font-semibold flex items-center">
                                             Abdelrahman Talaat
                                         </p>
-                                        <p className="italic">Web Development Co-head</p>
+                                        <p className="italic">Web Dev. Co-head</p>
                                         <div className="flex space-x-1"></div>
                                     </div>
 

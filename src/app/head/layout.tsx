@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import '../globals.css';
 import Preferences from "../components/Preferences";
 import SideBar from "../components/SideBar";
-import Footer from "../components/Footer";
+import UserFooter from "../components/UserFooter";
 import { Feather, Home, Target, Users, Mic, Code, Calendar } from "react-feather";
 
 
@@ -31,7 +31,7 @@ export default function RootLayout({
             <SideBar sections={sections} />
             <div className="children-parent sm:ml-16 ml-0 sm:mb-0 mb-16">
                 {children}
-                <Footer />
+                <UserFooter />
             </div>
         </div>
     );

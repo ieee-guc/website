@@ -26,7 +26,7 @@ export default function RootLayout({
             <body className={poppins.className}>
                 <AuthProvider>
                     <Top />
-                    <div className="flex-col flex">
+                    <div className="flex-col flex bg-light-bg dark:bg-dark-bg">
                         {children}
                     </div>
                     <Toaster />
