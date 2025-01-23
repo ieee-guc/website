@@ -10,7 +10,7 @@ export default function UserFooter() {
         <footer className=" footer w-full pt-10 bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text text-neutral-content">
             <div className="pb-4 flex flex-col w-full ">
                 <div className="w-3/4  mx-auto flex justify-center items-center">
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 justify-center items-center">
                         <Link href="https://www.facebook.com/IEEE.GUC.SB/" rel="noopener noreferrer" target="_blank" title="Facebook Page - IEEE GUC">
                             <Facebook size={30} strokeWidth={1.5} className="hover:scale-110 w-10 h-10 bg-blue-900 text-white rounded-xl p-1 hover:scale-1 duration-500" />
                         </Link>
