@@ -5,9 +5,13 @@ import logo from "../../../../public/ieee-logo.png";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Facebook, Instagram, Linkedin } from 'react-feather';
-import TikTok from "../../../../public/tik-tok.svg"
 import dcc from "../../../../public/dcc.png"
-import { wrap } from "module";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function About() {
     const [isLoading, setIsLoading] = useState(true);
@@ -23,45 +27,63 @@ export default function About() {
                 <section className="about sm:w-8/12 w-11/12 space-y-16">
                     <h1 className="text-4xl text-center font-bold">About IEEE GUC</h1>
 
-                    <div className="flex flex-col-reverse sm:flex-row w-full sm:space-x-8 items-center">
-                        <div className="w-1/2 sm:w-1/5 rounded-3xl mx-auto mt-4 sm:mt-0">
-                            <Image src={logo} alt="logo" width="300" height="300" className="rounded-3xl w-full h-auto" />
-                        </div>
-                        <div className="w-full sm:w-4/5 p-0">
-                            <h2 className="text-2xl font-semibold">Who we are</h2>
-                            <p>We are a dynamic community of students from various fields, united by a passion for technology, innovation, and professional growth. As part of the world’s largest technical professional organization, our club provides a platform for members to enhance their technical knowledge, develop leadership skills, and engage in hands-on projects. Through workshops, competitions, and events, we aim to foster personal and academic development, preparing students to excel in the ever-evolving fields of engineering, science, and technology. Join us to connect, learn, and innovate together!</p>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row w-full sm:space-x-8 items-center">
-                        <div className="w-full sm:w-4/5 p-0">
-                            <h2 className="text-2xl font-semibold">Our vision and mission</h2>
-                            <p className="w-full">At IEEE GUC, we aim to inspire students to innovate and shape a better future. Through our diverse events, workshops, sessions, and educational activities, we strive to foster a spirit of innovation and technical excellence. We are committed to maintaining this identity by empowering students to expand their knowledge, develop new skills, and contribute to the advancement of technology, ultimately creating a positive impact on society. Together, we aim to build a community that thrives on curiosity, creativity, and a shared passion for making the world a better place.</p>
-                        </div>
-                        <div className="w-1/2 sm:w-1/5 rounded-3xl mx-auto mt-4 sm:mt-0">
-                            <Image src={"https://i.imgur.com/pbY129c.png"} alt="logo" width="300" height="300" className="rounded-3xl w-full h-auto" />
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col-reverse sm:flex-row w-full sm:space-x-8 items-center">
-                        <div className="w-1/2 sm:w-1/5 rounded-3xl mx-auto mt-4 sm:mt-0">
-                            <Image src={"https://i.imgur.com/1bVH8Tn.png"} alt="logo" width="300" height="300" className="rounded-3xl w-full h-auto" />
-                        </div>
-                        <div className="w-full sm:w-4/5 p-0">
-                            <h2 className="text-2xl font-semibold">Our core values</h2>
-                            <p>At IEEE GUC, we are guided by a set of core values that shape everything we do:</p>
-                            <ul className="list-disc ml-4">
-                                <li><span className="font-semibold">Collaboration:</span> Great ideas are built through teamwork. We foster teamwork by sharing knowledge, exchanging ideas, and working together on impactful projects.</li>
-                                <li><span className="font-semibold">Excellence:</span> We encourage members to strive for their best and provide the support to help them reach their goals. Our commitment to excellence drives us to continuously improve in all areas.</li>
-                                <li><span className="font-semibold">Innovation:</span> We empower students to explore new technologies, push boundaries, and create innovative solutions. Innovation is at the core of our mission to shape a better future.</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <Accordion type="single" collapsible className="w-full sm:w-3/4 mx-auto bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text px-4 rounded-xl mt-2">
+                        <AccordionItem value="who-we-are">
+                            <AccordionTrigger className="text-left text-2xl font-semibold">
+                                Who we are
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                <div className="flex flex-col-reverse sm:flex-row w-full sm:space-x-8 items-center">
+                                    <div className="w-1/2 sm:w-1/5 rounded-3xl mx-auto mt-4 sm:mt-0">
+                                        <Image src={logo} alt="logo" width="300" height="300" className="rounded-3xl w-full h-auto" />
+                                    </div>
+                                    <div className="w-full text-lg font-sans font-normal">
+                                        <p>We are a dynamic community of students from various fields, united by a passion for technology, innovation, and professional growth. As part of the world’s largest technical professional organization, our club provides a platform for members to enhance their technical knowledge, develop leadership skills, and engage in hands-on projects. Through workshops, competitions, and events, we aim to foster personal and academic development, preparing students to excel in the ever-evolving fields of engineering, science, and technology. Join us to connect, learn, and innovate together!</p>
+                                    </div>
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="vision-and-mission">
+                            <AccordionTrigger className="text-left text-2xl font-semibold">
+                                Our Vision and Mission
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                <div className="flex flex-col sm:flex-row w-full sm:space-x-8 items-center">
+                                    <div className="w-full sm:w-4/5 p-0">
+                                        <p className="w-full text-lg font-sans font-normal">At IEEE GUC, we aim to inspire students to innovate and shape a better future. Through our diverse events, workshops, sessions, and educational activities, we strive to foster a spirit of innovation and technical excellence. We are committed to maintaining this identity by empowering students to expand their knowledge, develop new skills, and contribute to the advancement of technology, ultimately creating a positive impact on society. Together, we aim to build a community that thrives on curiosity, creativity, and a shared passion for making the world a better place.</p>
+                                    </div>
+                                    <div className="w-1/2 sm:w-1/5 rounded-3xl mx-auto mt-4 sm:mt-0">
+                                        <Image src={"https://i.imgur.com/pbY129c.png"} alt="logo" width="300" height="300" className="rounded-3xl w-full h-auto" />
+                                    </div>
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="core-values">
+                            <AccordionTrigger className="text-left text-2xl font-semibold">
+                                Our Core Values
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                <div className="flex flex-col-reverse sm:flex-row w-full sm:space-x-8 items-center">
+                                    <div className="w-1/2 sm:w-1/5 rounded-3xl mx-auto mt-4 sm:mt-0">
+                                        <Image src={"https://i.imgur.com/1bVH8Tn.png"} alt="logo" width="300" height="300" className="rounded-3xl w-full h-auto" />
+                                    </div>
+                                    <div className="w-full sm:w-4/5 p-0  text-lg font-sans font-normal">
+                                        <p>At IEEE GUC, we are guided by a set of core values that shape everything we do:</p>
+                                        <ul className="list-disc ml-4">
+                                            <li><span className="font-semibold">Collaboration:</span> Great ideas are built through teamwork. We foster teamwork by sharing knowledge, exchanging ideas, and working together on impactful projects.</li>
+                                            <li><span className="font-semibold">Excellence:</span> We encourage members to strive for their best and provide the support to help them reach their goals. Our commitment to excellence drives us to continuously improve in all areas.</li>
+                                            <li><span className="font-semibold">Innovation:</span> We empower students to explore new technologies, push boundaries, and create innovative solutions. Innovation is at the core of our mission to shape a better future.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
 
                     <div className="flex flex-col sm:flex-row w-full sm:space-x-8 p-12 rounded-xl">
                         <div className="w-full p-0">
                             <h2 className="text-2xl text-center font-semibold">Our Partners</h2>
-                            <p className="sm:w-10/12 text-center mx-auto">Our partners fuel our mission with their unique expertise and support, empowering us to make a lasting impact together.</p>
+                            <p className="sm:w-10/12 text-center mx-auto text-lg font-sans font-normal">Our partners fuel our mission with their unique expertise and support, empowering us to make a lasting impact together.</p>
                             <div className="flex flex-col space-y-1 items-center mt-8">
                                 <Link href="https://www.datacamp.com/donates" rel="noopener noreferrer" target="_blank">
                                     <div>
@@ -566,7 +588,7 @@ export default function About() {
                     <div className="text-center mt-1">
                         <Link rel="noopener noreferrer"
                             href={'/gallery'}
-                            className="text-md p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                            className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
                         >
                             Visit our Gallery
                         </Link>
