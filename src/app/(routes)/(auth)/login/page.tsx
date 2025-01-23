@@ -111,17 +111,6 @@ export default function Login() {
                                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-light-text dark:text-white">Password</label>
                                         <input value={password} onChange={handlePasswordChange} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                                     </div>
-                                    <div className="flex items-center justify-between flex-col md:flex-row gap-4">
-                                        <div className="flex items-start">
-                                            <div className="flex items-center h-5">
-                                                <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded-xl bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" />
-                                            </div>
-                                            <div className="ml-3 text-sm">
-                                                <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
-                                            </div>
-                                        </div>
-                                        <Link href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-dark-text">Forgot password?</Link>
-                                    </div>
                                     <button
                                         type="submit"
                                         className="overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
@@ -133,9 +122,15 @@ export default function Login() {
                                             size={24}
                                         />
                                     </button>
-                                    <p className="text-xs font-light text-gray-500 dark:text-gray-400">
-                                        Don’t have an account yet? <Link href="/signup" className="font-medium hover:underline">Sign up</Link>
-                                    </p>
+                                    <div className="flex flex-col justify-between">
+                                        <Link href="#" className="mb-2 w-fit hover:underline text-sm font-medium text-light-text dark:text-dark-text">Forgot password?</Link>
+                                        {/* <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                                            Don’t have an account yet? <Link href="/signup" className="hover:underline text-sm font-medium text-light-text dark:text-dark-text">Sign up</Link>
+                                        </p> */}
+                                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                                            Not a member? <Link href="#footer" className="hover:underline text-sm font-medium text-light-text dark:text-dark-text">Subscribe</Link> to our newsletter for recruitment updates!
+                                        </p>
+                                    </div>
                                 </form>
                             </div>
                         </div>

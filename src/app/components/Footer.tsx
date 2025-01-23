@@ -7,7 +7,7 @@ import { ChevronsRight } from 'react-feather'
 
 export default function Footer() {
     return (
-        <footer className="relative footer w-full pt-10 bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text text-neutral-content">
+        <footer id='footer' className="relative footer w-full pt-10 bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text text-neutral-content">
             <div style={{ "width": '100%' }} className="absolute top-0 z-0 -left-12 h-1/4 bg-light-primary dark:bg-dark-primary rounded-br-full"></div>
             <div className="relative z-10 p-10 flex flex-col w-full ">
                 <div className="rounded-xl bg-light-bg dark:bg-dark-bg shadow-lg z-10 sm:w-3/5 w-full m-auto p-8 sm:p-16 h-fit flex flex-col space-y-2">

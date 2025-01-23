@@ -9,14 +9,7 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover"
-import { Mic, Code, Archive, Users, Terminal, LogIn, Menu, User, Info, LogOut, X } from 'react-feather'
-import { useAuth } from '../contexts/authContext';
-import { useRouter } from 'next/navigation';
+import { Mic, Code, Archive, Users, Terminal, LogIn, Menu, X } from 'react-feather'
 import logo from "../../../public/ieee-logo.png"
 import Image from "next/image"
 import { useState } from "react"
@@ -32,14 +25,7 @@ const products = [
 ]
 
 export default function Header() {
-    const router = useRouter();
-    const { isAuthenticated, logout } = useAuth()
-
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-    const handleMouseEnter = () => setIsProfileOpen(true);
-    const handleMouseLeave = () => setIsProfileOpen(false);
 
     return (
         <header className="bg-dark-primary  text-dark-text">
@@ -81,40 +67,6 @@ export default function Header() {
 
                     {/* Desktop Menu */}
                     <NavigationMenuList className="hidden sm:flex items-center space-x-8">
-                        {/* <NavigationMenuItem>
-                            <NavigationMenuTrigger className="hover:underline hover:font-bold font-medium text-base">
-                                We Provide
-                            </NavigationMenuTrigger>
-                            <NavigationMenuContent>
-                                <ul className="gap-2 grid w-[400px] md:w-[500px] lg:w-[400px] bg-light-nav-bg dark:bg-dark-nav-bg">
-                                    <div className="p-2">
-                                        {products.map((item) => (
-                                            <div
-                                                key={item.name}
-                                                className="group relative flex items-center gap-x-6 rounded-xl p-4 text-sm leading-6 hover:bg-slate-50 dark:hover:bg-slate-700"
-                                            >
-                                                <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-slate-50 group-hover:bg-white dark:bg-slate-700 dark:group-hover:bg-slate-950">
-                                                    {/* <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white`} />
-                                                    <item.icon aria-hidden="true" className={`h-6 w-6 text-slate-600 dark:text-white ${item.color}`} />
-                                                </div>
-                                                <div className="flex-auto">
-                                                    <Link
-                                                        rel="noopener noreferrer"
-                                                        href={item.href}
-                                                        className="block font-semibold text-light-text dark:text-dark-text"
-                                                    >
-                                                        {item.name}
-                                                        <span className="absolute inset-0" />
-                                                    </Link>
-                                                    <p className="mt-1 text-slate-600 dark:text-slate-400">{item.description}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </ul>
-                            </NavigationMenuContent>
-                        </NavigationMenuItem> */}
-
                         <NavigationMenuItem>
                             <Link href="/about" legacyBehavior passHref>
                                 <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
@@ -145,10 +97,9 @@ export default function Header() {
                         </NavigationMenuItem>
                     </NavigationMenuList>
                 </div>
-
                 {/* Profile/Log in Section */}
                 <div className="hidden sm:block">
-                    {!isAuthenticated && <div className="hidden lg:flex lg:flex-1 lg:justify-end w-fit">
+                    <div className="hidden lg:flex lg:flex-1 lg:justify-end w-fit">
                         <Link
                             rel="noopener noreferrer"
                             href="/login"
@@ -157,46 +108,7 @@ export default function Header() {
                             Log in
                             <LogIn className="ml-2 hover:underline hover:font-bold" />
                         </Link>
-                    </div>}
-
-                    {isAuthenticated && (
-                        <Popover open={isProfileOpen} onOpenChange={setIsProfileOpen}>
-                            <PopoverTrigger asChild>
-                                <div
-                                    className="flex items-center text-sm font-semibold leading-6 text-light-text dark:text-dark-text"
-                                    onMouseEnter={handleMouseEnter}
-                                    onMouseLeave={handleMouseLeave}
-                                >
-                                    <User size={24} className="p-4 w-full h-full bg-light-sub-bg dark:bg-dark-sub-bg rounded-full" />
-                                </div>
-                            </PopoverTrigger>
-                            <PopoverContent
-                                className="w-auto space-y-2 p-4 bg-light-nav-bg dark:bg-dark-nav-bg border-none rounded-xl"
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
-                            >
-                                <button
-                                    onClick={() => {
-                                        router.push('/profile');
-                                        setIsProfileOpen(false);
-                                    }}
-                                    className="block rounded-xl w-full text-left p-2 text-md outline-none text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900"
-                                >
-                                    <Info size={24} className="inline mr-2" /> Profile
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        logout();
-                                        router.push('/');
-                                        setIsProfileOpen(false);
-                                    }}
-                                    className="block rounded-xl w-full text-left p-2 text-md outline-none text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900"
-                                >
-                                    <LogOut size={24} className="inline mr-2" /> Logout
-                                </button>
-                            </PopoverContent>
-                        </Popover>
-                    )}
+                    </div>
                 </div>
             </NavigationMenu>
 
@@ -281,43 +193,16 @@ export default function Header() {
                                     Gallery
                                 </Link>
                             </div>
-                            {!isAuthenticated ?
-                                (
-                                    <div className="py-6">
-                                        <Link
-                                            rel="noopener noreferrer"
-                                            href="/login"
-                                            onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                            className="flex -mx-3 rounded-xl px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
-                                        >
-                                            Log in <LogIn className="ml-2" />
-                                        </Link>
-                                    </div>
-                                ) : (
-                                    <div className="divide-none w-full">
-                                        <div className="mt-6">
-                                            <Link
-                                                rel="noopener noreferrer"
-                                                href="/profile"
-                                                onClick={() => setMobileMenuOpen(false)} // Close menu on link click
-                                                className="-mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
-                                            >
-                                                Profile
-                                            </Link>
-                                        </div>
-                                        <div>
-                                            <Link
-                                                rel="noopener noreferrer"
-                                                href="/"
-                                                onClick={() => { setMobileMenuOpen(false); logout() }}
-                                                className="w-full -mx-3 block rounded-xl px-3 py-2 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
-                                            >
-                                                Log Out <LogOut className="ml-2 inline-block" />
-                                            </Link>
-                                        </div>
-                                    </div>
-                                )}
-
+                            <div className="py-6">
+                                <Link
+                                    rel="noopener noreferrer"
+                                    href="/login"
+                                    onClick={() => setMobileMenuOpen(false)} // Close menu on link click
+                                    className="flex -mx-3 rounded-xl px-3 py-2.5 text-base font-semibold leading-7 text-light-text dark:text-dark-text hover:bg-light-sub-bg dark:hover:bg-dark-sub-bg"
+                                >
+                                    Log in <LogIn className="ml-2" />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </DialogPanel>

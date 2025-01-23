@@ -55,9 +55,9 @@ export default function Recruitment() {
                         <br />
                         We can&apos;t wait to welcome you! 😊
                         <br />
-                        <span className="italic text-light-red dark:text-dark-red font-semibold">
+                        {/* <span className="italic text-light-red dark:text-dark-red font-semibold">
                             Application deadline is 21/9
-                        </span>
+                        </span> */}
                     </p>
                     <br />
                     <Link

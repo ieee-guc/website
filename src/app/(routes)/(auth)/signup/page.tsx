@@ -105,8 +105,8 @@ export default function Login() {
                                         size={24}
                                     />
                                 </button>
-                                <p className="text-xs font-light text-gray-500 dark:text-gray-400">
-                                    Already have an account? <Link href="/login" className="font-medium hover:underline">Log in</Link>
+                                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                                    Already have an account? <Link href="/login" className="hover:underline text-sm font-medium text-light-text dark:text-dark-text">Log in</Link>
                                 </p>
                             </form>
                         </div>
