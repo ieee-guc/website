@@ -12,6 +12,8 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import board from "../../../../public/board.jpeg"
+import boardgray from "../../../../public/boardgray.jpeg"
 
 export default function About() {
     const [isLoading, setIsLoading] = useState(true);
@@ -582,6 +584,8 @@ export default function About() {
 
                                 </TabsContent>
                             </Tabs>
+                            <Image className="rounded-3xl mt-8 hidden sm:block" style={{ width: "150%" }} src={boardgray} alt="board" />
+
                         </div>
                     </div>
 
