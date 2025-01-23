@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="relative z-10 p-10 flex flex-col w-full ">
                 <div className="rounded-xl bg-light-bg dark:bg-dark-bg shadow-lg z-10 sm:w-3/5 w-full m-auto p-8 sm:p-16 h-fit flex flex-col space-y-2">
                     <div className="font-mono flex flex-col justify-between">
-                        <p className="sm:text-2xl text-lg font-semibold">Subscribe to Our Newsletters</p>
+                        <p className="sm:text-2xl text-lg font-semibold">Subscribe to Our Newsletter</p>
                         <p className="sm:text-base text-sm">Stay updated on events, trips, recruitment, and more!</p>
                     </div>
                     <div className="flex flex-col sm:flex-row justify-between items-end mt-0">
@@ -39,6 +39,9 @@ export default function Footer() {
                         </Link>
                         <Link href="/contact" rel="noopener noreferrer" className="hover:underline">
                             Contact Us
+                        </Link>
+                        <Link href="/projects" rel="noopener noreferrer" className="hover:underline">
+                            Our Projects
                         </Link>
                         <Link href="/login" rel="noopener noreferrer" className="hover:underline">
                             Login for Members
