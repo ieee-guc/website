@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import axios from 'axios';
 import { ColumnDef } from "@tanstack/react-table";
 import { Committee } from "../../types/committee.type";
-import { Eye, Copy, Check } from "react-feather";
+import { Eye, Copy, Check, X } from "react-feather";
 import ResponsiveDialog from "@/app/components/ResponsiveDialog";
 import Image from "next/image";
 import { ImpulseSpinner } from 'react-spinners-kit';
@@ -85,6 +85,18 @@ const committeesColumns: ColumnDef<Committee>[] = [
         },
     },
     {
+        accessorKey: "recruiting",
+        header: "Recruiting",
+        cell: ({ row }) => {
+            const recruiting = row.original.recruiting
+            return (<div className="flex space-x-2 items-center">
+                {recruiting ? <Check size={6} className="w-6 h-6 text-light-success-bg dark:text-dark-success-bg p-0 rounded-full" /> :
+                    <X size={6} className="w-6 h-6 text-light-danger-bg dark:text-dark-danger-bg p-0 rounded-full" />}
+
+            </div >)
+        }
+    },
+    {
         id: "actions",
         header: "Actions",
         cell: ({ row }) => {
@@ -108,7 +120,7 @@ const committeesColumns: ColumnDef<Committee>[] = [
                             {committee.abbreviation ? <li>Abbreviation: {committee.abbreviation}</li> : null}
                             {committee.icon ? <li>Icon: {committee.icon}</li> : null}
                             {committee.description ? <li>Role: {committee.description}</li> : null}
-                            {committee.directory ? <li>Committee: {committee.directory}</li> : null}
+                            {committee.directory ? <li>Directory: {committee.directory}</li> : null}
                         </ul>
                     </ResponsiveDialog>
 
@@ -128,7 +140,7 @@ export default function Committees() {
     const [loadingCommittees, setLoadingCommittees] = useState(true);
 
     const fetchCommittees = async () => {
-        axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees')
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees')
             .then((response) => {
                 setCommittees(response.data.data);
             })

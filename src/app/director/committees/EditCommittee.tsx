@@ -4,7 +4,7 @@ import React from 'react'
 import ResponsiveDialog from '@/app/components/ResponsiveDialog';
 import { Edit } from 'react-feather';
 import { Button } from '@/components/ui/button';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
 import { Committee } from '@/app/types/committee.type';
@@ -13,7 +13,8 @@ export default function EditCommittee({ committee }: { committee: Committee }) {
     const { toast } = useToast()
 
     const handleEdit = async (data: any) => {
-        await axios.patch(`https://ieeeguc-backend-production.up.railway.app/api/committees/${committee._id}`, data)
+        console.log(data);
+        await axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/committees/${committee._id}`, data)
             .then(() => {
                 toast({
                     title: "Success",
@@ -37,14 +38,22 @@ export default function EditCommittee({ committee }: { committee: Committee }) {
         photoURL: committee.photoURL || '',
         description: committee.description || '',
         directory: committee.directory || '',
+        recruiting: committee.recruiting || false,
     });
 
     const handleChange = (e: any) => {
-        const { name, value } = e.target;
-        setFormData(prevFormData => {
-            const updatedData = { ...prevFormData, [name]: value };
-            return updatedData;
-        });
+        const { name, type, value, checked } = e.target;
+        if (type === 'checkbox') {
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                [name]: checked,
+            }));
+        } else {
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                [name]: value,
+            }));
+        }
     };
 
     return (
@@ -111,6 +120,10 @@ export default function EditCommittee({ committee }: { committee: Committee }) {
                         onChange={handleChange}
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     />
+                </div>
+                <div className="px-6">
+                    <label className="mr-2">Recruiting</label>
+                    <input type="checkbox" id="recruiting" name="recruiting" checked={formData.recruiting} onChange={handleChange} />
                 </div>
                 <div>
                     <select

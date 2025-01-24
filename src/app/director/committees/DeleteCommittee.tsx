@@ -13,7 +13,7 @@ export default function DeletCommittee({ committee }: { committee: Committee }) 
     const { toast } = useToast()
 
     const handleDelete = async () => {
-        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/committees/${committee._id}`)
+        await axios.delete(`https://octopus-app-isqlx.ondigitalocean.app/api/committees/${committee._id}`)
             .then(() => {
                 toast({
                     title: "Success",

@@ -10,7 +10,7 @@ export default function DeleteUser({ user }: { user: any }) {
     const { toast } = useToast()
 
     const handleDelete = async () => {
-        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/users/${user._id}`)
+        await axios.delete(`https://octopus-app-isqlx.ondigitalocean.app/api/users/${user._id}`)
             .then(() => {
                 toast({
                     title: "Success",

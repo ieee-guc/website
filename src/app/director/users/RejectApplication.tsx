@@ -10,7 +10,7 @@ export default function RejectApplication({ application }: { application: any })
     const { toast } = useToast()
 
     const handleReject = async () => {
-        await axios.patch(`https://ieeeguc-backend-production.up.railway.app/api/applications/${application._id}/status`, { status: 'rejected' })
+        await axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${application._id}/status`, { status: 'rejected' })
             .then(() => {
                 toast({
                     title: "Success",

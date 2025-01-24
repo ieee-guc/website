@@ -10,7 +10,7 @@ export default function DeleteApplication({ application }: { application: any })
     const { toast } = useToast()
 
     const handleDelete = async () => {
-        await axios.delete(`https://ieeeguc-backend-production.up.railway.app/api/applications/${application._id}`)
+        await axios.delete(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${application._id}`)
             .then(() => {
                 toast({
                     title: "Success",

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import React from 'react'
@@ -8,32 +9,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useToast } from '@/hooks/use-toast';
 import { UserPlus } from 'react-feather';
+import { useCommittees } from '@/app/contexts/committeesContext';
 
 export default function AddUser() {
     const { toast } = useToast()
-    const [committees, setCommittees] = useState([]);
-    const [directories, setDirectories] = useState([]);
-    useEffect(() => {
-        axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees')
-            .then((response: any) => {
-                setCommittees(response.data.data);
-                if (committees.length > 0) {
-                    const dirs: any = Array.from(new Set(committees.map((committee: any) => committee.directory)));
-                    setDirectories(dirs);
-                }
-            })
-            .catch((error) => {
-                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
-                toast({
-                    title: "Error",
-                    description: errorMessage,
-                    className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
-                });
-            })
-    })
+    const { committees, setCommittees } = useCommittees();
 
     const handleAddUser = async (data: any) => {
-        await axios.post(`https://ieeeguc-backend-production.up.railway.app/api/users`, data)
+        await axios.post(`hhttps://octopus-app-isqlx.ondigitalocean.app/api/users`, data)
             .then(() => {
                 toast({
                     title: "Success",

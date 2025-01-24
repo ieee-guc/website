@@ -23,6 +23,7 @@ import { Committee } from "@/app/types/committee.type";
 import DeleteApplication from "./DeleteApplication";
 import AcceptApplication from "./AcceptApplication";
 import RejectApplication from "./RejectApplication";
+import { useCommittees } from "@/app/contexts/committeesContext";
 
 const usersColumns: ColumnDef<User>[] = [
     {
@@ -276,22 +277,16 @@ export default function Users() {
     const [loadingUsers, setLoadingUsers] = useState(true);
     const [applications, setApplications] = useState<Application[]>([]);
     const [loadingApplications, setLoadingApplications] = useState(true);
-    const [committees, setCommittees] = useState<string[]>([]);
-    const [applicationCommittees, setApplicationCommittees] = useState<string[]>([]);
+    // const [committees, setCommittees] = useState<string[]>([]);
+    // const [applicationCommittees, setApplicationCommittees] = useState<string[]>([]);
     const [roles, setRoles] = useState<string[]>([]);
     const [statuses, setStatuses] = useState<string[]>([]);
+    const { committees, setCommittees } = useCommittees();
 
     const fetchUsers = async () => {
-        axios.get('https://ieeeguc-backend-production.up.railway.app/api/users')
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/users')
             .then((response) => {
                 setUsers(response.data.data);
-                setCommittees(
-                    Array.from(new Set<string>(
-                        response.data.data
-                            .filter((user: { committee: { name: string } }) => user.committee && user.committee.name)
-                            .map((user: { committee: { name: string } }) => user.committee.name)
-                    ))
-                );
                 setRoles(
                     Array.from(new Set<string>(
                         response.data.data
@@ -314,16 +309,9 @@ export default function Users() {
     };
 
     const fetchApplications = async () => {
-        axios.get('https://ieeeguc-backend-production.up.railway.app/api/applications')
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications')
             .then((response) => {
                 setApplications(response.data.data);
-                setApplicationCommittees(
-                    Array.from(new Set<string>(
-                        response.data.data
-                            .filter((applicant: { committee: { name: string } }) => applicant.committee && applicant.committee.name)
-                            .map((applicant: { committee: { name: string } }) => applicant.committee.name)
-                    ))
-                );
                 setStatuses(
                     Array.from(new Set<string>(
                         response.data.data
@@ -345,12 +333,31 @@ export default function Users() {
             });
     };
 
+    const fetchCommittees = async () => {
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees')
+            .then((response) => {
+                setCommittees(response.data.data);
+            })
+            .catch((error) => {
+                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
+                toast({
+                    title: "Error",
+                    description: errorMessage,
+                    className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                });
+            })
+    };
+
     useEffect(() => {
         fetchUsers();
     }, []);
 
     useEffect(() => {
         fetchApplications();
+    }, []);
+
+    useEffect(() => {
+        fetchCommittees();
     }, []);
 
     useEffect(() => {
@@ -369,14 +376,14 @@ export default function Users() {
                         <div className="container mx-auto py-2">
                             {loadingUsers ?
                                 <div className="mx-auto w-fit mt-4"><ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" /> </div> :
-                                <UserDataTable columns={usersColumns} data={users} committees={committees} roles={roles} />}
+                                <UserDataTable columns={usersColumns} data={users} committees={committees.map(committee => committee.name)} roles={roles} />}
                         </div>
                     </TabsContent>
                     <TabsContent value="applications">
                         <div className="container mx-auto py-2">
                             {loadingApplications ?
                                 <div className="mx-auto w-fit mt-4"><ImpulseSpinner frontColor="#0A4593" className="text-light-primary bg-light-primary" /> </div> :
-                                <ApplicationDataTable columns={applicationsColumns} data={applications} committees={applicationCommittees} statuses={statuses} />}
+                                <ApplicationDataTable columns={applicationsColumns} data={applications} committees={committees.map(committee => committee.name)} statuses={statuses} />}
                         </div>
                     </TabsContent>
                 </Tabs>

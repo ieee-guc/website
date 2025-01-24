@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import Link from "next/link";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -22,8 +23,7 @@ const validationSchema = Yup.object({
         .required('First name is required'),
     secondName: Yup.string()
         .min(3, 'Second name must be at least 3 characters')
-        .max(30, 'Second name must be at most 30 characters')
-        .required('Second name is required'),
+        .max(30, 'Second name must be at most 30 characters'),
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
@@ -31,6 +31,7 @@ const validationSchema = Yup.object({
         .matches(/^[0-9]{11}$/, 'Mobile number must be exactly 11 digits')
         .required('Mobile number is required'),
     universityId: Yup.string()
+        .matches(/^[0-9]{2}-[0-9]{1,6}$/, 'GUC ID must be valid (eg. 64-1234)')
         .required('GUC ID is required'),
     directory: Yup.string()
         .oneOf(['Software', 'Hardware', 'JTP', 'Operation', 'Creative'], 'Please choose a directory')
@@ -53,7 +54,7 @@ export default function RecruitmentForm() {
         setLoading(true);
         const fetchCommittees = async () => {
             try {
-                const response = await axios.get('https://ieeeguc-backend-production.up.railway.app/api/committees');
+                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees');
                 setCommittees(response.data.data);
             } catch (error) {
                 setError('Failed to fetch committees');
@@ -89,7 +90,7 @@ export default function RecruitmentForm() {
         delete values.directory;
         const dataToSubmit = { ...values };
 
-        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/application', dataToSubmit)
+        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/applications', dataToSubmit)
             .then(response => {
                 setSuccess(true);
                 toast({
@@ -110,7 +111,6 @@ export default function RecruitmentForm() {
                         className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
                     });
                 }
-
             });
     };
 
@@ -120,8 +120,9 @@ export default function RecruitmentForm() {
             script.src = "https://assets.calendly.com/assets/external/widget.js";
             script.async = true;
             document.body.appendChild(script);
+            window.scrollTo(0, 0);
         }
-    }, []);
+    }, [success]);
 
     return (
         <main className="flex w-full h-auto flex-col items-center justify-between py-12 px-6 bg-light-bg dark:bg-dark-bg">
@@ -140,7 +141,7 @@ export default function RecruitmentForm() {
                                 </div>
                             </div>
                             <h1 className="text-3xl text-center text-light-text dark:text-dark-text leading-loose">Thank you!</h1>
-                            <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment</p>
+                            <p className="text-xl text-center text-light-text dark:text-dark-text">Please register an interview appointment <br /> to complete your application</p>
                             <div className="text-center my-4">
                                 <Link rel="noopener noreferrer"
                                     href={'/'}
@@ -154,10 +155,10 @@ export default function RecruitmentForm() {
                         </div>
                     </section>) :
                     (<div className="flex flex-col items-center  p-2 w-full h-full sm:py-8 py-4 rounded-xl ">
-                        <div className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
+                        {/* <div className="flex items-center mb-6 text-2xl font-semibold text-light-text dark:text-white">
                             <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
                             IEEE GUC
-                        </div>
+                        </div> */}
                         <div className="w-full bg-white rounded-xl shadow dark:border md:mt-0 sm:w-8/12 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                                 <div className="mb-8">
@@ -190,7 +191,7 @@ export default function RecruitmentForm() {
                                             </div>
                                             <div className="grid w-full items-center gap-1">
                                                 <Label htmlFor="secondName" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
-                                                    Second name <span className="text-light-red dark:text-dark-red">*</span>
+                                                    Second name
                                                 </Label>
                                                 <Field
                                                     as={Input}

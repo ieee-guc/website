@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
 import '../globals.css';
-import Preferences from "../components/Preferences";
 import SideBar from "../components/SideBar";
 import UserFooter from "../components/UserFooter";
 import { Grid, Home, Users, Feather, Edit, Mic, Code, Calendar } from "react-feather";
-import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
     title: "Dashboard",

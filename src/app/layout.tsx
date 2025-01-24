@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
 import Preferences from "./components/Preferences";
 import { AuthProvider } from "./contexts/authContext";
+import { CommitteesProvider } from "./contexts/committeesContext";
 import Top from "./components/Top";
 import { Toaster } from "@/components/ui/toaster"
 
@@ -25,13 +26,15 @@ export default function RootLayout({
         <html lang="en">
             <body className={poppins.className}>
                 <AuthProvider>
-                    <Top />
-                    <div className="flex-col flex bg-light-bg dark:bg-dark-bg">
-                        {children}
-                    </div>
-                    <Toaster />
-                    <Preferences />
-                    <Analytics />
+                    <CommitteesProvider>
+                        <Top />
+                        <div className="flex-col flex bg-light-bg dark:bg-dark-bg">
+                            {children}
+                        </div>
+                        <Toaster />
+                        <Preferences />
+                        <Analytics />
+                    </CommitteesProvider>
                 </AuthProvider>
             </body>
         </html>

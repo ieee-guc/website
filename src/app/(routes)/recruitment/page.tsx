@@ -22,9 +22,8 @@ export default function Recruitment() {
     useEffect(() => {
         const fetchCommittees = async () => {
             try {
-                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committee');
-                setCommittees(response.data);
-                console.log("RES" + JSON.stringify(response));
+                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees');
+                setCommittees(response.data.data);
             } catch (error) {
                 setError('Failed to fetch committees');
             } finally {
@@ -37,7 +36,9 @@ export default function Recruitment() {
 
     useEffect(() => {
         if (committees.length > 0) {
-            const directories = Array.from(new Set(committees.map(committee => committee.directory)));
+            const directories = Array.from(
+                new Set(committees.map(committee => committee.directory))
+            ).sort();
             setUniqueDirectories(directories);
         }
     }, [committees]);

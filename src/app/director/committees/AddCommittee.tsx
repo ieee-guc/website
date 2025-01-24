@@ -12,7 +12,7 @@ export default function AddCommittee() {
     const { toast } = useToast()
 
     const handleAddCommittee = async (data: any) => {
-        await axios.post(`https://ieeeguc-backend-production.up.railway.app/api/committees`, data)
+        await axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/committees`, data)
             .then(() => {
                 toast({
                     title: "Success",
