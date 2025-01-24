@@ -55,7 +55,7 @@ export default function SideBar(props: any) {
                 </div>
 
                 {/* Account section */}
-                <Link className="relative group flex items-center justify-center w-full h-16 mt-auto hover:bg-light-secondary dark:hover:bg-dark-secondary border-t-2 border-light-border dark:border-light-border" href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}>
+                <Link className={`relative group flex items-center justify-center w-full h-16 mt-auto hover:bg-light-secondary dark:hover:bg-dark-secondary border-t-2 border-light-border dark:border-light-border ${currentPath.includes('account') ? 'bg-light-secondary dark:bg-dark-secondary' : ''}`} href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}>
                     <User className="w-6 h-6" />
                     {!isOpen && <span className="absolute left-20 bg-light-secondary dark:bg-dark-secondary opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                         Account
@@ -75,7 +75,6 @@ export default function SideBar(props: any) {
                     </div>
                 ))}
                 {/* Logout and Account items */}
-                {/* <Link className="relative group flex items-center justify-center w-full h-16 rounded-full text-light-text dark:text-dark-text  hover:bg-light-border dark:hover:bg-dark-border" href="/"> */}
                 <div className='w-full'>
                     <Link className={`w-full px-2 relative group flex flex-0 items-center justify-center  h-16 rounded-full text-dark-text dark:text-dark-text hover:bg-light-secondary dark:hover:bg-dark-secondary`} href="/">
                         <LogOut className="w-6 h-6" />
@@ -86,7 +85,6 @@ export default function SideBar(props: any) {
                         <User className="w-6 h-6" />
                     </Link>
                 </div>
-                {/* <Link className="relative group flex items-center justify-center w-full h-16 rounded-full text-light-text dark:text-dark-text  hover:bg-light-border dark:hover:bg-dark-border" href={currentPath.includes("director") ? "/director/account" : currentPath.includes("head") ? "/head/account" : "/member/account"}> */}
             </div>
         </div>
     )
