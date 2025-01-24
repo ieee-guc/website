@@ -118,13 +118,25 @@ export default function Recruitment() {
                                                             </div>
                                                             <p className="text-base">{committee.description}</p>
                                                         </div>
-                                                        <div className="flex items-center space-x-2">
-                                                            <Avatar className="w-8 h-8">
-                                                                <AvatarImage src={committee.head?.photoURL} alt={`User ${index}`} />
-                                                                <AvatarFallback></AvatarFallback>
-                                                            </Avatar>
-                                                            <span className="text-sm font-medium">{committee.head?.firstName} {committee.head?.secondName}</span>
+                                                        <div className="flex flex-col sm:flex-row justify-between gap-2">
+                                                            <div className="flex items-center space-x-2">
+                                                                <Avatar className="w-8 h-8">
+                                                                    <AvatarImage src={committee.head?.photoURL} alt={`User ${index}`} />
+                                                                    <AvatarFallback></AvatarFallback>
+                                                                </Avatar>
+                                                                <span className="text-sm font-medium">{committee.head?.firstName} {committee.head?.secondName}</span>
+                                                            </div>
+                                                            {committee.recruiting ?
+                                                                <div className="flex flex-row gap-2 items-center">
+                                                                    <div className={`w-4 h-4 rounded-full bg-light-success-bg dark:bg-dark-success-bg`} />
+                                                                    <p>Recruiting</p>
+                                                                </div>
+                                                                : <div className="flex flex-row gap-2 items-center">
+                                                                    <div className={`w-4 h-4 rounded-full bg-light-danger-bg dark:bg-dark-danger-bg`} />
+                                                                    <p>Not Recruiting</p>
+                                                                </div>}
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
