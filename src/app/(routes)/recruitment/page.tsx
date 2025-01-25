@@ -123,8 +123,8 @@ export default function Recruitment() {
                                                             <div className="flex items-center space-x-2">
                                                                 <div className="flex gap-4 flex-col sm:flex-row flex-wrap">
                                                                     {committee.head.map((h, index) => (
-                                                                        <div className="flex items-center space-x-2">
-                                                                            <Avatar key={index} className="w-8 h-8">
+                                                                        <div key={index} className="flex items-center space-x-2">
+                                                                            <Avatar className="w-8 h-8">
                                                                                 <AvatarImage src={h.photoURL} alt={`${h.firstName} ${h.secondName}`} />
                                                                             </Avatar>
                                                                             <span className="text-sm font-medium">{h?.firstName} {h?.secondName}</span>
