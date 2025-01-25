@@ -54,7 +54,7 @@ export default function RecruitmentForm() {
         setLoading(true);
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications/' + appId);
+                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications/');
                 const filtered = response.data.data.filter(c => c.recruiting === true);
                 setCommittees(filtered);
             } catch (error) {
