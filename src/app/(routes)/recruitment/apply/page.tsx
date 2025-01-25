@@ -137,7 +137,7 @@ export default function RecruitmentForm() {
                 {/* <div className="h-auto flex flex-col items-center justify-center py-8 mx-auto md:h-screen lg:py-0 sm:w-1/2 w-11/12"> */}
                 {success ? (
                     <section className="mt-16 w-full flex flex-col items-center justify-between">
-                        <div className="w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
+                        <div className="w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-fit py-16 rounded-xl border-light-border dark:border">
                             <div className="coming-soon-container relative flex flex-col items-center justify-center ">
                                 <div className="tool-container">
                                     <CheckCircle
