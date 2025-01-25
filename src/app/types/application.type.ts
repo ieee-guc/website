@@ -11,5 +11,9 @@ export interface Application {
     id: Types.ObjectId;
     name: string;
   };
+  committee2?: {
+    id: Types.ObjectId;
+    name: string;
+  };
   status?: "pending" | "accepted" | "rejected";
 }
