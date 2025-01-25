@@ -25,6 +25,7 @@ const validationSchema = Yup.object({
         .max(30, 'Second name must be at most 30 characters'),
     email: Yup.string()
         .email('Invalid email address')
+        .transform((value) => (value ? value.toLowerCase() : value))
         .required('Email is required'),
     phone: Yup.string()
         .matches(/^[0-9]{11}$/, 'Mobile number must be exactly 11 digits')
@@ -251,6 +252,8 @@ export default function RecruitmentForm() {
                                                 <ErrorMessage name="universityId" component="div" className="text-light-red dark:text-dark-red text-sm" />
                                             </div>
 
+                                            < hr />
+                                            <p className="text-light-text dark:text-dark-text">First Choice</p>
                                             <div className="grid w-full items-center gap-1">
                                                 <Label htmlFor="directory" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
                                                     Directory <span className="text-light-red dark:text-dark-red">*</span>
@@ -282,6 +285,68 @@ export default function RecruitmentForm() {
                                                 </Field>
                                                 <ErrorMessage name="committee" component="div" className="text-light-red dark:text-dark-red text-sm" />
                                             </div>
+                                            < hr />
+                                            <p className="text-light-text dark:text-dark-text">Second Choice</p>
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="directory2" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Directory
+                                                </Label>
+                                                <Field as="select" name="directory2"
+                                                    className="placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                >
+                                                    <option value="" label="Select a directory" />
+                                                    {directories.map(directory => {
+                                                        return <option key={directory} value={directory}>{directory}</option>
+                                                    })}
+                                                </Field>
+                                            </div>
+
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="committee2" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Committee
+                                                </Label>
+                                                <Field as="select" name="committee2"
+                                                    className="placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                >
+                                                    <option value="" label="Select a committee" />
+                                                    {committees
+                                                        .filter(committee => committee.directory === values.directory2)
+                                                        .map(committee => {
+                                                            return <option key={committee._id} value={committee._id}>{committee.name}</option>
+                                                        })}
+                                                </Field>
+                                            </div>
+                                            {/* <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="directory" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Directory <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field as="select" name="directory"
+                                                    className="placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                >
+                                                    <option value="" label="Select a directory" />
+                                                    {directories.map(directory => {
+                                                        return <option key={directory} value={directory}>{directory}</option>
+                                                    })}
+                                                </Field>
+                                                <ErrorMessage name="directory" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div>
+
+                                            <div className="grid w-full items-center gap-1">
+                                                <Label htmlFor="committee" className="block mb-2 text-sm font-medium text-light-text dark:text-white">
+                                                    Committee <span className="text-light-red dark:text-dark-red">*</span>
+                                                </Label>
+                                                <Field as="select" name="committee"
+                                                    className="placeholder:text-slate-400  bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                >
+                                                    <option value="" label="Select a committee" />
+                                                    {committees
+                                                        .filter(committee => committee.directory === values.directory)
+                                                        .map(committee => {
+                                                            return <option key={committee._id} value={committee._id}>{committee.name}</option>
+                                                        })}
+                                                </Field>
+                                                <ErrorMessage name="committee" component="div" className="text-light-red dark:text-dark-red text-sm" />
+                                            </div> */}
 
                                             {Object.keys(errors).some((field) => touched[field]) && (
                                                 <div className="text-light-red dark:text-dark-red text-sm">
