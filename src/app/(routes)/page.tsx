@@ -10,8 +10,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Logo from "../../../public/ieee-logo.png";
 import Link from "next/link";
-import { ArrowRight } from "react-feather";
-
+import { ArrowRight, ChevronsUp } from "react-feather";
+import board from "../../../public/board.jpeg"
 export default function Home() {
     const carouselItems = [
         { photo: "https://i.imgur.com/LDZIC9N.jpeg", title: "Technical Sessions" },
@@ -23,17 +23,53 @@ export default function Home() {
 
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6
-         bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
+        bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <section className="w-9/12">
-                <div className="w-fit mx-auto text-3xl text-light-text dark:text-dark-text mb-4">
-                    {/* <div className="flex items-center mb-2 text-2xl font-semibold text-light-text dark:text-white mx-auto w-fit">
-                        <Image className="w-16 h-16 mr-4 rounded-xl" src={Logo} alt="logo" />
-                    </div> */}
-                    <div className="typewriter w-100 mx-auto text-3xl text-center">
-                        <h1 className="text-2xl text-center sm:text-4xl  font-bold">Welcome to IEEE GUC</h1>
-                        <p className='text-base text-center font-bold w-fit mx-auto'>
-                            Team Work Makes the Dream Work
-                        </p>
+                <div className="flex flex-col sm:flex-row justify-between items-center">
+                    <div className="hidden lg:block group relative w-full h-full mx-auto text-3xl text-light-text dark:text-dark-text mb-4 rounded-xl overflow-hidden">
+                        <Image
+                            src={board}
+                            alt=""
+                            className="w-full rounded-xl group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="rounded-xl bg-opacity-20 bg-black text-dark-text typewriter absolute inset-0 flex flex-col items-center justify-center text-3xl text-center">
+                            <h1 className="text-2xl text-center sm:text-4xl font-bold">Welcome to IEEE GUC</h1>
+                            <p className='text-base text-center font-bold w-fit mx-auto'>
+                                Team Work Makes the Dream Work
+                            </p>
+                        </div>
+                    </div>
+                    <div className="block lg:hidden group w-full h-full mx-auto text-3xl text-light-text dark:text-dark-text mb-4 rounded-xl overflow-hidden">
+                        <div className="rounded-xl typewriter inset-0 flex flex-col items-center justify-center text-3xl text-center">
+                            <h1 className="text-2xl text-center sm:text-4xl font-bold">Welcome to IEEE GUC</h1>
+                            <p className='text-sm text-center font-bold w-fit mx-auto'>
+                                Team Work Makes the Dream Work
+                            </p>
+                            <Image className="w-full object-cover rounded-xl mt-4" src={board} alt="" />
+                        </div>
+                    </div>
+                    <div className="w-2/3 sm:w-1/4 flex flex-col items-center gap-0">
+                        <Image className="hidden lg:block w-1/2 rounded-xl" src={Logo} alt="logo" />
+                        <div className="relative w-full mx-auto h-20">
+                            <ChevronsUp size={40} className="truck-animation absolute top-0 sm:left-0 -left-8 text-light-secondary dark:text-light-primary" />
+                            <ChevronsUp size={30} className="truck-animation absolute bottom-0 sm:right-0 -right-8 text-orange-400" />
+                            <p className="absolute inset-0 flex items-center justify-center text-3xl text-center w-full font-pacifico text-light-text dark:text-dark-text">Upgrading <br /> Humanity</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div className="my-8 text-light-text dark:text-dark-text">
+                    <h2 className="text-2xl font-bold text-center">We&apos;re Recruiting!</h2>
+                    <p className="text-center">Second semester recruitment for 2024/2025 season is now open.</p>
+                    <div className="text-center mt-1">
+                        <Link rel="noopener noreferrer"
+                            href={'/recruitment'}
+                            className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                        >
+                            <span className="underline inline-flex items-center">
+                                Apply Now <ArrowRight className="ml-2" />
+                            </span>
+                        </Link>
                     </div>
                 </div>
                 <Carousel
@@ -66,20 +102,7 @@ export default function Home() {
                     <CarouselPrevious variant={"default"} className="text-white hover:text-white bg-light-primary hover:bg-light-primary" />
                     <CarouselNext className="text-white hover:text-white bg-light-primary hover:bg-light-primary active:bg-light-primary" />
                 </Carousel>
-                <div className="mt-12 text-light-text dark:text-dark-text">
-                    <h2 className="text-2xl font-bold text-center">We&apos;re Recruiting!</h2>
-                    <p className="text-center">Second semester recruitment for 2024/2025 season is now open. <br /> Join our team of IEEE GUC members and grow personally and technically.</p>
-                    <div className="text-center mt-1">
-                        <Link rel="noopener noreferrer"
-                            href={'/recruitment'}
-                            className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
-                        >
-                            <span className="truck-animation inline-flex items-center">
-                                Go to Recruitment Page <ArrowRight className="ml-2" />
-                            </span>
-                        </Link>
-                    </div>
-                </div>
+
                 <div className="mt-12 text-light-text dark:text-dark-text">
                     <h2 className="text-2xl font-bold text-center">Our Upcoming Events</h2>
                     {/* <p className="text-center">Join our team of IEEE GUC members and grow personally and technically.</p> */}
@@ -88,8 +111,8 @@ export default function Home() {
                             href={'/calendar'}
                             className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary font-bold underline text-center text-light-text dark:text-dark-text"
                         >
-                            <span className="inline-flex items-center">
-                                Checkout Our Calendar <ArrowRight className="ml-2" />
+                            <span className="underline inline-flex items-center">
+                                Check out Our Calendar <ArrowRight className="ml-2" />
                             </span>
                         </Link>
                     </div>
