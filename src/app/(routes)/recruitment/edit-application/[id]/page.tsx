@@ -8,12 +8,11 @@ import { Label } from "@/components/ui/label";
 import { CheckCircle, ChevronsRight, Slash } from "react-feather";
 import Image from "next/image";
 import Logo from '../../../../../public/ieee-logo.png';
-import { useRouter } from 'next/navigation';
+import { useParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Committee } from "@/app/types/committee.type";
 import axios from "axios";
 import { useToast } from "@/hooks/use-toast"
-import { usePathname } from 'next/navigation';
 import { ImpulseSpinner } from 'react-spinners-kit';
 
 const validationSchema = Yup.object({
@@ -43,46 +42,43 @@ const validationSchema = Yup.object({
 export default function RecruitmentForm() {
     const currentPath = usePathname();
     const { toast } = useToast()
-    const router = useRouter();
+    const { id } = useParams();
     const [committees, setCommittees] = useState<Committee[]>([]);
     const [directories, setDirectories] = useState<string[]>([]);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [data, setData] = useState({
+        firstName: '',
+        secondName: '',
+        email: '',
+        phone: '',
+        universityId: '',
+        directory: '',
+        committee: ''
+    });
 
     useEffect(() => {
         setLoading(true);
-        const fetchData = async () => {
+        const fetchAllData = async () => {
             try {
-                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications/');
-                const filtered = response.data.data.filter(c => c.recruiting === true);
+                const [committeesResponse, applicationResponse] = await Promise.all([
+                    axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees'),
+                    axios.get(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`)
+                ]);
+
+                const filtered = committeesResponse.data.data.filter(c => c.recruiting === true);
                 setCommittees(filtered);
+                setData(applicationResponse.data.data);
             } catch (error) {
-                setError('Failed to fetch committees');
+                setError('Failed to fetch data');
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        setLoading(true);
-        const fetchCommittees = async () => {
-            try {
-                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees');
-                const filtered = response.data.data.filter(c => c.recruiting === true);
-                setCommittees(filtered);
-            } catch (error) {
-                setError('Failed to fetch committees');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchCommittees();
-    }, []);
+        fetchAllData();
+    }, [id]);
 
     useEffect(() => {
         if (committees.length > 0) {
@@ -96,36 +92,35 @@ export default function RecruitmentForm() {
     })
 
     const initialValues = {
-        firstName: '',
-        secondName: '',
-        email: '',
-        phone: '',
-        universityId: '',
-        directory: '',
-        committee: '',
+        firstName: data.firstName,
+        secondName: data.secondName,
+        email: data.email,
+        phone: data.phone,
+        universityId: data.universityId,
+        directory: data.directory,
+        committee: data.committee,
     };
     const handleSubmit = (values: any) => {
         delete values.directory;
         const dataToSubmit = { ...values };
-
-        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/applications', dataToSubmit)
+        axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`, dataToSubmit)
             .then(response => {
                 setSuccess(true);
                 toast({
                     title: "Success",
-                    description: "Your application has been submitted successfully!",
+                    description: "Your application has been edited successfully!",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
             })
             .catch(error => {
                 let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
                 if (errorMessage.includes('duplicate')) {
-                    errorMessage = "You have already submitted an application"
+                    errorMessage = "The email or GUC ID has been already used"
                 }
                 if (!errorMessage.includes('circular')) {
                     toast({
                         title: "Error",
-                        description: errorMessage,  // Ensure the error is converted to a string
+                        description: errorMessage,
                         className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
                     });
                 }
@@ -175,11 +170,12 @@ export default function RecruitmentForm() {
                         <div className="w-full bg-white rounded-xl shadow dark:border md:mt-0 sm:w-8/12 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                                 <div className="mb-8">
-                                    <p className="text-sm font-semibold text-center leading-tight tracking-tight text-light-text md:text-lg dark:text-white">
+                                    <h1 className="text-lg font-bold text-center leading-tight tracking-tight text-light-text md:text-2xl dark:text-white">
                                         Edit your application
-                                    </p>
+                                    </h1>
                                 </div>
                                 <Formik
+                                    key={JSON.stringify(data)}
                                     initialValues={initialValues}
                                     validationSchema={validationSchema}
                                     onSubmit={handleSubmit}
@@ -289,7 +285,7 @@ export default function RecruitmentForm() {
 
                                             {Object.keys(errors).some((field) => touched[field]) && (
                                                 <div className="text-light-red dark:text-dark-red text-sm">
-                                                    Please fix the errors in the application before submitting.
+                                                    Please fix the errors in the application before proceeding.
                                                 </div>
                                             )}
 
@@ -304,7 +300,7 @@ export default function RecruitmentForm() {
                                                     className="disabled:bg-gray-600 disabled:cursor-not-allowed overflow-hidden signin-button relative w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
                                                     onClick={(event) => handleSubmit(event)}
                                                 >
-                                                    Submit Application
+                                                    Edit Application
                                                     {!(isValid && dirty) ? (
                                                         <Slash
                                                             className="feather-chevron-right text-white"
@@ -319,9 +315,6 @@ export default function RecruitmentForm() {
 
                                                 </button>
                                             )}
-                                            <p className="text-xs font-light text-gray-500 dark:text-gray-400">
-                                                <Link href="/recruitment" className="font-medium hover:underline">Back to committees</Link>
-                                            </p>
                                         </Form>
                                     )}
                                 </Formik>
