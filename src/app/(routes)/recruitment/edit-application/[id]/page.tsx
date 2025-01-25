@@ -104,7 +104,7 @@ export default function RecruitmentForm() {
     const handleSubmit = (values: any) => {
         delete values.directory;
         const dataToSubmit = { ...values };
-        axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`, dataToSubmit)
+        axios.put(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`, dataToSubmit)
             .then(response => {
                 setSuccess(true);
                 toast({
