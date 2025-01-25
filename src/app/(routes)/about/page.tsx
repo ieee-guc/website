@@ -277,7 +277,7 @@ export default function About() {
                                             <Image src="https://i.imgur.com/9KCtw8e.png" alt="president" width={200} height={200} className="rounded-full w-28 h-w-28 object-contain" />
                                         </div>
                                         <p className="font-semibold flex items-center">
-                                            Jomana Eltabakh
+                                            Joumana Eltabakh
                                         </p>
                                         <p className="italic">Events Planning Head</p>
                                         <div className="flex space-x-1"></div>
@@ -585,6 +585,7 @@ export default function About() {
                                 </TabsContent>
                             </Tabs>
                             <Image className="rounded-3xl mt-8 hidden sm:block" style={{ width: "150%" }} src={boardgray} alt="board" />
+                            <p className="text-center mt-2 font-mono"> 💙 Together, we are <i><b className="font-bold">IEEE GUC</b></i> 🧡 </p>
 
                         </div>
                     </div>

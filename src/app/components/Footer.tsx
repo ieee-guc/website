@@ -1,11 +1,61 @@
+"use client";
+
 import logo from '@/../public/ieee-logo.png';
 import Image from 'next/image';
 import { Facebook, Instagram, Linkedin } from 'react-feather';
-import TikTok from "../../../public/tik-tok.svg"
+import TikTok from "../../../public/tik-tok.svg";
 import Link from 'next/link';
-import { ChevronsRight } from 'react-feather'
+import { ChevronsRight } from 'react-feather';
+import { useState } from 'react';
+import { useToast } from "@/hooks/use-toast";
+import axios from 'axios';
 
 export default function Footer() {
+    const { toast } = useToast();
+    const [success, setSuccess] = useState(false);
+    const [email, setEmail] = useState("");
+
+    const handleChange = (e: any) => {
+        setEmail(e.target.value);
+    };
+
+    const handleSubscribe = (e) => {
+        e.preventDefault()
+        const data = { email }
+        const isValidEmail = email => /\S+@\S+\.\S+/.test(email);
+
+        if (!isValidEmail(email)) {
+            toast({
+                title: "Error",
+                description: "Please enter a valid email address.",
+                className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+            });
+            return;
+        }
+        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/subscribers', data)
+            .then(response => {
+                setSuccess(true);
+                toast({
+                    title: "Success",
+                    description: "You have been subscribed successfully!",
+                    className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
+                });
+                setEmail("");
+            })
+            .catch(error => {
+                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
+                if (errorMessage.includes('duplicate')) {
+                    errorMessage = "You are already subscribed"
+                }
+                if (!errorMessage.includes('circular')) {
+                    toast({
+                        title: "Error",
+                        description: errorMessage,
+                        className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                    });
+                }
+            });
+    }
     return (
         <footer id='footer' className="relative footer w-full pt-10 bg-light-nav-bg dark:bg-dark-nav-bg text-light-text dark:text-dark-text text-neutral-content">
             <div style={{ "width": '100%' }} className="absolute top-0 z-0 -left-12 h-1/4 bg-light-primary dark:bg-dark-primary rounded-br-full"></div>
@@ -15,22 +65,24 @@ export default function Footer() {
                         <p className="sm:text-2xl text-lg font-semibold">Subscribe to Our Newsletter</p>
                         <p className="sm:text-base text-sm">Stay updated on events, trips, recruitment, and more!</p>
                     </div>
-                    <div className="flex flex-col sm:flex-row justify-between items-end mt-0">
+                    <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row justify-between items-end mt-0">
                         <input
                             type="email"
                             name="email"
                             id="email"
+                            value={email}
+                            onChange={handleChange}
                             className="text-sm sm:text-lg bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Enter your email"
                         />
-                        <button className="min-w-40 float-right w-1/4 sm:mx-2 mx-0 sm:my-0 my-2 bg-light-primary py-2.5 text-dark-text rounded overflow-hidden signin-button">
+                        <button type="submit" className="min-w-40 float-right w-1/4 sm:mx-2 mx-0 sm:my-0 my-2 bg-light-primary py-2.5 text-dark-text rounded overflow-hidden signin-button">
                             Subscribe
                             <ChevronsRight
                                 className="feather-chevron-right text-white"
                                 size={24}
                             />
                         </button>
-                    </div>
+                    </form>
                 </div>
                 <div className="w-3/4  mx-auto mt-10 flex sm:flex-row flex-col justify-between">
                     <div className="flex gap-4 items-center sm:flex-row flex-col pb-4 sm:pb-0">

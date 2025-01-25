@@ -23,6 +23,7 @@ export default function Recruitment() {
         const fetchCommittees = async () => {
             try {
                 const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees');
+                console.log(response.data.data);
                 setCommittees(response.data.data);
             } catch (error) {
                 setError('Failed to fetch committees');
@@ -118,13 +119,18 @@ export default function Recruitment() {
                                                             </div>
                                                             <p className="text-base">{committee.description}</p>
                                                         </div>
-                                                        <div className="flex flex-col sm:flex-row justify-between gap-2">
+                                                        <div className="flex flex-col sm:flex-row justify-between gap-4">
                                                             <div className="flex items-center space-x-2">
-                                                                <Avatar className="w-8 h-8">
-                                                                    <AvatarImage src={committee.head?.photoURL} alt={`User ${index}`} />
-                                                                    <AvatarFallback></AvatarFallback>
-                                                                </Avatar>
-                                                                <span className="text-sm font-medium">{committee.head?.firstName} {committee.head?.secondName}</span>
+                                                                <div className="flex gap-4 flex-col sm:flex-row flex-wrap">
+                                                                    {committee.head.map((h, index) => (
+                                                                        <div className="flex items-center space-x-2">
+                                                                            <Avatar key={index} className="w-8 h-8">
+                                                                                <AvatarImage src={h.photoURL} alt={`${h.firstName} ${h.secondName}`} />
+                                                                            </Avatar>
+                                                                            <span className="text-sm font-medium">{h?.firstName} {h?.secondName}</span>
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
                                                             </div>
                                                             {committee.recruiting ?
                                                                 <div className="flex flex-row gap-2 items-center">
