@@ -11,7 +11,7 @@ import Image from "next/image";
 import Logo from "../../../public/ieee-logo.png";
 import Link from "next/link";
 import { ArrowRight, ChevronsUp } from "react-feather";
-import board from "../../../public/board.jpeg"
+import padel from "../../../public/padel.png"
 export default function Home() {
     const carouselItems = [
         { photo: "https://i.imgur.com/LDZIC9N.jpeg", title: "Technical Sessions" },
@@ -28,7 +28,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row justify-between items-center">
                     <div className="hidden lg:block group relative w-full h-full mx-auto text-3xl text-light-text dark:text-dark-text mb-4 rounded-xl overflow-hidden">
                         <Image
-                            src={board}
+                            src={padel}
                             alt=""
                             className="w-full rounded-xl group-hover:scale-105 transition-transform duration-300"
                         />
@@ -45,7 +45,7 @@ export default function Home() {
                             <p className='text-sm text-center font-bold w-fit mx-auto'>
                                 Team Work Makes the Dream Work
                             </p>
-                            <Image className="w-full object-cover rounded-xl mt-4" src={board} alt="" />
+                            <Image className="w-full object-cover rounded-xl mt-4" src={padel} alt="" />
                         </div>
                     </div>
                     <div className="w-2/3 sm:w-1/4 flex flex-col items-center gap-0">
@@ -64,7 +64,7 @@ export default function Home() {
                     <div className="text-center mt-1">
                         <Link rel="noopener noreferrer"
                             href={'/recruitment'}
-                            className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary hover:font-bold underline text-center text-light-text dark:text-dark-text"
+                            className="text-lg p-1.5 underline-offset-4 hover:text-light-primary hover:dark:text-dark-secondary font-bold underline text-center text-light-text dark:text-dark-text"
                         >
                             <span className="underline inline-flex items-center">
                                 Apply Now <ArrowRight className="ml-2" />
