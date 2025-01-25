@@ -26,6 +26,7 @@ const validationSchema = Yup.object({
         .max(30, 'Second name must be at most 30 characters'),
     email: Yup.string()
         .email('Invalid email address')
+        .transform((value) => (value ? value.toLowerCase() : value))
         .required('Email is required'),
     phone: Yup.string()
         .matches(/^[0-9]{11}$/, 'Mobile number must be exactly 11 digits')
