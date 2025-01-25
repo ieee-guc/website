@@ -20,11 +20,11 @@ export default async function Album1() {
                         <ArrowLeft size={36} className="mt-1.5 text-4xl hover:text-light-primary dark:hover:text-dark-secondary duration-300 text-light-text dark:text-dark-text" />
                     </Link>
                     <div>
-                        <h1 className="text-4xl sm:text-5xl text-light-text dark:text-dark-text h-fit"> IEEE GUC OPENING 2024/ 2025</h1>
+                        <h1 className="text-4xl sm:text-5xl text-light-text dark:text-dark-text h-fit"> OPENING 2024/ 2025</h1>
                         <h1 className="text-base sm:text-xl text-light-text dark:text-dark-text h-fit underline"> OCTOBER 2024</h1>
                     </div>
                 </div>
-                {/* <p className="text-base sm:text-xl my-10 p-4 rounded-xl bg-light-sub-bg dark:bg-dark-sub-bg text-light-text dark:text-dark-text font-"></p> */}
+                <p className="text-base sm:text-xl my-10 p-4 rounded-xl bg-light-sub-bg dark:bg-dark-sub-bg text-light-text dark:text-dark-text font-">IEEE GUC Opening is our first event of the year, a fun kick-off where we connect, enjoy music, dinner, and introduce the board. This year’s theme was a thrilling crime scene vibe.</p>
                 <div className="grid grid-cols-1 lg:grid-cols-3 my-10">
                     {images.map((item, index) => (
                         <Card key={index} className="w-full p-0 h-72">
