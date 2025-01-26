@@ -14,7 +14,7 @@ export default function ChangePassword() {
     const [pw2, setPw2] = useState("")
     const [error, setError] = useState("")
     const { toast } = useToast()
-    const { id } = useParams();
+    const { id, token } = useParams();
 
     const router = useRouter();
 
@@ -42,11 +42,11 @@ export default function ChangePassword() {
             return;
         }
         axios
-            .put(`https://octopus-app-isqlx.ondigitalocean.app/api/users/change-password/${id}`, { newPassword: pw1 })
+            .put(`https://octopus-app-isqlx.ondigitalocean.app/api/users/change-password/${id}/${token}`, { newPassword: pw1 })
             .then(response => {
                 toast({
                     title: "Success",
-                    description: "Password reset instructions email has been sent",
+                    description: "Password changed successfully",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
                 router.push("/login");
