@@ -29,7 +29,7 @@ export default function Login() {
         event.preventDefault();
         login();
         axios
-            .post(`https://octopus-app-isqlx.ondigitalocean.app/api/auth/login`, { email, password })
+            .post(`https://octopus-app-isqlx.ondigitalocean.app/api/auth/login`, { email: email.toLowerCase(), password })
             .then(response => {
                 const { userData, token } = response.data.data;
                 toast({
