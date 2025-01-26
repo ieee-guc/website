@@ -13,7 +13,6 @@ export default function EditCommittee({ committee }: { committee: Committee }) {
     const { toast } = useToast()
 
     const handleEdit = async (data: any) => {
-        console.log(data);
         await axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/committees/${committee._id}`, data)
             .then(() => {
                 toast({

@@ -23,7 +23,6 @@ export default function Recruitment() {
         const fetchCommittees = async () => {
             try {
                 const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees');
-                console.log(response.data.data);
                 setCommittees(response.data.data);
             } catch (error) {
                 setError('Failed to fetch committees');

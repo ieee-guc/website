@@ -25,7 +25,6 @@ export default function ForgotPassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
         axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/users/forgot-password/${email}`)
             .then(response => {
                 toast({

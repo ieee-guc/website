@@ -32,8 +32,7 @@ export default function ChangePassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(pw1);
-        axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/users/change-password/${id}`)
+        axios.put(`https://octopus-app-isqlx.ondigitalocean.app/api/users/change-password/${id}`)
             .then(response => {
                 toast({
                     title: "Success",
