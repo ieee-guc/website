@@ -32,13 +32,24 @@ export default function ChangePassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://octopus-app-isqlx.ondigitalocean.app/api/users/change-password/${id}`)
+        if (pw1 !== pw2) {
+            setError("Passwords do not match");
+            toast({
+                title: "Error",
+                description: "Passwords do not match",
+                className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+            });
+            return;
+        }
+        axios
+            .put(`https://octopus-app-isqlx.ondigitalocean.app/api/users/change-password/${id}`, { newPassword: pw1 })
             .then(response => {
                 toast({
                     title: "Success",
                     description: "Password reset instructions email has been sent",
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
+                router.push("/login");
             })
             .catch(error => {
                 let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
