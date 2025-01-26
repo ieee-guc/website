@@ -6,9 +6,7 @@ import * as Yup from 'yup';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, ChevronsRight, Slash } from "react-feather";
-import Image from "next/image";
-import Logo from '../../../../../public/ieee-logo.png';
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Committee } from "@/app/types/committee.type";
 import axios from "axios";
@@ -41,7 +39,6 @@ const validationSchema = Yup.object({
 });
 
 export default function RecruitmentForm() {
-    const currentPath = usePathname();
     const { toast } = useToast()
     const { id } = useParams();
     const [committees, setCommittees] = useState<Committee[]>([]);
@@ -106,7 +103,6 @@ export default function RecruitmentForm() {
         const dataToSubmit = { ...values };
         axios.put(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`, dataToSubmit)
             .then(response => {
-                setSuccess(true);
                 toast({
                     title: "Success",
                     description: "Your application has been edited successfully!",

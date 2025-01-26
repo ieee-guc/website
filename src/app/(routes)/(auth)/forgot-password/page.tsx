@@ -10,10 +10,8 @@ import { useToast } from "@/hooks/use-toast"
 
 export default function ForgotPassword() {
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const { toast } = useToast()
-    const [success, setSuccess] = useState(false);
 
     const router = useRouter();
 
@@ -30,7 +28,6 @@ export default function ForgotPassword() {
         console.log(email);
         axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/users/forgot-password/${email}`)
             .then(response => {
-                setSuccess(true);
                 toast({
                     title: "Success",
                     description: "Password reset instructions email has been sent",

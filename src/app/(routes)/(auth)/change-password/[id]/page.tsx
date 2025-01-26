@@ -7,12 +7,14 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 import axios from 'axios'
 import { useToast } from "@/hooks/use-toast"
+import { useParams } from "next/navigation";
 
 export default function ChangePassword() {
     const [pw1, setPw1] = useState("")
     const [pw2, setPw2] = useState("")
     const [error, setError] = useState("")
     const { toast } = useToast()
+    const { id } = useParams();
 
     const router = useRouter();
 
@@ -28,6 +30,28 @@ export default function ChangePassword() {
         document.title = "Change Password | IEEE GUC"
     })
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(pw1);
+        axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/users/change-password/${id}`)
+            .then(response => {
+                toast({
+                    title: "Success",
+                    description: "Password reset instructions email has been sent",
+                    className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
+                });
+            })
+            .catch(error => {
+                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
+                if (!errorMessage.includes('circular')) {
+                    toast({
+                        title: "Error",
+                        description: errorMessage,
+                        className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                    });
+                }
+            });
+    };
     return (
         <>
             <main className="flex w-full flex-col items-center justify-between py-0 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
@@ -40,7 +64,7 @@ export default function ChangePassword() {
                                         Change Password
                                     </h1>
                                 </div>
-                                <form className="space-y-4 md:space-y-6">
+                                <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                                     <div>
                                         <label htmlFor="pw1" className="block mb-2 text-sm font-medium text-light-text dark:text-white">Password</label>
                                         <input
