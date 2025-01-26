@@ -10,7 +10,12 @@ export default function AcceptApplication({ application }: { application: any })
     const { toast } = useToast()
 
     const handleAccept = async () => {
-        await axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${application._id}/status`, { status: 'accepted' })
+        const token = localStorage.getItem("access_token");
+        await axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${application._id}/status`, { status: 'accepted' }, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(() => {
                 toast({
                     title: "Success",

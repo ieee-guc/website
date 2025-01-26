@@ -15,7 +15,12 @@ export default function EditUser({ user }: { user: any }) {
     const { committees, setCommittees } = useCommittees();
 
     const handleEdit = async (data: any) => {
-        await axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/users/${user._id}`, data)
+        const token = localStorage.getItem("access_token");
+        await axios.patch(`https://octopus-app-isqlx.ondigitalocean.app/api/users/${user._id}`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(() => {
                 toast({
                     title: "Success",

@@ -10,9 +10,13 @@ import { useToast } from '@/hooks/use-toast';
 
 export default function AddCommittee() {
     const { toast } = useToast()
-
+    const token = localStorage.getItem("access_token");
     const handleAddCommittee = async (data: any) => {
-        await axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/committees`, data)
+        await axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/committees`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(() => {
                 toast({
                     title: "Success",

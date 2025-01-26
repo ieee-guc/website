@@ -10,7 +10,12 @@ export default function DeleteApplication({ application }: { application: any })
     const { toast } = useToast()
 
     const handleDelete = async () => {
-        await axios.delete(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${application._id}`)
+        const token = localStorage.getItem("access_token");
+        await axios.delete(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${application._id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(() => {
                 toast({
                     title: "Success",

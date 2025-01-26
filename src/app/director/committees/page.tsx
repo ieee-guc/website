@@ -140,7 +140,12 @@ export default function Committees() {
     const [loadingCommittees, setLoadingCommittees] = useState(true);
 
     const fetchCommittees = async () => {
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees')
+        const token = localStorage.getItem("access_token");
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then((response) => {
                 setCommittees(response.data.data);
             })

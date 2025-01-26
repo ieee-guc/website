@@ -60,9 +60,18 @@ export default function RecruitmentForm() {
         setLoading(true);
         const fetchAllData = async () => {
             try {
+                const token = localStorage.getItem("access_token");
                 const [committeesResponse, applicationResponse] = await Promise.all([
-                    axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees'),
-                    axios.get(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`)
+                    axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees', {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        }
+                    }),
+                    axios.get(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        }
+                    })
                 ]);
 
                 const filtered = committeesResponse.data.data.filter(c => c.recruiting === true);
@@ -100,8 +109,13 @@ export default function RecruitmentForm() {
     };
     const handleSubmit = (values: any) => {
         delete values.directory;
+        const token = localStorage.getItem("access_token");
         const dataToSubmit = { ...values };
-        axios.put(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`, dataToSubmit)
+        axios.put(`https://octopus-app-isqlx.ondigitalocean.app/api/applications/${id}`, dataToSubmit, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(response => {
                 toast({
                     title: "Success",

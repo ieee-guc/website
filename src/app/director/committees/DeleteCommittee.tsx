@@ -13,7 +13,12 @@ export default function DeletCommittee({ committee }: { committee: Committee }) 
     const { toast } = useToast()
 
     const handleDelete = async () => {
-        await axios.delete(`https://octopus-app-isqlx.ondigitalocean.app/api/committees/${committee._id}`)
+        const token = localStorage.getItem("access_token");
+        await axios.delete(`https://octopus-app-isqlx.ondigitalocean.app/api/committees/${committee._id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(() => {
                 toast({
                     title: "Success",

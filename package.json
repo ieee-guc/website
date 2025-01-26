@@ -33,6 +33,7 @@
     "embla-carousel-react": "^8.3.0",
     "formik": "^2.4.6",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.439.0",
     "mongoose": "^8.6.1",
     "next": "^14.2.8",

@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { ChevronRight, ChevronLeft, User, LogOut } from 'react-feather';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Logo from '../../../public/ieee-logo.png'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,7 +9,11 @@ import Link from 'next/link';
 export default function SideBar(props: any) {
     const [isOpen, setIsOpen] = useState(false);
     const currentPath = usePathname();
-
+    const router = useRouter();
+    const handleLogout = () => {
+        localStorage.removeItem('access_token');
+        router.push('/');
+    };
     return (
         <div className="relative text-nowrap">
             {/* Sidebar for larger screens */}
@@ -45,13 +49,15 @@ export default function SideBar(props: any) {
                             {isOpen && <span className="ml-2 text-sm font-medium ">{section.title}</span>}
                         </Link>
                     ))}
-                    <Link className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded-xl hover:bg-light-secondary dark:hover:bg-dark-secondary `} href="/">
+                    <button
+                        onClick={handleLogout}
+                        className={`relative group flex items-center w-full h-12 px-3 mt-2 rounded-xl hover:bg-light-secondary dark:hover:bg-dark-secondary`}>
                         <LogOut className="w-6 h-6" />
                         {!isOpen && <span className="absolute left-16 bg-light-secondary dark:bg-dark-secondary opacity-0 transition-all duration-300 group-hover:opacity-100 h-12 px-4 content-center text-md rounded-full">
                             Log Out
                         </span>}
                         {isOpen && <span className="ml-2 text-sm font-medium ">Log Out</span>}
-                    </Link>
+                    </button>
                 </div>
 
                 {/* Account section */}

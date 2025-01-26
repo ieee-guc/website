@@ -25,7 +25,12 @@ export default function ForgotPassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/users/forgot-password/${email}`)
+        const token = localStorage.getItem("access_token");
+        axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/users/forgot-password/${email}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(response => {
                 toast({
                     title: "Success",

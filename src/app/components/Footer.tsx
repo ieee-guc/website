@@ -32,7 +32,12 @@ export default function Footer() {
             });
             return;
         }
-        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/subscribers', data)
+        const token = localStorage.getItem("access_token");
+        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/subscribers', data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(response => {
                 setSuccess(true);
                 toast({

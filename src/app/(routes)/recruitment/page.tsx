@@ -21,8 +21,13 @@ export default function Recruitment() {
 
     useEffect(() => {
         const fetchCommittees = async () => {
+            const token = localStorage.getItem("access_token");
             try {
-                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees');
+                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
                 setCommittees(response.data.data);
             } catch (error) {
                 setError('Failed to fetch committees');

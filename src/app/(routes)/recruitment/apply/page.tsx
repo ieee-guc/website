@@ -58,7 +58,12 @@ export default function RecruitmentForm() {
         setLoading(true);
         const fetchCommittees = async () => {
             try {
-                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees');
+                const token = localStorage.getItem("access_token");
+                const response = await axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
                 const filtered = response.data.data.filter(c => c.recruiting === true);
                 setCommittees(filtered);
             } catch (error) {
@@ -96,8 +101,12 @@ export default function RecruitmentForm() {
     const handleSubmit = (values: any) => {
         delete values.directory;
         const dataToSubmit = { ...values };
-
-        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/applications', dataToSubmit)
+        const token = localStorage.getItem("access_token");
+        axios.post('https://octopus-app-isqlx.ondigitalocean.app/api/applications', dataToSubmit, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(response => {
                 setSuccess(true);
                 toast({

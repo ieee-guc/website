@@ -1,38 +1,63 @@
-import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
+"use client";
 import '../globals.css';
-import Preferences from "../components/Preferences";
 import SideBar from "../components/SideBar";
 import UserFooter from "../components/UserFooter";
 import { Home, Target, Calendar, FileText } from "react-feather";
-
-
-export const metadata: Metadata = {
-    title: "Dashboard",
-    description: "Director Dashboard",
-};
+import { useEffect, useState } from 'react';
+import Unauthorized from "../components/Unauthorized";
+import { jwtDecode } from 'jwt-decode';
+import Loading from '../components/Loading';
 
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const [loading, setLoading] = useState(true);
+    const [authorized, setAuthorized] = useState<boolean | null>(null); // Boolean or null initially
+    const requiredRole = 'member';
+    useEffect(() => {
+        const token = localStorage.getItem("access_token");
+
+        if (token) {
+            try {
+                const decodedToken: any = jwtDecode(token);
+                if (decodedToken.role === requiredRole) {
+                    setAuthorized(true);
+                } else {
+                    setAuthorized(false);
+                }
+            } catch (error) {
+                console.error('Invalid token', error);
+                setAuthorized(false);
+            }
+        } else {
+            setAuthorized(false);
+        }
+        setLoading(false);
+    }, [requiredRole]);
     const sections = [
         { title: "Dashboard", link: "/member/dashboard", icon: <Home className="w-6 h-6" /> },
         { title: "Sessions", link: "/member/sessions", icon: <FileText className="w-6 h-6" /> },
         { title: "Assignments", link: "/member/assignments", icon: <Target className="w-6 h-6" /> },
-        // { title: "Planner", link: "/member/planner", icon: <Feather className="w-6 h-6" /> },
-        // { title: "Podcast", link: "/member/podcast", icon: <Mic className="w-6 h-6" /> },
-        // { title: "Tech Literacy", link: "/member/tech-literacy", icon: <Code className="w-6 h-6" /> },
         { title: "Registrations", link: "/member/registrations", icon: <Calendar className="w-6 h-6" /> },
     ]
+    if (loading) {
+        return <Loading />;
+    }
     return (
-        <div className="sidebar-parent">
-            <SideBar sections={sections} />
-            <div className="children-parent sm:ml-16 ml-0 sm:mb-0 mb-16">
-                {children}
-                <UserFooter />
-            </div>
+        <div>
+            {authorized ? (
+                <div className="sidebar-parent">
+                    <SideBar sections={sections} />
+                    <div className="children-parent sm:ml-16 ml-0 sm:mb-0 mb-16">
+                        {children}
+                        <UserFooter />
+                    </div>
+                </div>
+            ) : (
+                <Unauthorized />
+            )}
         </div>
     );
 }

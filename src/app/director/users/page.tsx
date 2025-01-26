@@ -313,7 +313,12 @@ export default function Users() {
     };
 
     const fetchApplications = async () => {
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications')
+        const token = localStorage.getItem("access_token");
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then((response) => {
                 setApplications(response.data.data);
                 setStatuses(
@@ -338,7 +343,12 @@ export default function Users() {
     };
 
     const fetchCommittees = async () => {
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees')
+        const token = localStorage.getItem("access_token");
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/committees', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then((response) => {
                 setCommittees(response.data.data);
             })

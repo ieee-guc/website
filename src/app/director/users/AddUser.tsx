@@ -16,7 +16,12 @@ export default function AddUser() {
     const { committees, setCommittees } = useCommittees();
 
     const handleAddUser = async (data: any) => {
-        await axios.post(`hhttps://octopus-app-isqlx.ondigitalocean.app/api/users`, data)
+        const token = localStorage.getItem("access_token");
+        await axios.post(`https://octopus-app-isqlx.ondigitalocean.app/api/users`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then(() => {
                 toast({
                     title: "Success",
