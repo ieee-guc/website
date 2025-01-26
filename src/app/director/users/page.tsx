@@ -282,7 +282,13 @@ export default function Users() {
     const { committees, setCommittees } = useCommittees();
 
     const fetchUsers = async () => {
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/users')
+        const token = localStorage.getItem("access_token");
+
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/users', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
             .then((response) => {
                 setUsers(response.data.data);
                 setRoles(

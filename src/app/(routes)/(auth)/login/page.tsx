@@ -25,50 +25,41 @@ export default function Login() {
         setPassword(event.target.value);
     };
 
-    // const handleSubmitLogIn = (event: any) => {
-    //     event.preventDefault();
-    //     login();
-    //     if (email === "member") {
-    //         router.push('/member/dashboard');
-    //     } else if (email === "head") {
-    //         router.push('/head/dashboard');
-    //     } else if (email === "director") {
-    //         router.push('/director/dashboard')
-    //     } else {
-    //         router.push('/')
-    //     }
-    // };
-
     const handleSubmitLogIn = async (event: any) => {
         event.preventDefault();
-
-        // toast({
-        //     title: "Success",
-        //     description: "Your application has been submitted successfully!",
-        //     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
-        // });
-        try {
-            // const response = await axios.post('https://ieeeguc-backend-production.up.railway.app/api/auth/login', {
-            //     email,
-            //     password
-            // });
-
-            // const { token, role } = response.data;
-            // localStorage.setItem('token', token);
-            login();
-
-            if (email === "member") {
-                router.push('/member/dashboard');
-            } else if (email === "head") {
-                router.push('/head/dashboard');
-            } else if (email === "director") {
-                router.push('/director/dashboard');
-            } else {
-                router.push('/');
-            }
-        } catch (error: any) {
-            setError(error.response?.data?.message || "An error occurred");
-        }
+        login();
+        axios
+            .post(`https://octopus-app-isqlx.ondigitalocean.app/api/auth/login`, { email, password }, {
+                withCredentials: true,
+            })
+            .then(response => {
+                const { userData, token } = response.data.data;
+                toast({
+                    title: "Success",
+                    description: `Welcome back ${userData.firstName}`,
+                    className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
+                });
+                localStorage.setItem("access_token", token);
+                if (userData.role === "member") {
+                    router.push('/member/dashboard');
+                } else if (userData.role === "head") {
+                    router.push('/head/dashboard');
+                } else if (userData.role === "director") {
+                    router.push('/director/dashboard');
+                } else {
+                    router.push('/');
+                }
+            })
+            .catch(error => {
+                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
+                if (!errorMessage.includes('circular')) {
+                    toast({
+                        title: "Error",
+                        description: errorMessage,
+                        className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                    });
+                }
+            });
     };
 
     useEffect(() => {
