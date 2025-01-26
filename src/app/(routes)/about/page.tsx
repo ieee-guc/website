@@ -585,7 +585,7 @@ export default function About() {
                                 </TabsContent>
                             </Tabs>
                             <Image className="rounded-3xl mt-8 hidden sm:block" style={{ width: "150%" }} src={boardgray} alt="board" />
-                            <p className="text-center mt-2 font-mono"> 💙 Together, we are <i><b className="font-bold">IEEE GUC</b></i> 🧡 </p>
+                            <p className="text-center mt-2 font-caveat text-xl"> 💙 TOGETHER, WE ARE IEEE GUC 🧡 </p>
 
                         </div>
                     </div>
