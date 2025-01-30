@@ -270,8 +270,6 @@ export default function Users() {
     const [loadingUsers, setLoadingUsers] = useState(true);
     const [applications, setApplications] = useState<Application[]>([]);
     const [loadingApplications, setLoadingApplications] = useState(true);
-    // const [committees, setCommittees] = useState<string[]>([]);
-    // const [applicationCommittees, setApplicationCommittees] = useState<string[]>([]);
     const [roles, setRoles] = useState<string[]>([]);
     const [statuses, setStatuses] = useState<string[]>([]);
     const { committees, setCommittees } = useCommittees();
@@ -279,7 +277,7 @@ export default function Users() {
     const fetchUsers = async () => {
         const token = localStorage.getItem("access_token");
 
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/users', {
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/users/committee', {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -309,7 +307,7 @@ export default function Users() {
 
     const fetchApplications = async () => {
         const token = localStorage.getItem("access_token");
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications', {
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/applications/committee', {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
