@@ -23,27 +23,22 @@ import {
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input"
 import { Filter, Search, UserPlus } from "react-feather"
-import { useState } from "react"
-import axios from "axios"
-import AddUser from "./AddUser"
-import { User } from "@/app/types/user.type"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
     committees: string[]
-    roles: string[]
+    statuses: string[]
 }
 
-export function UserDataTable<TData, TValue>({
+export function ApplicationDataTable<TData, TValue>({
     columns,
     data,
     committees,
-    roles
+    statuses,
 }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-
     const table = useReactTable({
         data,
         columns,
@@ -59,23 +54,9 @@ export function UserDataTable<TData, TValue>({
         getFilteredRowModel: getFilteredRowModel(),
     })
 
-    // const [searchValue, setSearchValue] = useState('');
-    // const handleSearch = (value: string) => {
-    //     setSearchValue(value);
-    //     // table.getColumn("name")?.setFilterValue(value);
-    //     table.getColumn("email")?.setFilterValue(value);
-    //     table.getColumn("phone")?.setFilterValue(value);
-    // };
-    // const filteredData = data.filter((user: any) => {
-    //     const userObject: User = user
-    //     userObject.firstName.toLowerCase().includes(searchValue.toLowerCase())
-    //     userObject.email.toLowerCase().includes(searchValue.toLowerCase())
-    //     userObject.phone?.toLowerCase().includes(searchValue.toLowerCase())
-    // });
-
     return (
         <div>
-            <div className="flex items-center py-4 justify-evenly gap-4 flex-col sm:flex-row">
+            <div className="flex items-center py-4 justify-between gap-4 flex-col sm:flex-row">
                 <div
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Search className="text-slate-400 dark:text-gray-400 ml-4" />
@@ -93,38 +74,21 @@ export function UserDataTable<TData, TValue>({
                     className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
                     <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
                     <select
-                        value={(table.getColumn("role")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) => table.getColumn("role")?.setFilterValue(event.target.value)}
+                        value={(table.getColumn("status")?.getFilterValue() as string) ?? ""}
+                        onChange={(event) => table.getColumn("status")?.setFilterValue(event.target.value)}
                         className="text-sm p-2.5 focus:outline-none placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 rounded-xl focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     >
-                        <option value="">Filter by role...</option>
-                        {roles.map((role: string) => (
-                            <option key={role} value={role}>
-                                {role}
+                        <option value="">Filter by status...</option>
+                        {statuses.map((status: string) => (
+                            <option key={status} value={status}>
+                                {status}
                             </option>
                         ))}
                     </select>
                 </div>
-                <div
-                    className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
-                    <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
-                    <select
-                        value={(table.getColumn("committee")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) => table.getColumn("committee")?.setFilterValue(event.target.value)}
-                        className="text-sm p-2.5 focus:outline-none placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 rounded-xl focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
-                    >
-                        <option value="">Filter by committee...</option>
-                        {committees.map((committee: string) => (
-                            <option key={committee} value={committee}>
-                                {committee}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <AddUser />
             </div>
-            <div className="rounded-xl border dark:border-gray-600">
-                <Table className="text-light-text dark:text-dark-text">
+            <div className="rounded-xl border border-light-border dark:border-dark-border text-light-text dark:text-dark-text">
+                <Table className="border-light-border dark:border-dark-border">
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
@@ -151,10 +115,7 @@ export function UserDataTable<TData, TValue>({
                                 >
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell key={cell.id}>
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
                                     ))}
                                 </TableRow>
@@ -198,6 +159,7 @@ export function UserDataTable<TData, TValue>({
                     </strong>
                 </span>
             </div>
-        </div >
+        </div>
     )
 }
+``

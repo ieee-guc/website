@@ -118,8 +118,8 @@ const usersColumns: ColumnDef<User>[] = [
         cell: ({ row }) => row.original.committee?.name || "No Committee",
         filterFn: (row, column, filterValue) => {
             const committeeObject: Committee = row.getValue(column);
-            const committeeName: String = committeeObject.name;
-            return committeeName.toString().toLowerCase().includes(filterValue.toLowerCase());
+            const committeeName: String = committeeObject?.name || "No Committee";
+            return committeeName.toString().toLowerCase() === (filterValue.toLowerCase());
         },
     },
     {
@@ -232,7 +232,7 @@ const applicationsColumns: ColumnDef<Application>[] = [
         filterFn: (row, column, filterValue) => {
             const committeeObject: Committee = row.getValue(column);
             const committeeName: String = committeeObject.name;
-            return committeeName.toString().toLowerCase().includes(filterValue.toLowerCase());
+            return committeeName.toString().toLowerCase() === (filterValue.toLowerCase());
         },
     },
     {

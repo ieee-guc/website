@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
-import { UserDataTable } from "@/app/director/users/user-data-table";
-import { ApplicationDataTable } from "@/app/director/users/application-data-table";
+import { UserDataTable } from "@/app/head/members/user-data-table";
+import { ApplicationDataTable } from "@/app/head/members/application-data-table";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"

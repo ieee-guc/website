@@ -24,8 +24,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Filter, Search, UserPlus } from "react-feather"
 import { useState } from "react"
-import axios from "axios"
-import AddUser from "./AddUser"
 import { User } from "@/app/types/user.type"
 
 interface DataTableProps<TData, TValue> {
@@ -59,19 +57,19 @@ export function UserDataTable<TData, TValue>({
         getFilteredRowModel: getFilteredRowModel(),
     })
 
-    // const [searchValue, setSearchValue] = useState('');
-    // const handleSearch = (value: string) => {
-    //     setSearchValue(value);
-    //     // table.getColumn("name")?.setFilterValue(value);
-    //     table.getColumn("email")?.setFilterValue(value);
-    //     table.getColumn("phone")?.setFilterValue(value);
-    // };
-    // const filteredData = data.filter((user: any) => {
-    //     const userObject: User = user
-    //     userObject.firstName.toLowerCase().includes(searchValue.toLowerCase())
-    //     userObject.email.toLowerCase().includes(searchValue.toLowerCase())
-    //     userObject.phone?.toLowerCase().includes(searchValue.toLowerCase())
-    // });
+    const [searchValue, setSearchValue] = useState('');
+    const handleSearch = (value: string) => {
+        setSearchValue(value);
+        table.getColumn("name")?.setFilterValue(value);
+        table.getColumn("email")?.setFilterValue(value);
+        table.getColumn("phone")?.setFilterValue(value);
+    };
+    const filteredData = data.filter((user: any) => {
+        const userObject: User = user
+        userObject.firstName.toLowerCase().includes(searchValue.toLowerCase())
+        userObject.email.toLowerCase().includes(searchValue.toLowerCase())
+        userObject.phone?.toLowerCase().includes(searchValue.toLowerCase())
+    });
 
     return (
         <div>
@@ -105,23 +103,6 @@ export function UserDataTable<TData, TValue>({
                         ))}
                     </select>
                 </div>
-                <div
-                    className="flex items-center space-x-0 placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto">
-                    <Filter className="text-slate-400 dark:text-gray-400 ml-4" />
-                    <select
-                        value={(table.getColumn("committee")?.getFilterValue() as string) ?? ""}
-                        onChange={(event) => table.getColumn("committee")?.setFilterValue(event.target.value)}
-                        className="text-sm p-2.5 focus:outline-none placeholder:text-slate-400 bg-gray-50 border-none text-light-text focus:ring-primary-600 rounded-xl focus:border-primary-600 block  dark:bg-gray-700 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
-                    >
-                        <option value="">Filter by committee...</option>
-                        {committees.map((committee: string) => (
-                            <option key={committee} value={committee}>
-                                {committee}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <AddUser />
             </div>
             <div className="rounded-xl border dark:border-gray-600">
                 <Table className="text-light-text dark:text-dark-text">
