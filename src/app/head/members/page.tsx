@@ -152,7 +152,7 @@ const usersColumns: ColumnDef<User>[] = [
                         </ul>
                     </ResponsiveDialog>
 
-                    <EditUser user={user} />
+                    {/* <EditUser user={user} /> */}
 
                 </div >
             );
