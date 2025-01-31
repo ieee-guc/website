@@ -3,10 +3,12 @@
 
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
-import { ArrowLeft, ArrowRight, Calendar } from "react-feather";
-import empty from '@/../public/empty.png'
+import { ArrowLeft, ArrowRight, Calendar, X } from "react-feather";
 import axios from "axios";
 import { useToast } from "@/hooks/use-toast"
+import empty from '@/../public/empty.png'
+import click from '@/../public/click.png'
+import { ChevronsRight } from "lucide-react";
 
 export default function CalendarPage() {
     const { toast } = useToast()
@@ -85,6 +87,34 @@ export default function CalendarPage() {
         );
     };
 
+    const [selectedEvent, setSelectedEvent] = useState(null);
+
+    const handleEventSelect = (event) => {
+        setSelectedEvent(event);
+        // const detailsSection = document.getElementById("details");
+        // if (detailsSection) {
+        //     detailsSection.scrollIntoView({ behavior: "smooth" });
+        // }
+    };
+
+    const formatDate = (day, month, year) => {
+        const date = new Date(year, month, day);
+        const dayOfWeek = date.toLocaleDateString("en-US", { weekday: "long" });
+        const getOrdinalSuffix = (day) => {
+            if (day > 3 && day < 21) return "th";
+            switch (day % 10) {
+                case 1: return "st";
+                case 2: return "nd";
+                case 3: return "rd";
+                default: return "th";
+            }
+        };
+        const dayWithSuffix = `${day}${getOrdinalSuffix(day)}`;
+        const monthName = date.toLocaleDateString("en-US", { month: "long" });
+        return `${dayOfWeek} ${day} ${monthName}`;
+        // return `${dayOfWeek} ${dayWithSuffix} ${monthName} ${year}`;
+    };
+
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
             <section className="about sm:w-8/12 w-full text-light-text dark:text-dark-text">
@@ -115,7 +145,7 @@ export default function CalendarPage() {
                                 <thead>
                                     <tr className="flex justify-between">
                                         {WEEKDAYS.map((day, index) => (
-                                            <th key={index} className="flex-1 text-center text-sm font-poppins text-light-text dark:text-dark-text p-0 sm:p-2">
+                                            <th key={index} className="cursor-default flex-1 text-center text-sm font-poppins text-light-text dark:text-dark-text p-0 sm:p-2">
                                                 {day}
                                             </th>
                                         ))}
@@ -136,7 +166,7 @@ export default function CalendarPage() {
                                                 return (
                                                     <td
                                                         key={day}
-                                                        className={`flex-1 text-center text-sm font-poppins p-3 relative ${isCurrentMonth
+                                                        className={`cursor-default flex-1 text-center text-sm font-poppins p-3 relative ${isCurrentMonth
                                                             ? "text-light-text dark:text-dark-text"
                                                             : "text-gray-400 dark:text-gray-600"
                                                             } ${isCurrentDay
@@ -170,25 +200,93 @@ export default function CalendarPage() {
                                 </p>
                             </div>
                         ) : (
-                            currentMonthEvents.map((event) => (
-                                <button
-                                    key={event.day + event.month + event.year}
-                                    className="active:scale-95 group text-left duration-300 hover:bg-light-primary hover:dark:bg-dark-primary hover:text-white event-container w-11/12 mx-auto p-4 rounded-xl bg-light-bg dark:bg-dark-bg shadow-sm"
-                                >
-                                    <p className="font-poppins text-lg">
-                                        {event.title}
-                                    </p>
-                                    <p className="font-poppins text-sm text-gray-600 dark:text-gray-400 duration-300 group-hover:text-white">
-                                        {MONTHS[event.month]} {event.day}, {event.year}
-                                    </p>
-                                </button>
-                            ))
+                            currentMonthEvents
+                                .map(event => ({
+                                    ...event,
+                                    date: new Date(event.year, event.month, event.day)
+                                }))
+                                .sort((a, b) => a.date - b.date)
+                                .map(event => (
+                                    <button
+                                        key={event.day + event.month + event.year}
+                                        onClick={() => handleEventSelect(event)}
+                                        className="active:scale-95 group text-left duration-300 hover:bg-light-primary hover:dark:bg-dark-primary hover:text-white event-container w-11/12 mx-auto p-4 rounded-xl bg-light-bg dark:bg-dark-bg shadow-sm"
+                                    >
+                                        <p className="font-poppins text-lg">
+                                            {event.title}
+                                        </p>
+                                        <p className="font-poppins text-sm text-gray-600 dark:text-gray-400 duration-300 group-hover:text-white">
+                                            {MONTHS[event.month]} {event.day}, {event.year}
+                                        </p>
+                                    </button>
+                                ))
                         )}
                     </div>
                 </div>
-                <div className="Lists">
-                    {/* <h2 className="mt-16 text-center text-xl font-bold">Previous Events</h2> */}
+                <div id="details" className="Lists mt-16">
+                    {selectedEvent ? (
+                        <div className="font-inter event-details p-6 rounded-xl bg-light-sub-bg dark:bg-dark-sub-bg border-light-border dark:border-dark-border border-2 shadow-lg">
+                            <div className="flex flex-row justify-between items-start">
+                                <h2 className="text-2xl font-bold mb-4">{selectedEvent.title}</h2>
+                                <button onClick={() => setSelectedEvent(null)} className="p-2 duration-300 rounded-full hover:bg-light-primary hover:text-white">
+                                    <X size={20} />
+                                </button>
+                            </div>
+                            <div className="flex flex-row w-full flex-wrap">
+                                <p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🗓️ {formatDate(selectedEvent.day, selectedEvent.month, selectedEvent.year)}
+                                </p>
+                                {selectedEvent.location ?
+                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">📍{selectedEvent.location}</p>)
+                                    : (<></>)
+                                }
+                                {selectedEvent.startTime ?
+                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🕒 Start at {new Date(`1970-01-01T${selectedEvent.startTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
+                                    : (<></>)
+                                }
+                                {selectedEvent.endTime ?
+                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🕠 End at {new Date(`1970-01-01T${selectedEvent.endTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
+                                    : (<></>)
+                                }
+                                {selectedEvent.presenters ?
+                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🎤 {selectedEvent.presenters}</p>)
+                                    : (<></>)
+                                }
+
+                                {/* <button className="relative overflow-hidden flex justify-center items-center signin-button bg-light-primary text-white rounded-xl text-sm m-2 px-5 py-2.5 w-[calc(fit-content + 8rem)]">
+                                    <div className="flex items-center gap-2">
+                                        <p>Register Now</p>
+                                        <ChevronsRight
+                                            className="feather-chevron-right text-white"
+                                            size={24}
+                                        />
+                                    </div>
+                                </button> */}
+                            </div>
+                            <p className="font-inter text-base leading-7 mb-2">
+                                <div
+                                    className="description-content"
+                                    dangerouslySetInnerHTML={{
+                                        __html: ` ${selectedEvent.description || ""}  `,
+                                    }}
+                                />
+                            </p>
+                        </div>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center">
+                            <Image
+                                src={click}
+                                alt="Click to select an event"
+                                className="w-16 h-16 object-cover"
+                            />
+                            <p className="font-poppins text-sm text-gray-600 dark:text-gray-400 mt-4">
+                                Choose an event from calendar <br />to show details and registration.
+                            </p>
+                        </div>
+                    )}
                 </div>
+                {/* <div className="mt-12">
+                    <p className="text-center text-xl font-bold">Our Previous Events</p>
+                </div> */}
             </section>
         </main >
     )

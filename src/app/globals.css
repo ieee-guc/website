@@ -24,6 +24,18 @@ html {
   scroll-behavior: smooth;
 }
 
+.highlight {
+  color: black;
+  background-color: #fff3cd;
+  padding: 10px;
+  border-left: 5px solid #ffc107;
+  margin: 20px 0;
+}
+
+.emoji {
+  font-size: 1.2em;
+}
+
 @media (min-width: 440px) {
 
   .typewriter {
