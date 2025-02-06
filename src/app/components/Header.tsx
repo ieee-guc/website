@@ -69,28 +69,28 @@ export default function Header() {
                     <NavigationMenuList className="hidden sm:flex items-center space-x-8">
                         <NavigationMenuItem>
                             <Link href="/about" legacyBehavior passHref>
-                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
+                                <NavigationMenuLink className="hover:underline underline-offset-4 duration-200 font-medium text-base">
                                     About Us
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/recruitment" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
+                                <NavigationMenuLink className="hover:underline underline-offset-4 duration-200 font-medium text-base">
                                     Recruitment
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/calendar" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
+                                <NavigationMenuLink className="hover:underline underline-offset-4 duration-200 font-medium text-base">
                                     Calendar
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/gallery" legacyBehavior passHref >
-                                <NavigationMenuLink className="hover:underline hover:font-bold duration-200 font-medium text-base">
+                                <NavigationMenuLink className="hover:underline underline-offset-4 duration-200 font-medium text-base">
                                     Gallery
                                 </NavigationMenuLink>
                             </Link>
@@ -106,7 +106,7 @@ export default function Header() {
                             className="w-fit flex items-center text-base font-medium leading-6 text-dark-text  hover:underline hover:font-bold"
                         >
                             Log in
-                            <LogIn className="ml-2 hover:underline hover:font-bold" />
+                            <LogIn className="ml-2 hover:underline underline-offset-4" />
                         </Link>
                     </div>
                 </div>

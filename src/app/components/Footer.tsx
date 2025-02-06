@@ -100,6 +100,9 @@ export default function Footer() {
                         <Link href="/projects" rel="noopener noreferrer" className="hover:underline">
                             Our Projects
                         </Link>
+                        <Link href="/packages" rel="noopener noreferrer" className="hover:underline">
+                            Hardware Packages
+                        </Link>
                         <Link href="/login" rel="noopener noreferrer" className="hover:underline">
                             Login for Members
                         </Link>

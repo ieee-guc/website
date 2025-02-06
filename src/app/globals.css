@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Optional: Hide spin buttons in Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 :root {
   --primary: #0A4593;
   --secondary: #6EACDA;
@@ -30,6 +43,7 @@ html {
   padding: 10px;
   border-left: 5px solid #ffc107;
   margin: 20px 0;
+  width: fit-content;
 }
 
 .emoji {

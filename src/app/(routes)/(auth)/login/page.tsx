@@ -1,19 +1,14 @@
 "use client"
-import Logo from '../../../../../public/ieee-logo.png'
-import Image from 'next/image'
 import { ChevronsRight } from 'react-feather'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../../../contexts/authContext';
 import Link from 'next/link'
 import axios from 'axios'
 import { useToast } from "@/hooks/use-toast"
 
 export default function Login() {
-    const { isAuthenticated, login } = useAuth();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
     const { toast } = useToast()
 
     const router = useRouter();
@@ -27,7 +22,6 @@ export default function Login() {
 
     const handleSubmitLogIn = async (event: any) => {
         event.preventDefault();
-        login();
         axios
             .post(`https://octopus-app-isqlx.ondigitalocean.app/api/auth/login`, { email: email.toLowerCase(), password })
             .then(response => {

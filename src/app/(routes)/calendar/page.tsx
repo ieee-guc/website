@@ -11,6 +11,11 @@ import click from '@/../public/click.png'
 import { ChevronsRight } from "lucide-react";
 
 export default function CalendarPage() {
+    const [name, setName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [email, setEmail] = useState("");
+    const [faculty, setFaculty] = useState("");
+    const [gucID, setGucID] = useState("");
     const { toast } = useToast()
     const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -49,12 +54,7 @@ export default function CalendarPage() {
     const [events, setEvents] = useState([]);
 
     const fetchEvents = async () => {
-        const token = localStorage.getItem("access_token");
-        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/events', {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        })
+        axios.get('https://octopus-app-isqlx.ondigitalocean.app/api/events')
             .then((response) => {
                 setEvents(response.data.data);
             })
@@ -91,10 +91,10 @@ export default function CalendarPage() {
 
     const handleEventSelect = (event) => {
         setSelectedEvent(event);
-        // const detailsSection = document.getElementById("details");
-        // if (detailsSection) {
-        //     detailsSection.scrollIntoView({ behavior: "smooth" });
-        // }
+        const detailsSection = document.getElementById("details");
+        if (detailsSection) {
+            detailsSection.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     const formatDate = (day, month, year) => {
@@ -114,6 +114,72 @@ export default function CalendarPage() {
         return `${dayOfWeek} ${day} ${monthName}`;
         // return `${dayOfWeek} ${dayWithSuffix} ${monthName} ${year}`;
     };
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+        if (!name.trim()) {
+            toast({
+                title: "Error",
+                description: "Name is required",
+                className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+            });
+            return;
+        }
+        if (!phoneNumber.trim() || isNaN(parseInt(phoneNumber)) || Number(phoneNumber) <= 0) {
+            toast({
+                title: "Error",
+                description: "Please enter a valid phone number",
+                className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+            });
+            return;
+        }
+        if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            toast({
+                title: "Error",
+                description: "Please enter a valid email",
+                className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+            });
+            return;
+        }
+        if (faculty === "") {
+            toast({
+                title: "Error",
+                description: "Please select a faculty",
+                className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+            });
+            return;
+        }
+        if (!gucID.trim() || !/^\d{2}-\d{3,5}$/.test(gucID)) {
+            toast({
+                title: "Error",
+                description: "Please enter a valid GUC ID",
+                className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+            });
+            return;
+        }
+        axios
+            .patch(`https://octopus-app-isqlx.ondigitalocean.app/api/events/register/${selectedEvent._id}`, { name, phoneNumber, email, faculty, gucID })
+            .then(() => {
+                setName("");
+                setPhoneNumber("");
+                setEmail("");
+                setFaculty("");
+                setGucID("");
+                toast({
+                    title: "Success",
+                    description: `You have been registered to ${selectedEvent.title}`,
+                    className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
+                });
+            })
+            .catch((error) => {
+                let errorMessage = error?.response?.data?.error || error.message || "An error occurred";
+                toast({
+                    title: "Error",
+                    description: errorMessage,
+                    className: "rounded-xl border-none text-light-danger-text dark:text-dark-danger-text bg-light-danger-bg dark:bg-dark-danger-bg",
+                });
+            })
+    }
 
     return (
         <main className="flex w-full min-h-screen flex-col items-center justify-between py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
@@ -226,7 +292,7 @@ export default function CalendarPage() {
                 </div>
                 <div id="details" className="Lists mt-16">
                     {selectedEvent ? (
-                        <div className="font-inter event-details p-6 rounded-xl bg-light-sub-bg dark:bg-dark-sub-bg border-light-border dark:border-dark-border border-2 shadow-lg">
+                        <div className="font-inter event-details p-6 rounded-xl bg-light-nav-bg dark:bg-dark-sub-bg border-light-border dark:border-dark-border border-2 shadow-lg">
                             <div className="flex flex-row justify-between items-start">
                                 <h2 className="text-2xl font-bold mb-4">{selectedEvent.title}</h2>
                                 <button onClick={() => setSelectedEvent(null)} className="p-2 duration-300 rounded-full hover:bg-light-primary hover:text-white">
@@ -234,18 +300,18 @@ export default function CalendarPage() {
                                 </button>
                             </div>
                             <div className="flex flex-row w-full flex-wrap">
-                                <p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🗓️ {formatDate(selectedEvent.day, selectedEvent.month, selectedEvent.year)}
+                                <p className="text-lg m-2 w-fit font-mono font-bold">🗓️ {formatDate(selectedEvent.day, selectedEvent.month, selectedEvent.year)}
                                 </p>
-                                {selectedEvent.location ?
-                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">📍{selectedEvent.location}</p>)
+                                {selectedEvent.startTime ?
+                                    (<p className="text-lg m-2 w-fit border-l-4 pl-2 font-mono font-bold">🕒 {new Date(`1970-01-01T${selectedEvent.startTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })} - {new Date(`1970-01-01T${selectedEvent.endTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
                                     : (<></>)
                                 }
-                                {selectedEvent.startTime ?
-                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🕒 {new Date(`1970-01-01T${selectedEvent.startTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })} - {new Date(`1970-01-01T${selectedEvent.endTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
+                                {selectedEvent.location ?
+                                    (<p className="text-lg m-2 w-fit border-l-4 pl-2 font-mono font-bold">📍{selectedEvent.location}</p>)
                                     : (<></>)
                                 }
                                 {selectedEvent.presenters ?
-                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🎤 {selectedEvent.presenters}</p>)
+                                    (<p className="text-lg m-2 w-fit border-l-4 pl-2 font-mono font-bold">🎤 {selectedEvent.presenters}</p>)
                                     : (<></>)
                                 }
 
@@ -259,14 +325,116 @@ export default function CalendarPage() {
                                     </div>
                                 </button> */}
                             </div>
-                            <p className="font-inter text-base leading-7 mb-2">
-                                <div
-                                    className="description-content"
-                                    dangerouslySetInnerHTML={{
-                                        __html: ` ${selectedEvent.description || ""}  `,
-                                    }}
-                                />
-                            </p>
+                            <div className="flex flex-col sm:flex-row gap-2 items-center">
+                                <p className="font-inter text-base leading-7 mb-2">
+                                    <div
+                                        className="description-content text-sm"
+                                        dangerouslySetInnerHTML={{
+                                            __html: ` ${selectedEvent.description || ""}  `,
+                                        }}
+                                    />
+                                </p>
+                                {selectedEvent.posterURL &&
+                                    <div className="relative w-full h-96 rounded-3xl m-2">
+                                        <Image
+                                            src={selectedEvent.posterURL}
+                                            alt={selectedEvent.title}
+                                            layout="fill"
+                                            objectFit="contain"
+                                            className="rounded-3xl"
+                                        />
+                                    </div>}
+                            </div>
+
+                            {selectedEvent.openForRegistration && currentDate <= new Date(selectedEvent.year, selectedEvent.month, selectedEvent.day) && (
+                                <form className="space-y-4 md:space-y-6 mt-6" action="#">
+                                    <hr />
+                                    <p className="text-center font-bold text-lg">Registration</p>
+                                    <div className="w-full flex flex-wrap gap-y-4 items-end">
+                                        <div className="w-full sm:w-1/3 px-2">
+                                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-light-text dark:text-white">Name</label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                id="name"
+                                                className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="John Doe"
+                                                value={name}
+                                                onChange={(event) => setName(event.target.value)}
+                                            />
+                                        </div>
+                                        <div className="w-full sm:w-1/3 px-2">
+                                            <label htmlFor="phoneNumber" className="block mb-2 text-sm font-medium text-light-text dark:text-white">Phone Number</label>
+                                            <input
+                                                type="number"
+                                                name="phoneNumber"
+                                                id="phoneNumber"
+                                                className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="+20113324535"
+                                                style={{ WebkitAppearance: 'none', MozAppearance: 'textfield' }}
+                                                value={phoneNumber}
+                                                onChange={(event) => setPhoneNumber(event.target.value)}
+                                            />
+                                        </div>
+                                        <div className="w-full sm:w-1/3 px-2">
+                                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-light-text dark:text-white">Email</label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                id="email"
+                                                className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="johndoe@email.com"
+                                                value={email}
+                                                onChange={(event) => setEmail(event.target.value)}
+                                            />
+                                        </div>
+                                        <div className="w-full sm:w-1/3 px-2">
+                                            <label htmlFor="faculty" className="block mb-2 text-sm font-medium text-light-text dark:text-white">Faculty</label>
+                                            <select
+                                                name="faculty"
+                                                id="faculty"
+                                                className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                value={faculty}
+                                                onChange={(event) => setFaculty(event.target.value)}
+                                            >
+                                                <option value="">Select Faculty</option>
+                                                <option value="Engineering">Engineering</option>
+                                                <option value="MET">MET</option>
+                                                <option value="IET">IET</option>
+                                                <option value="EMS">EMS</option>
+                                                <option value="MGMT">MGMT</option>
+                                                <option value="BI">BI</option>
+                                                <option value="Applied Science and Arts">Applied Science and Arts</option>
+                                                <option value="Pharmacy & Biotechnology">Pharmacy & Biotechnology</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                        <div className="w-full sm:w-1/3 px-2">
+                                            <label htmlFor="gucID" className="block mb-2 text-sm font-medium text-light-text dark:text-white">GUC ID</label>
+                                            <input
+                                                type="text"
+                                                name="gucID"
+                                                id="gucID"
+                                                className="bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="64-1234"
+                                                value={gucID}
+                                                onChange={(event) => setGucID(event.target.value)}
+                                            />
+                                        </div>
+                                        <button
+                                            type="submit"
+                                            className="w-full sm:w-1/3 overflow-hidden signin-button relative text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 bg-light-primary flex justify-center align-middle"
+                                            onClick={(event) => handleRegister(event)}
+                                        >
+                                            Register
+                                            <ChevronsRight
+                                                className="feather-chevron-right text-white"
+                                                size={24}
+                                            />
+                                        </button>
+                                    </div>
+                                </form>
+                            )}
                         </div>
                     ) : (
                         <div className="flex flex-col items-center justify-center">
