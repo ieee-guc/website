@@ -123,6 +123,7 @@ export default function CalendarPage() {
                     <div className="calendar-container w-full sm:w-1/2 h-full mx-auto">
                         <div className='calendar-options my-4 w-full sm:w-[calc(100%-4rem)] rounded-full sm:m-8 h-8 flex justify-evenly items-center'>
                             <button
+                                title="Previous Month"
                                 onClick={handlePrevMonth}
                                 className="p-2 duration-300 rounded-full hover:bg-light-primary hover:text-white"
                             >
@@ -132,10 +133,10 @@ export default function CalendarPage() {
                                 <p className="font-poppins text-xl">{MONTHS[currentMonth]} {currentYear}</p>
                             </div>
                             <div className="flex gap-2">
-                                <button onClick={handleNextMonth} className="p-2 duration-300 rounded-full hover:bg-light-primary hover:text-white">
+                                <button title="Next Month" onClick={handleNextMonth} className="p-2 duration-300 rounded-full hover:bg-light-primary hover:text-white">
                                     <ArrowRight size={20} />
                                 </button>
-                                <button onClick={handleSetToday} className="p-2 duration-300 rounded-full hover:bg-light-primary hover:text-white">
+                                <button title="Today" onClick={handleSetToday} className="p-2 duration-300 rounded-full hover:bg-light-primary hover:text-white">
                                     <Calendar size={20} />
                                 </button>
                             </div>

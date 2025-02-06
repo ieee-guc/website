@@ -241,9 +241,9 @@ export default function About() {
                                     </p>
                                     <p className="italic">Software Director</p>
                                     <div className="flex space-x-1">
-                                        <Link href="https://www.linkedin.com/in/john-roufaeil" rel="noopener noreferrer" target="_blank">
+                                        {/* <Link href="https://www.linkedin.com/in/john-roufaeil" rel="noopener noreferrer" target="_blank">
                                             <Linkedin size={100} strokeWidth={1.5} className="w-6 h-6 bg-cyan-700 text-white rounded inline p-1" />
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </div>
                             </div>

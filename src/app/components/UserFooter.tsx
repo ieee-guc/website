@@ -28,10 +28,10 @@ export default function UserFooter() {
                     </div>
                 </div>
                 <hr className="border-light-border dark:border-dark-border w-3/4 mt-4 mb-8 mx-auto" />
-                <div className="flex justify-between items-center sm:w-3/4 w-full mx-auto sm:flex-row flex-col gap-2 pb-4">
-                    <p className="sm:w-1/4 w-full text-center sm:text-left">&#169; IEEE GUC 2025 </p>
+                <div className="flex justify-between items-center sm:w-3/4 w-full mx-auto flex-col gap-2 pb-4">
                     <Image alt="IEEE GUC" title="IEEE GUC" src={logo} className="duration-300 h-20 w-20 rounded-xl" />
-                    <p className="sm:w-1/4 w-full text-center sm:text-right">Created by <Link href="https://www.linkedin.com/in/john-roufaeil" rel="noopener noreferrer" target="_blank" className="hover:underline hover:text-light-primary">John Fayez</Link></p>
+                    <p className="sm:w-1/4 w-full text-center">&#169; IEEE GUC 2025 </p>
+                    {/* <p className="sm:w-1/4 w-full text-center sm:text-right">Created by <Link href="https://www.linkedin.com/in/john-roufaeil" rel="noopener noreferrer" target="_blank" className="hover:underline hover:text-light-primary">John Fayez</Link></p> */}
                 </div>
             </div>
         </footer>
