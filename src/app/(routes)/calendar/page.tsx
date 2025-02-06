@@ -240,11 +240,7 @@ export default function CalendarPage() {
                                     : (<></>)
                                 }
                                 {selectedEvent.startTime ?
-                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🕒 Start at {new Date(`1970-01-01T${selectedEvent.startTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
-                                    : (<></>)
-                                }
-                                {selectedEvent.endTime ?
-                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🕠 End at {new Date(`1970-01-01T${selectedEvent.endTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
+                                    (<p className="text-lg m-2 p-2 w-fit bg-light-primary bg-opacity-70 dark:bg-opacity-30 text-white rounded-xl">🕒 {new Date(`1970-01-01T${selectedEvent.startTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })} - {new Date(`1970-01-01T${selectedEvent.endTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
                                     : (<></>)
                                 }
                                 {selectedEvent.presenters ?
