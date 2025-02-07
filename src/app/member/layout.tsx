@@ -40,7 +40,7 @@ export default function RootLayout({
         { title: "Dashboard", link: "/member/dashboard", icon: <Home className="w-6 h-6" /> },
         { title: "Sessions", link: "/member/sessions", icon: <FileText className="w-6 h-6" /> },
         { title: "Assignments", link: "/member/assignments", icon: <Target className="w-6 h-6" /> },
-        { title: "Registrations", link: "/member/registrations", icon: <Calendar className="w-6 h-6" /> },
+        { title: "Calendar", link: "/member/calendar", icon: <Calendar className="w-6 h-6" /> },
     ]
     if (loading) {
         return <Loading />;

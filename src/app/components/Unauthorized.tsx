@@ -1,14 +1,10 @@
-"use client"
 import { Key } from "react-feather";
-import { usePathname } from 'next/navigation';
 import Link from "next/link";
 
 export default function Unauthorized() {
-    const currentPath = usePathname();
-
     return (
-        <section className="mt-16 w-full h-screen flex flex-col items-center justify-between">
-            <div className="w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
+        <main className="flex w-full min-h-screen flex-col items-center justify-center gap-8 py-12 p-6 bg-light-bg dark:bg-dark-bg contrast:bg-contrast-bg">
+            <div className="sm:w-8/12 w-full shadow bg-light-sub-bg dark:bg-dark-sub-bg h-full py-16 rounded-xl border-light-border dark:border">
                 <div className="coming-soon-container relative flex flex-col items-center justify-center ">
                     <div className="tool-container">
                         <Key
@@ -29,6 +25,6 @@ export default function Unauthorized() {
                     </Link>
                 </div>
             </div>
-        </section>
+        </main>
     )
 }
