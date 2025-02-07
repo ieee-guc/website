@@ -300,10 +300,14 @@ export default function CalendarPage() {
                                 </button>
                             </div>
                             <div className="flex flex-row w-full flex-wrap">
-                                <p className="text-lg m-2 w-fit font-mono font-bold">🗓️ {formatDate(selectedEvent.day, selectedEvent.month, selectedEvent.year)}
-                                </p>
+                                <p className="text-lg m-2 w-fit font-mono font-bold">🗓️ {formatDate(selectedEvent.day, selectedEvent.month, selectedEvent.year)}</p>
                                 {selectedEvent.startTime ?
-                                    (<p className="text-lg m-2 w-fit border-l-4 pl-2 font-mono font-bold">🕒 {new Date(`1970-01-01T${selectedEvent.startTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })} - {new Date(`1970-01-01T${selectedEvent.endTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}</p>)
+                                    <p className="text-lg m-2 w-fit border-l-4 pl-2 font-mono font-bold">
+                                        🕒 {new Date(`1970-01-01T${selectedEvent.startTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}
+                                        {selectedEvent.endTime &&
+                                            ` - ${new Date(`1970-01-01T${selectedEvent.endTime}:00`).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true })}`
+                                        }
+                                    </p>
                                     : (<></>)
                                 }
                                 {selectedEvent.location ?
