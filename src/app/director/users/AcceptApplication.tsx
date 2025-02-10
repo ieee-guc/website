@@ -42,7 +42,7 @@ export default function AcceptApplication({ application }: { application: any })
             confirm={true}
             dangerAction={() => { }}
             trigger={<Button title="Accept applicant" className="p-1 hover:text-light-success-bg h-fit"><Check size={18} /></Button>}
-            title={(application.firstName ? application.firstName + " " : "") + (application.secondName ? application.secondName : "")}
+            title={(application.name ? application.name + " " : "")}
         >
             <p className="text-xl">You are about to accept this application.</p>
         </ResponsiveDialog>

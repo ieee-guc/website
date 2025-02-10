@@ -31,8 +31,7 @@ const usersColumns: ColumnDef<User>[] = [
         header: "Photo",
         cell: ({ row }) => {
             const photoURL = row.original.photoURL;
-            const firstName = row.original.firstName;
-            const secondName = row.original.secondName;
+            const name = row.original.name;
             return (<ResponsiveDialog
                 trigger={
                     <div className="group flex space-x-2 cursor-pointer items-center">
@@ -44,7 +43,7 @@ const usersColumns: ColumnDef<User>[] = [
                             height={40}
                         />
                     </div>}
-                title={`${firstName} ${secondName} Photo`}
+                title={`${name} Photo`}
                 confirm={false}
                 danger={false}
                 confirmAction={() => { }}
@@ -64,7 +63,7 @@ const usersColumns: ColumnDef<User>[] = [
         accessorKey: "name",
         header: "Name",
         cell: ({ row }) => {
-            const name = (row.original.firstName ? row.original.firstName : '') + " " + (row.original.secondName ? row.original.secondName : '')
+            const name = (row.original.name ? row.original.name : '')
             return (<div className="group flex space-x-2 cursor-copy items-center">
                 <p className="" onClick={() => navigator.clipboard.writeText(name)}
                 >{name}</p >
@@ -131,7 +130,7 @@ const usersColumns: ColumnDef<User>[] = [
             return (
                 <div className="flex">
                     <ResponsiveDialog
-                        title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
+                        title={(user.name ? user.name + " " : "")}
                         danger={false}
                         dangerAction={() => { }}
                         confirm={false}
@@ -142,7 +141,7 @@ const usersColumns: ColumnDef<User>[] = [
                         {user.photoURL ? <Image className="w-1/2 self-center rounded-xl mx-auto my-4" src={user.photoURL} alt="" width={200} height={200} /> : null}
                         <ul className="space-y-2 mt-2">
                             <li>ID: {user._id}</li>
-                            <li>Name: {user.firstName ? user.firstName : "" + user.secondName ? user.secondName : ""}</li>
+                            <li>Name: {user.name ? user.name : ""}</li>
                             {user.email ? <li>Email: {user.email}</li> : null}
                             {user.phone ? <li>Phone: {user.phone}</li> : null}
                             {user.role ? <li>Role: {user.role}</li> : null}
@@ -169,7 +168,7 @@ const applicationsColumns: ColumnDef<Application>[] = [
         accessorKey: "name",
         header: "Name",
         cell: ({ row }) => {
-            const name = (row.original.firstName ? row.original.firstName : '') + " " + (row.original.secondName ? row.original.secondName : '')
+            const name = (row.original.name ? row.original.name : '')
             return (<div className="group flex space-x-2 cursor-copy items-center">
                 <p className="" onClick={() => navigator.clipboard.writeText(name)}
                 >{name}</p >

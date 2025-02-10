@@ -28,7 +28,7 @@ export default function Login() {
                 const { userData, token } = response.data.data;
                 toast({
                     title: "Success",
-                    description: `Welcome back ${userData.firstName}`,
+                    description: `Welcome back ${userData.name}`,
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
                 localStorage.setItem("access_token", token);

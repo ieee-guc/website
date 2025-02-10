@@ -129,9 +129,9 @@ export default function Recruitment() {
                                                                     {committee.head.map((h, index) => (
                                                                         <div key={index} className="flex items-center space-x-2">
                                                                             <Avatar className="w-8 h-8">
-                                                                                <AvatarImage src={h.photoURL} alt={`${h.firstName} ${h.secondName}`} />
+                                                                                <AvatarImage src={h.photoURL} alt={`${h.name}`} />
                                                                             </Avatar>
-                                                                            <span className="text-sm font-medium">{h?.firstName} {h?.secondName}</span>
+                                                                            <span className="text-sm font-medium">{h?.name}</span>
                                                                         </div>
                                                                     ))}
                                                                 </div>

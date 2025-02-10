@@ -59,20 +59,6 @@ export function UserDataTable<TData, TValue>({
         getFilteredRowModel: getFilteredRowModel(),
     })
 
-    // const [searchValue, setSearchValue] = useState('');
-    // const handleSearch = (value: string) => {
-    //     setSearchValue(value);
-    //     // table.getColumn("name")?.setFilterValue(value);
-    //     table.getColumn("email")?.setFilterValue(value);
-    //     table.getColumn("phone")?.setFilterValue(value);
-    // };
-    // const filteredData = data.filter((user: any) => {
-    //     const userObject: User = user
-    //     userObject.firstName.toLowerCase().includes(searchValue.toLowerCase())
-    //     userObject.email.toLowerCase().includes(searchValue.toLowerCase())
-    //     userObject.phone?.toLowerCase().includes(searchValue.toLowerCase())
-    // });
-
     return (
         <div>
             <div className="flex items-center py-4 justify-evenly gap-4 flex-col sm:flex-row">

@@ -38,8 +38,7 @@ export default function EditUser({ user }: { user: any }) {
     };
 
     const [formData, setFormData] = useState({
-        firstName: user.firstName || '',
-        secondName: user.secondName || '',
+        name: user.name || '',
         email: user.email || '',
         phone: user.phone || '',
         role: user.role || '',
@@ -64,27 +63,16 @@ export default function EditUser({ user }: { user: any }) {
             trigger={<Button title="Edit" className="p-1 hover:text-light-primary dark:hover:text-dark-secondary h-fit">
                 <Edit size={18} />
             </Button>}
-            title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
+            title={(user.name ? user.name + " " : "")}
         >
             <form className="space-y-4">
                 <div>
                     <input
                         type="text"
-                        id="firstName"
-                        name="firstName"
-                        placeholder="First Name"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
-                    />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        id="secondName"
-                        name="secondName"
-                        placeholder="Second Name"
-                        value={formData.secondName}
+                        id="name"
+                        name="name"
+                        placeholder="Name"
+                        value={formData.name}
                         onChange={handleChange}
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     />

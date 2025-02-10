@@ -42,7 +42,7 @@ export default function DeleteUser({ user }: { user: any }) {
             confirm={false}
             confirmAction={() => { }}
             trigger={<Button title="Delete" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit"><Trash2 size={18} /></Button>}
-            title={(user.firstName ? user.firstName + " " : "") + (user.secondName ? user.secondName : "")}
+            title={(user.name ? user.name + " " : "")}
         >
             <p className="text-xl">You are about to delete this user.</p>
         </ResponsiveDialog>

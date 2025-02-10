@@ -29,8 +29,7 @@ export default function AddUser() {
                     className: "rounded-xl border-none text-light-success-text dark:text-dark-success-text bg-light-success-bg dark:bg-dark-success-bg",
                 });
                 setFormData({
-                    firstName: '',
-                    secondName: '',
+                    name: '',
                     email: '',
                     password: '',
                     phone: '',
@@ -48,8 +47,7 @@ export default function AddUser() {
     };
 
     const [formData, setFormData] = useState({
-        firstName: '',
-        secondName: '',
+        name: '',
         email: '',
         password: '',
         phone: '',
@@ -82,21 +80,10 @@ export default function AddUser() {
                 <div>
                     <input
                         type="text"
-                        id="firstName"
-                        name="firstName"
-                        placeholder="First Name"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
-                    />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        id="secondName"
-                        placeholder="Second Name"
-                        name="secondName"
-                        value={formData.secondName}
+                        id="name"
+                        name="name"
+                        placeholder="Name"
+                        value={formData.name}
                         onChange={handleChange}
                         className="placeholder:text-slate-400 bg-gray-50 border border-gray-300 text-light-text rounded-xl focus:ring-primary-600 focus:border-primary-600 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-11/12 mx-auto"
                     />

@@ -42,7 +42,7 @@ export default function DeleteApplication({ application }: { application: any })
             confirm={false}
             confirmAction={() => { }}
             trigger={<Button title="Delete" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit"><Trash2 size={18} /></Button>}
-            title={(application.firstName ? application.firstName + " " : "") + (application.secondName ? application.secondName : "")}
+            title={(application.name ? application.name + " " : "")}
         >
             <p className="text-xl">You are about to delete this application</p>
         </ResponsiveDialog>

@@ -402,15 +402,15 @@ export default function CalendarPage() {
                                                 onChange={(event) => setFaculty(event.target.value)}
                                             >
                                                 <option value="">Select Faculty</option>
-                                                <option value="Engineering">Engineering</option>
+                                                <option value="ENG">ENG</option>
                                                 <option value="MET">MET</option>
                                                 <option value="IET">IET</option>
                                                 <option value="EMS">EMS</option>
+                                                <option value="ARCH">ARCH</option>
                                                 <option value="MGMT">MGMT</option>
-                                                <option value="BI">BI</option>
+                                                <option value="LAW">LAW</option>
                                                 <option value="Applied Science and Arts">Applied Science and Arts</option>
                                                 <option value="Pharmacy & Biotechnology">Pharmacy & Biotechnology</option>
-                                                <option value="Other">Other</option>
                                             </select>
                                         </div>
                                         <div className="w-full sm:w-1/3 px-2">

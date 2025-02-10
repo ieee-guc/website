@@ -66,7 +66,7 @@ export function UserDataTable<TData, TValue>({
     };
     const filteredData = data.filter((user: any) => {
         const userObject: User = user
-        userObject.firstName.toLowerCase().includes(searchValue.toLowerCase())
+        userObject.name.toLowerCase().includes(searchValue.toLowerCase())
         userObject.email.toLowerCase().includes(searchValue.toLowerCase())
         userObject.phone?.toLowerCase().includes(searchValue.toLowerCase())
     });

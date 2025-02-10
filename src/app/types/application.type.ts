@@ -2,8 +2,7 @@ import { Types } from "mongoose";
 
 export interface Application {
   _id: string;
-  firstName: string;
-  secondName: string;
+  namea: string;
   email: string;
   phone: string;
   universityId: string;

@@ -42,7 +42,7 @@ export default function RejectApplication({ application }: { application: any })
             confirm={false}
             confirmAction={() => { }}
             trigger={<Button title="Accept applicant" className="p-1 hover:text-light-red dark:hover:text-dark-red h-fit"><X size={18} /></Button>}
-            title={(application.firstName ? application.firstName + " " : "") + (application.secondName ? application.secondName : "")}
+            title={(application.name ? application.name + " " : "")}
         >
             <p className="text-xl">You are about to reject this application.</p>
         </ResponsiveDialog>
